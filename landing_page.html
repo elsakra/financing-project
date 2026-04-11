@@ -42,7 +42,7 @@
 {"@context":"https://schema.org","@type":"FinancialService","name":"BuilderRates","description":"Debt placement and rate analysis for real estate investors.","url":"https://financing-project.vercel.app/","image":"https://financing-project.vercel.app/favicon.svg","provider":{"@id":"https://financing-project.vercel.app/#organization"},"areaServed":{"@type":"Country","name":"United States"},"serviceType":"Real estate investment financing"}
 </script>
 <script type="application/ld+json" id="faq-schema">
-{"@context":"https://schema.org","@type":"FAQPage","url":"https://financing-project.vercel.app/#faq","mainEntity":[
+{"@context":"https://schema.org","@type":"FAQPage","@id":"https://financing-project.vercel.app/#faq","url":"https://financing-project.vercel.app/#faq","isPartOf":{"@id":"https://financing-project.vercel.app/#website"},"mainEntity":[
 {"@type":"Question","name":"How is this free for me?","acceptedAnswer":{"@type":"Answer","text":"We’re compensated by lender partners for high-quality, pre-vetted deals. Our service is free to you—we don’t stack extra fees on the lender’s quote."}},
 {"@type":"Question","name":"Do I have to use the lender you recommend?","acceptedAnswer":{"@type":"Answer","text":"No. You’re never obligated to use our recommendations—we provide options; you choose."}},
 {"@type":"Question","name":"Will this impact my credit score?","acceptedAnswer":{"@type":"Answer","text":"Initial analysis uses a soft pull that doesn’t affect your score. A hard pull happens only when you proceed with a specific lender’s full application."}},
@@ -271,7 +271,7 @@ tailwind.config = {
         <button type="button" data-br-track="cta-nav-desktop" class="btn-primary js-open-lead hidden sm:inline-flex bg-primary text-on-primary px-4 py-2 rounded-md text-sm font-semibold min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
           Get rate analysis
         </button>
-        <button type="button" id="nav-toggle" class="md:hidden inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-md border border-line bg-white text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-expanded="false" aria-controls="mobile-menu">
+        <button type="button" id="nav-toggle" class="md:hidden inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-md border border-line bg-white text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open main menu">
           <span class="material-symbols-outlined" id="nav-icon-menu">menu</span>
           <span class="material-symbols-outlined hidden" id="nav-icon-close">close</span>
         </button>
@@ -1014,7 +1014,9 @@ window.BuilderRatesTrack = function (name) {
     });
     patchLd("faq-schema", function (o) {
       var root = base.replace(/\/?$/, "");
+      o["@id"] = root + "#faq";
       o.url = root + "#faq";
+      o.isPartOf = { "@id": root + "/#website" };
     });
     patchLd("ld-json-nav", function (o) {
       var root = base.replace(/\/?$/, "");
@@ -1107,6 +1109,7 @@ window.BuilderRatesTrack = function (name) {
     if (!menu || !toggle) return;
     menu.classList.toggle("hidden", !open);
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Close main menu" : "Open main menu");
     document.body.classList.toggle("menu-open", open);
     if (iconMenu && iconClose) {
       iconMenu.classList.toggle("hidden", open);
