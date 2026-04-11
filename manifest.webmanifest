@@ -1,0 +1,17 @@
+{
+  "name": "BuilderRates",
+  "short_name": "BuilderRates",
+  "description": "Institutional financing matchmaking for real estate investors.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafafa",
+  "theme_color": "#012d1d",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
