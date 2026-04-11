@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://financing-project.vercel.app/sitemap.xml

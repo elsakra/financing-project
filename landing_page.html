@@ -2,7 +2,10 @@
 <html class="light" lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="format-detection" content="telephone=no"/>
+<link rel="alternate" hreflang="en-US" href="https://financing-project.vercel.app/"/>
+<link rel="alternate" hreflang="x-default" href="https://financing-project.vercel.app/"/>
 <meta name="description" content="BuilderRates matches real estate investors with 30+ institutional lenders. Maximize profit on every deal with a free rate analysis."/>
 <meta name="robots" content="index, follow"/>
 <meta name="theme-color" content="#012d1d"/>
@@ -14,15 +17,19 @@
 <meta property="og:url" content="https://financing-project.vercel.app/"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8"/>
+<meta property="og:image:width" content="800"/>
+<meta property="og:image:height" content="1000"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="BuilderRates | Institutional financing for real estate investors"/>
 <meta name="twitter:description" content="Compare 30+ capital partners in minutes. Free rate analysis."/>
 <meta name="twitter:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8"/>
 <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
 <link rel="apple-touch-icon" href="favicon.svg"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
 <title>BuilderRates | High-Performance Financing for Real Estate Investors</title>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FinancialService","name":"BuilderRates","description":"Debt placement and rate analysis for real estate investors.","url":"https://financing-project.vercel.app/","areaServed":{"@type":"Country","name":"United States"},"serviceType":"Real estate investment financing"}
+{"@context":"https://schema.org","@type":"FinancialService","name":"BuilderRates","description":"Debt placement and rate analysis for real estate investors.","url":"https://financing-project.vercel.app/","image":"https://financing-project.vercel.app/favicon.svg","areaServed":{"@type":"Country","name":"United States"},"serviceType":"Real estate investment financing"}
 </script>
 <script type="application/ld+json" id="faq-schema">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -34,7 +41,7 @@
 ]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Debt placement and rate analysis for real estate investors.","sameAs":["https://www.linkedin.com/company/builderrates"]}
+{"@context":"https://schema.org","@type":"Organization","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Debt placement and rate analysis for real estate investors.","logo":{"@type":"ImageObject","url":"https://financing-project.vercel.app/favicon.svg"},"sameAs":["https://www.linkedin.com/company/builderrates"]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Institutional financing matchmaking for real estate investors."}
@@ -81,7 +88,7 @@ tailwind.config = {
   }
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5.5rem;
+    scroll-padding-top: calc(5.5rem + env(safe-area-inset-top, 0px));
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -110,7 +117,7 @@ tailwind.config = {
   .nav-link { color: rgb(115 115 115); }
   .nav-link:hover { color: #0a0a0a; }
   .nav-link-active { color: #012d1d; font-weight: 600; }
-  section[id] { scroll-margin-top: 5.5rem; }
+  section[id] { scroll-margin-top: calc(5.5rem + env(safe-area-inset-top, 0px)); }
   .mobile-nav-active { color: #012d1d !important; font-weight: 600; }
 
   .btn-primary {
@@ -151,7 +158,6 @@ tailwind.config = {
   }
   #lead-modal:not(.hidden), #legal-modal:not(.hidden) { display: flex; }
   #lead-modal.hidden, #legal-modal.hidden { display: none !important; }
-  .modal-panel { max-height: min(90vh, 720px); overflow-y: auto; }
   .sr-only {
     position: absolute;
     width: 1px;
@@ -164,13 +170,26 @@ tailwind.config = {
     border: 0;
   }
   body.modal-open { overflow: hidden; }
+  body.menu-open { overflow: hidden; touch-action: none; }
+  .sticky-safe {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+  }
+  .modal-panel {
+    max-height: min(90vh, 720px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    details summary .transition-transform { transition: none !important; }
+  }
 </style>
 </head>
-<body class="bg-canvas text-ink antialiased pb-[4.5rem] md:pb-0">
+<body class="bg-canvas text-ink antialiased pb-[calc(5rem+env(safe-area-inset-bottom,0px))] md:pb-0">
 <a href="#main-content" class="skip-link">Skip to content</a>
 <!-- TopNavBar -->
 <header>
-  <nav class="fixed top-0 w-full z-[100] border-b border-line bg-white" id="site-nav" aria-label="Primary">
+  <nav class="fixed top-0 w-full z-[100] border-b border-line bg-white pt-[env(safe-area-inset-top,0px)]" id="site-nav" aria-label="Primary">
     <div class="flex justify-between items-center max-w-6xl mx-auto px-5 md:px-8 py-4 md:py-4">
       <a href="#top" class="flex items-center gap-2.5 font-display text-xl md:text-[1.35rem] font-semibold tracking-tight text-primary" aria-label="BuilderRates home">
         <span class="shrink-0 w-8 h-8 rounded-md bg-primary flex items-center justify-center" aria-hidden="true">
@@ -190,13 +209,13 @@ tailwind.config = {
         <button type="button" class="btn-primary js-open-lead hidden sm:inline-flex bg-primary text-on-primary px-4 py-2 rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
           Get rate analysis
         </button>
-        <button type="button" id="nav-toggle" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-line bg-white text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-expanded="false" aria-controls="mobile-menu">
+        <button type="button" id="nav-toggle" class="md:hidden inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-md border border-line bg-white text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-expanded="false" aria-controls="mobile-menu">
           <span class="material-symbols-outlined" id="nav-icon-menu">menu</span>
           <span class="material-symbols-outlined hidden" id="nav-icon-close">close</span>
         </button>
       </div>
     </div>
-    <div id="mobile-menu" class="md:hidden hidden border-t border-line bg-white px-5 py-5 space-y-0" role="navigation" aria-label="Menu">
+    <div id="mobile-menu" class="md:hidden hidden border-t border-line bg-white px-5 py-5 space-y-0 max-h-[min(70vh,28rem)] overflow-y-auto overscroll-contain" role="navigation" aria-label="Menu">
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#solutions" data-section="solutions">Solutions</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#how" data-section="how">How It Works</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#products" data-section="products">Products</a>
@@ -208,7 +227,7 @@ tailwind.config = {
   </nav>
 </header>
 
-<div class="fixed bottom-0 left-0 right-0 z-[90] md:hidden border-t border-line bg-white/95 backdrop-blur-sm px-4 py-3 flex gap-2 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]" role="region" aria-label="Quick actions">
+<div class="sticky-safe fixed bottom-0 left-0 right-0 z-[90] md:hidden border-t border-line bg-white/95 backdrop-blur-sm px-4 pt-3 flex gap-2 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]" role="region" aria-label="Quick actions">
   <button type="button" class="js-open-lead flex-1 btn-primary bg-primary text-on-primary py-3 rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Get rate analysis</button>
   <a href="mailto:hello@builderrates.com" id="sticky-email-link" class="inline-flex items-center justify-center px-4 py-3 rounded-md text-sm font-semibold border border-line bg-white text-ink">Email</a>
 </div>
@@ -232,7 +251,7 @@ tailwind.config = {
       </p>
       <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-3">
         <button type="button" class="js-open-lead btn-primary group bg-primary text-on-primary px-6 py-3.5 rounded-md text-sm font-semibold flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-          Get My Rate Analysis
+          Get rate analysis
           <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
         </button>
         <a href="#products" class="inline-flex items-center justify-center px-6 py-3.5 rounded-md text-sm font-semibold border border-line bg-white text-ink hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
@@ -240,12 +259,12 @@ tailwind.config = {
         </a>
       </div>
     </div>
-    <div class="lg:col-span-5 relative reveal">
+    <div class="lg:col-span-5 relative reveal pb-20 sm:pb-24 lg:pb-0">
       <div class="aspect-[4/5] rounded-md overflow-hidden relative border border-line">
         <img class="w-full h-full object-cover saturate-75 contrast-[1.02]" alt="Modern multifamily building with glass facade and greenery" width="800" height="1000" fetchpriority="high" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
       </div>
-      <div class="absolute -bottom-4 -left-2 md:-left-8 max-w-[min(100%,18rem)] bg-white p-5 rounded-md border border-line shadow-sm">
+      <div class="absolute bottom-2 left-0 right-0 mx-auto sm:mx-0 sm:left-2 sm:right-auto md:-bottom-4 md:-left-8 max-w-[min(100%,18rem)] bg-white p-5 rounded-md border border-line shadow-sm">
         <div class="flex items-center gap-3 mb-3">
           <div class="w-9 h-9 rounded-sm bg-zinc-100 flex items-center justify-center text-secondary border border-line">
             <span class="material-symbols-outlined text-xl" aria-hidden="true">trending_up</span>
@@ -462,10 +481,11 @@ tailwind.config = {
   <div class="max-w-6xl mx-auto px-5 md:px-8">
     <div class="text-center mb-12 md:mb-14 reveal">
       <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-4">Compare</p>
-      <h2 class="font-display text-3xl md:text-4xl font-semibold text-balance text-ink">Better capital, faster.</h2>
+      <h2 id="compare-heading" class="font-display text-3xl md:text-4xl font-semibold text-balance text-ink">Better capital, faster.</h2>
     </div>
-    <div class="overflow-x-auto border border-line bg-white reveal">
+    <div class="overflow-x-auto border border-line bg-white reveal touch-pan-x" role="region" aria-labelledby="compare-heading">
       <table class="w-full text-left min-w-[640px] text-sm md:text-[15px]">
+        <caption class="sr-only">Comparison of shopping lenders yourself versus using BuilderRates</caption>
         <thead>
           <tr class="border-b border-line bg-zinc-50">
             <th scope="col" class="py-4 px-5 md:px-6 font-semibold text-xs uppercase tracking-wider text-muted">Feature</th>
@@ -508,14 +528,14 @@ tailwind.config = {
 </section>
 
 <!-- Testimonial Section -->
-<section id="testimonials" class="py-28 md:py-36 bg-white border-b border-line">
+<section id="testimonials" class="py-28 md:py-36 bg-white border-b border-line overflow-x-hidden">
   <div class="max-w-6xl mx-auto px-5 md:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16 items-center">
       <div class="relative reveal">
         <div class="aspect-square rounded-sm overflow-hidden border border-line">
           <img class="w-full h-full object-cover saturate-75" alt="Real estate investor reviewing plans on site" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf8upb415yXOMWnfuT2XcXt36pX5390iQweCbajANZ_NqCLqYChg_0R9oScQ0T5vRgt05RNXtYiTe-vRO31Idtf_ygg16cEs823f7hxTodHtucbmTV1NVN0AAcc5SFG3O8zpxywpajYY8fELFGrCTtwVZ1gUn8NOdn1J-mTCUoyGDuBVdcKxWOLvTN4SrUdJGyedBvTZWSi1_weoO7vEl3ZTIAMdXnxp2EjauS_RwxaSiejquXldb7LUosj7ShGmjGtkS43hh7j1w"/>
         </div>
-        <figure class="absolute -bottom-6 -right-2 md:-right-6 bg-white p-6 md:p-7 rounded-sm max-w-sm border border-line shadow-sm">
+        <figure class="absolute -bottom-4 right-3 sm:right-4 md:-bottom-6 md:-right-6 bg-white p-5 md:p-7 rounded-sm max-w-[min(100%,22rem)] border border-line shadow-sm">
           <span class="material-symbols-outlined text-3xl mb-3 text-zinc-400" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">format_quote</span>
           <blockquote class="font-display font-semibold text-base md:text-lg leading-snug mb-4 text-ink">“They found a lender I’d never heard of—125 bps lower than my usual bank. That’s $14k to my bottom line.”</blockquote>
           <figcaption>
@@ -613,7 +633,7 @@ tailwind.config = {
           Stop leaving profit on the table. Audit your capital today.
         </h2>
         <button type="button" class="js-open-lead btn-primary inline-flex bg-tertiary-fixed text-on-tertiary-fixed px-8 py-3.5 rounded-md text-sm font-semibold items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary">
-          Get My Rate Analysis
+          Get rate analysis
           <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
         </button>
         <p class="text-primary-fixed/70 mt-6 text-sm">Takes under 2 minutes. Completely confidential.</p>
@@ -661,7 +681,7 @@ tailwind.config = {
       <p class="text-sm text-zinc-600 mb-3">Weekly rate volatility briefs in your inbox.</p>
       <form id="newsletter-form" class="flex flex-col sm:flex-row gap-2" action="#" method="post">
         <label class="sr-only" for="email-updates">Email</label>
-        <input id="email-updates" name="email" required class="bg-white border border-line rounded-sm px-3 py-2 flex-1 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="you@company.com" type="email" autocomplete="email"/>
+        <input id="email-updates" name="email" required class="bg-white border border-line rounded-sm px-3 py-2.5 flex-1 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="you@company.com" type="email" autocomplete="email" inputmode="email"/>
         <button type="submit" class="bg-primary text-on-primary px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-wider btn-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Join</button>
       </form>
       <p id="newsletter-status" class="mt-2 text-xs text-secondary hidden" role="status"></p>
@@ -676,7 +696,7 @@ tailwind.config = {
 <div id="lead-modal" class="fixed inset-0 z-[200] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title">
   <div class="absolute inset-0 bg-black/50" data-modal-backdrop tabindex="-1" aria-hidden="true"></div>
   <div class="modal-panel relative z-10 w-full max-w-md bg-white rounded-md border border-line shadow-xl p-6 md:p-8">
-    <button type="button" class="absolute top-4 right-4 p-1 rounded-md text-zinc-500 hover:text-ink hover:bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-close-lead aria-label="Close dialog">
+    <button type="button" class="absolute top-3 right-3 sm:top-4 sm:right-4 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md text-zinc-500 hover:text-ink hover:bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-close-lead aria-label="Close dialog">
       <span class="material-symbols-outlined" aria-hidden="true">close</span>
     </button>
     <div id="lead-step-1">
@@ -690,15 +710,15 @@ tailwind.config = {
       <form id="lead-form-step1" class="space-y-4">
         <div>
           <label for="lead-name" class="block text-xs font-medium text-zinc-700 mb-1">Full name</label>
-          <input id="lead-name" name="name" required autocomplete="name" class="w-full border border-line rounded-sm px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
+          <input id="lead-name" name="name" required autocomplete="name" class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
         </div>
         <div>
           <label for="lead-email" class="block text-xs font-medium text-zinc-700 mb-1">Work email</label>
-          <input id="lead-email" name="email" type="email" required autocomplete="email" class="w-full border border-line rounded-sm px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
+          <input id="lead-email" name="email" type="email" required autocomplete="email" inputmode="email" class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
         </div>
         <div>
           <label for="lead-phone" class="block text-xs font-medium text-zinc-700 mb-1">Phone</label>
-          <input id="lead-phone" name="phone" type="tel" autocomplete="tel" class="w-full border border-line rounded-sm px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
+          <input id="lead-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
         </div>
         <p class="text-xs text-zinc-500">By continuing you agree to our <button type="button" class="text-primary underline js-open-legal" data-legal="terms">Terms</button> and <button type="button" class="text-primary underline js-open-legal" data-legal="privacy">Privacy Policy</button>.</p>
         <button type="submit" class="w-full btn-primary bg-primary text-on-primary py-3 rounded-md text-sm font-semibold">Continue</button>
@@ -714,7 +734,7 @@ tailwind.config = {
       <form id="lead-form-step2" class="space-y-4">
         <div>
           <label for="lead-product" class="block text-xs font-medium text-zinc-700 mb-1">Primary product</label>
-          <select id="lead-product" name="product" required class="w-full border border-line rounded-sm px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-primary outline-none">
+          <select id="lead-product" name="product" required class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm bg-white focus:ring-2 focus:ring-primary outline-none">
             <option value="">Select…</option>
             <option value="new-construction">New construction</option>
             <option value="fix-flip">Fix &amp; flip</option>
@@ -726,14 +746,14 @@ tailwind.config = {
         </div>
         <div>
           <label for="lead-state" class="block text-xs font-medium text-zinc-700 mb-1">Property state</label>
-          <select id="lead-state" name="state" required class="w-full border border-line rounded-sm px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-primary outline-none">
+          <select id="lead-state" name="state" required class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm bg-white focus:ring-2 focus:ring-primary outline-none">
             <option value="">Select state…</option>
             <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option><option>DC</option>
           </select>
         </div>
         <div>
           <label for="lead-amount" class="block text-xs font-medium text-zinc-700 mb-1">Estimated loan size</label>
-          <select id="lead-amount" name="amount" class="w-full border border-line rounded-sm px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-primary outline-none">
+          <select id="lead-amount" name="amount" class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm bg-white focus:ring-2 focus:ring-primary outline-none">
             <option value="">Prefer not to say</option>
             <option>Under $250k</option>
             <option>$250k – $500k</option>
@@ -765,7 +785,7 @@ tailwind.config = {
 <div id="legal-modal" class="fixed inset-0 z-[210] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
   <div class="absolute inset-0 bg-black/50" data-legal-backdrop tabindex="-1" aria-hidden="true"></div>
   <div class="modal-panel relative z-10 w-full max-w-lg bg-white rounded-md border border-line shadow-xl p-6 md:p-8 max-h-[85vh] overflow-y-auto">
-    <button type="button" class="absolute top-4 right-4 p-1 rounded-md text-zinc-500 hover:text-ink hover:bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-close-legal aria-label="Close">
+    <button type="button" class="absolute top-3 right-3 sm:top-4 sm:right-4 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md text-zinc-500 hover:text-ink hover:bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-close-legal aria-label="Close">
       <span class="material-symbols-outlined" aria-hidden="true">close</span>
     </button>
     <h2 id="legal-modal-title" class="font-display text-lg font-semibold text-ink mb-4 pr-8"></h2>
@@ -820,6 +840,7 @@ window.BUILDERRATES.newsletterUrl = "";
     if (!menu || !toggle) return;
     menu.classList.toggle("hidden", !open);
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    document.body.classList.toggle("menu-open", open);
     if (iconMenu && iconClose) {
       iconMenu.classList.toggle("hidden", open);
       iconClose.classList.toggle("hidden", !open);
@@ -881,6 +902,7 @@ window.BUILDERRATES.newsletterUrl = "";
 
   function openLeadModal() {
     if (!leadModal) return;
+    if (menu && !menu.classList.contains("hidden")) setOpen(false);
     lastFocus = document.activeElement;
     leadModal.classList.remove("hidden");
     leadModal.classList.add("flex");
