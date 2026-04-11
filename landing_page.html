@@ -38,7 +38,7 @@
 <title>BuilderRates | High-Performance Financing for Real Estate Investors</title>
 <!-- br:inject-gtm-head -->
 <script type="application/ld+json" id="ld-json-financial">
-{"@context":"https://schema.org","@type":"FinancialService","name":"BuilderRates","description":"Debt placement and rate analysis for real estate investors.","url":"https://financing-project.vercel.app/","image":"https://financing-project.vercel.app/favicon.svg","areaServed":{"@type":"Country","name":"United States"},"serviceType":"Real estate investment financing"}
+{"@context":"https://schema.org","@type":"FinancialService","name":"BuilderRates","description":"Debt placement and rate analysis for real estate investors.","url":"https://financing-project.vercel.app/","image":"https://financing-project.vercel.app/favicon.svg","provider":{"@id":"https://financing-project.vercel.app/#organization"},"areaServed":{"@type":"Country","name":"United States"},"serviceType":"Real estate investment financing"}
 </script>
 <script type="application/ld+json" id="faq-schema">
 {"@context":"https://schema.org","@type":"FAQPage","url":"https://financing-project.vercel.app/#faq","mainEntity":[
@@ -56,7 +56,7 @@
 {"@context":"https://schema.org","@type":"WebSite","@id":"https://financing-project.vercel.app/#website","name":"BuilderRates","url":"https://financing-project.vercel.app/","inLanguage":"en-US","description":"Institutional financing matchmaking for real estate investors.","potentialAction":{"@type":"ContactAction","name":"Email BuilderRates","target":{"@type":"EntryPoint","urlTemplate":"mailto:hello@builderrates.com?subject=Rate%20analysis%20request","actionPlatform":["http://schema.org/DesktopWebPlatform","http://schema.org/MobileWebPlatform"]}}}
 </script>
 <script type="application/ld+json" id="ld-json-webpage">
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://financing-project.vercel.app/#webpage","name":"BuilderRates | High-Performance Financing for Real Estate Investors","description":"Compare 30+ institutional lenders for real estate investment deals. Free rate analysis, no obligation.","url":"https://financing-project.vercel.app/","inLanguage":"en-US","isPartOf":{"@id":"https://financing-project.vercel.app/#website"},"publisher":{"@id":"https://financing-project.vercel.app/#organization"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8","width":800,"height":1000},"about":{"@type":"FinancialService","name":"BuilderRates","url":"https://financing-project.vercel.app/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://financing-project.vercel.app/#webpage","name":"BuilderRates | High-Performance Financing for Real Estate Investors","description":"Compare 30+ institutional lenders for real estate investment deals. Free rate analysis, no obligation.","url":"https://financing-project.vercel.app/","inLanguage":"en-US","dateModified":"2026-04-11","isPartOf":{"@id":"https://financing-project.vercel.app/#website"},"publisher":{"@id":"https://financing-project.vercel.app/#organization"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8","width":800,"height":1000},"about":{"@type":"FinancialService","name":"BuilderRates","url":"https://financing-project.vercel.app/","provider":{"@id":"https://financing-project.vercel.app/#organization"}}}
 </script>
 <script type="application/ld+json" id="ld-json-breadcrumb">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://financing-project.vercel.app/"}]}
@@ -236,7 +236,8 @@ tailwind.config = {
   /* Main/footer columns: respect notch / home-indicator on small screens */
   @media (max-width: 767.98px) {
     body main .max-w-6xl.mx-auto.px-5,
-    body footer .max-w-6xl.mx-auto.px-5 {
+    body footer .max-w-6xl.mx-auto.px-5,
+    body main .max-w-2xl.mx-auto.px-5 {
       padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
       padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
     }
@@ -772,12 +773,13 @@ tailwind.config = {
   </div>
 </footer>
 
-<div id="lead-modal" class="fixed inset-0 z-[200] hidden items-center justify-center px-4 pt-[max(1rem,env(safe-area-inset-top,0px))] pb-[max(1rem,env(safe-area-inset-bottom,0px))]" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title">
+<div id="lead-modal" class="fixed inset-0 z-[200] hidden items-center justify-center px-4 pt-[max(1rem,env(safe-area-inset-top,0px))] pb-[max(1rem,env(safe-area-inset-bottom,0px))]" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title" aria-describedby="lead-modal-desc">
   <div class="absolute inset-0 bg-black/50" data-modal-backdrop tabindex="-1" aria-hidden="true"></div>
   <div class="modal-panel relative z-10 w-full max-w-md bg-white rounded-md border border-line shadow-xl p-6 md:p-8">
     <button type="button" class="absolute top-3 right-3 sm:top-4 sm:right-4 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md text-zinc-500 hover:text-ink hover:bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-close-lead aria-label="Close dialog">
       <span class="material-symbols-outlined" aria-hidden="true">close</span>
     </button>
+    <p id="lead-modal-desc" class="sr-only">Two quick steps: contact details, then a short deal snapshot. About two minutes, no obligation.</p>
     <div id="lead-step-1">
       <div class="flex gap-1.5 mb-4" aria-hidden="true">
         <span class="h-1 flex-1 rounded-full bg-primary"></span>
@@ -950,6 +952,8 @@ window.BuilderRatesTrack = function (name) {
     patchLd("ld-json-financial", function (o) {
       o.url = base;
       if (typeof o.image === "string") o.image = logoUrl;
+      var root = base.replace(/\/?$/, "");
+      o.provider = { "@id": root + "/#organization" };
     });
     patchLd("ld-json-org", function (o) {
       o.url = base;
@@ -985,9 +989,15 @@ window.BuilderRatesTrack = function (name) {
       o.url = base;
       var root = base.replace(/\/?$/, "");
       o["@id"] = root + "/#webpage";
+      try {
+        o.dateModified = new Date().toISOString().slice(0, 10);
+      } catch (e3) {}
       if (o.isPartOf && typeof o.isPartOf === "object") o.isPartOf["@id"] = root + "/#website";
       if (o.publisher && typeof o.publisher === "object") o.publisher["@id"] = root + "/#organization";
-      if (o.about && typeof o.about === "object") o.about.url = base;
+      if (o.about && typeof o.about === "object") {
+        o.about.url = base;
+        o.about.provider = { "@id": root + "/#organization" };
+      }
     });
     patchLd("ld-json-breadcrumb", function (o) {
       if (o.itemListElement && o.itemListElement[0]) o.itemListElement[0].item = base;
@@ -1296,6 +1306,7 @@ window.BuilderRatesTrack = function (name) {
   function submitLead() {
     var hp = document.getElementById("lead-hp");
     if (hp && hp.value) {
+      if (window.BuilderRatesTrack) window.BuilderRatesTrack("lead-blocked-honeypot");
       showLeadStep3();
       return;
     }
