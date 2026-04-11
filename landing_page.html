@@ -19,6 +19,7 @@
 <meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8"/>
 <meta property="og:image:width" content="800"/>
 <meta property="og:image:height" content="1000"/>
+<meta property="og:image:alt" content="Modern multifamily investment property — BuilderRates"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="BuilderRates | Institutional financing for real estate investors"/>
 <meta name="twitter:description" content="Compare 30+ capital partners in minutes. Free rate analysis."/>
@@ -33,7 +34,7 @@
 {"@context":"https://schema.org","@type":"FinancialService","name":"BuilderRates","description":"Debt placement and rate analysis for real estate investors.","url":"https://financing-project.vercel.app/","image":"https://financing-project.vercel.app/favicon.svg","areaServed":{"@type":"Country","name":"United States"},"serviceType":"Real estate investment financing"}
 </script>
 <script type="application/ld+json" id="faq-schema">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@context":"https://schema.org","@type":"FAQPage","url":"https://financing-project.vercel.app/#faq","mainEntity":[
 {"@type":"Question","name":"How is this free for me?","acceptedAnswer":{"@type":"Answer","text":"We are compensated by lender partners for high-quality, pre-vetted deals. Our service is free to you—we do not stack extra fees on the lender quote."}},
 {"@type":"Question","name":"Do I have to use the lender you recommend?","acceptedAnswer":{"@type":"Answer","text":"No. You are under no obligation to use any recommendation—we provide options; you choose."}},
 {"@type":"Question","name":"Will this impact my credit score?","acceptedAnswer":{"@type":"Answer","text":"Initial analysis uses a soft pull that does not affect your score. A hard pull occurs only when you proceed with a specific lender full application."}},
@@ -90,6 +91,10 @@ tailwind.config = {
   html {
     scroll-behavior: smooth;
     scroll-padding-top: calc(5.5rem + env(safe-area-inset-top, 0px));
+    scroll-padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+  }
+  @media (min-width: 768px) {
+    html { scroll-padding-bottom: 0; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -99,6 +104,7 @@ tailwind.config = {
   body {
     font-family: var(--font-sans);
     font-feature-settings: "ss01" on, "cv01" on;
+    overflow-x: hidden;
   }
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
@@ -123,6 +129,7 @@ tailwind.config = {
 
   .btn-primary {
     transition: background-color 0.2s ease, border-color 0.2s ease;
+    touch-action: manipulation;
   }
   .btn-primary:hover { filter: brightness(1.05); }
 
@@ -229,8 +236,8 @@ tailwind.config = {
 </header>
 
 <div class="sticky-safe fixed bottom-0 left-0 right-0 z-[90] md:hidden border-t border-line bg-white/95 backdrop-blur-sm px-4 pt-3 flex gap-2 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]" role="region" aria-label="Quick actions">
-  <button type="button" class="js-open-lead flex-1 btn-primary bg-primary text-on-primary py-3 rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Get rate analysis</button>
-  <a href="mailto:hello@builderrates.com" id="sticky-email-link" class="inline-flex items-center justify-center px-4 py-3 rounded-md text-sm font-semibold border border-line bg-white text-ink">Email</a>
+  <button type="button" class="js-open-lead flex-1 btn-primary bg-primary text-on-primary py-3 min-h-[48px] rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Get rate analysis</button>
+  <a href="mailto:hello@builderrates.com" id="sticky-email-link" class="inline-flex items-center justify-center min-h-[48px] min-w-[4.5rem] px-4 py-3 rounded-md text-sm font-semibold border border-line bg-white text-ink touch-manipulation">Email</a>
 </div>
 
 <!-- Hero Section -->
@@ -250,12 +257,13 @@ tailwind.config = {
         <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-sm text-secondary" aria-hidden="true">check_circle</span> No obligation</span>
         <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-sm text-secondary" aria-hidden="true">check_circle</span> Soft pull for quotes</span>
       </p>
+      <p class="reveal reveal-delay-3 text-[11px] text-zinc-400 mb-3 md:hidden">HTTPS · We never sell your contact info</p>
       <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-3">
-        <button type="button" class="js-open-lead btn-primary group bg-primary text-on-primary px-6 py-3.5 rounded-md text-sm font-semibold flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+        <button type="button" class="js-open-lead btn-primary group bg-primary text-on-primary px-6 py-3.5 rounded-md text-sm font-semibold flex items-center justify-center gap-2 min-h-[48px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
           Get rate analysis
           <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
         </button>
-        <a href="#products" class="inline-flex items-center justify-center px-6 py-3.5 rounded-md text-sm font-semibold border border-line bg-white text-ink hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+        <a href="#products" class="inline-flex items-center justify-center px-6 py-3.5 rounded-md text-sm font-semibold border border-line bg-white text-ink hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary min-h-[48px] touch-manipulation">
           View loan programs
         </a>
       </div>
@@ -683,7 +691,7 @@ tailwind.config = {
       <form id="newsletter-form" class="flex flex-col sm:flex-row gap-2" action="#" method="post">
         <label class="sr-only" for="email-updates">Email</label>
         <input id="email-updates" name="email" required class="bg-white border border-line rounded-sm px-3 py-2.5 flex-1 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="you@company.com" type="email" autocomplete="email" inputmode="email"/>
-        <button type="submit" class="bg-primary text-on-primary px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-wider btn-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Join</button>
+        <button type="submit" id="newsletter-submit-btn" class="bg-primary text-on-primary px-4 py-2.5 rounded-sm font-semibold text-xs uppercase tracking-wider btn-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary min-h-[44px] shrink-0 disabled:opacity-60 disabled:cursor-not-allowed">Join</button>
       </form>
       <p id="newsletter-status" class="mt-2 text-xs text-secondary hidden" role="status"></p>
     </div>
@@ -771,7 +779,7 @@ tailwind.config = {
       <div id="lead-mailto-inline" class="mt-2"></div>
       <p id="lead-form-error" class="mt-3 text-sm text-red-700 hidden" role="alert"></p>
     </div>
-    <div id="lead-step-3" class="hidden text-center py-4">
+    <div id="lead-step-3" class="hidden text-center py-4" aria-live="polite">
       <div class="w-14 h-14 rounded-full bg-secondary/15 flex items-center justify-center mx-auto mb-4">
         <span class="material-symbols-outlined text-3xl text-secondary" aria-hidden="true">check_circle</span>
       </div>
@@ -854,6 +862,10 @@ window.BUILDERRATES.newsletterUrl = "";
     });
     patchLd("ld-json-website", function (o) {
       o.url = base;
+    });
+    patchLd("faq-schema", function (o) {
+      var root = base.replace(/\/?$/, "");
+      o.url = root + "#faq";
     });
   }
 
@@ -1174,6 +1186,7 @@ window.BUILDERRATES.newsletterUrl = "";
   if (footMail && BR.leadEmail) footMail.href = "mailto:" + BR.leadEmail;
 
   var nf = document.getElementById("newsletter-form");
+  var nSub = document.getElementById("newsletter-submit-btn");
   if (nf) {
     nf.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -1182,12 +1195,23 @@ window.BUILDERRATES.newsletterUrl = "";
       if (!input || !input.value) return;
       var em = BR.leadEmail || "hello@builderrates.com";
       var nu = BR.newsletterUrl && String(BR.newsletterUrl).trim();
+      function resetNBtn() {
+        if (nSub) {
+          nSub.disabled = false;
+          nSub.textContent = "Join";
+        }
+      }
       function mailtoFallback() {
         var href = "mailto:" + em + "?subject=" + encodeURIComponent("Newsletter signup") + "&body=" + encodeURIComponent("Please add: " + input.value + "\n\npageUrl: " + (typeof location !== "undefined" ? location.href : ""));
         st.innerHTML = "<a href=\"" + href + "\" class=\"text-primary font-medium underline\">Open email to complete signup</a>";
         st.classList.remove("hidden");
+        resetNBtn();
       }
       if (nu) {
+        if (nSub) {
+          nSub.disabled = true;
+          nSub.textContent = "Sending…";
+        }
         fetch(nu, {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -1206,7 +1230,8 @@ window.BUILDERRATES.newsletterUrl = "";
             st.classList.add("text-zinc-700");
             nf.reset();
           })
-          .catch(mailtoFallback);
+          .catch(mailtoFallback)
+          .finally(resetNBtn);
         return;
       }
       mailtoFallback();
