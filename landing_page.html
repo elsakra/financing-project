@@ -7,7 +7,8 @@
 <link rel="alternate" hreflang="en-US" href="https://financing-project.vercel.app/"/>
 <link rel="alternate" hreflang="x-default" href="https://financing-project.vercel.app/"/>
 <meta name="description" content="BuilderRates matches real estate investors with 30+ institutional lenders. Maximize profit on every deal with a free rate analysis."/>
-<meta name="robots" content="index, follow"/>
+<meta name="author" content="BuilderRates"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
 <meta name="theme-color" content="#012d1d"/>
 <link rel="canonical" href="https://financing-project.vercel.app/"/>
 <meta property="og:type" content="website"/>
@@ -25,6 +26,7 @@
 <meta name="twitter:description" content="Compare 30+ capital partners in minutes. Free rate analysis."/>
 <meta name="twitter:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8"/>
 <meta name="twitter:url" content="https://financing-project.vercel.app/"/>
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"/>
 <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
 <link rel="apple-touch-icon" href="favicon.svg"/>
 <link rel="manifest" href="/manifest.webmanifest"/>
@@ -44,7 +46,7 @@
 ]}
 </script>
 <script type="application/ld+json" id="ld-json-org">
-{"@context":"https://schema.org","@type":"Organization","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Debt placement and rate analysis for real estate investors.","logo":{"@type":"ImageObject","url":"https://financing-project.vercel.app/favicon.svg"},"sameAs":["https://www.linkedin.com/company/builderrates"]}
+{"@context":"https://schema.org","@type":"Organization","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Debt placement and rate analysis for real estate investors.","logo":{"@type":"ImageObject","url":"https://financing-project.vercel.app/favicon.svg"},"sameAs":["https://www.linkedin.com/company/builderrates"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"hello@builderrates.com","areaServed":"US","availableLanguage":"en"}}
 </script>
 <script type="application/ld+json" id="ld-json-website">
 {"@context":"https://schema.org","@type":"WebSite","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Institutional financing matchmaking for real estate investors."}
@@ -237,7 +239,7 @@ tailwind.config = {
   </nav>
 </header>
 
-<div class="sticky-safe fixed bottom-0 left-0 right-0 z-[90] md:hidden border-t border-line bg-white/95 backdrop-blur-sm px-4 pt-3 flex gap-2 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]" role="region" aria-label="Quick actions">
+<div id="sticky-quick-actions" class="sticky-safe fixed bottom-0 left-0 right-0 z-[90] md:hidden border-t border-line bg-white/95 backdrop-blur-sm px-4 pt-3 flex gap-2 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]" role="region" aria-label="Quick actions">
   <button type="button" class="js-open-lead flex-1 btn-primary bg-primary text-on-primary py-3 min-h-[48px] rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Get rate analysis</button>
   <a href="mailto:hello@builderrates.com" id="sticky-email-link" class="inline-flex items-center justify-center min-h-[48px] min-w-[4.5rem] px-4 py-3 rounded-md text-sm font-semibold border border-line bg-white text-ink touch-manipulation">Email</a>
 </div>
@@ -506,22 +508,22 @@ tailwind.config = {
         </thead>
         <tbody class="text-zinc-600">
           <tr class="border-b border-line">
-            <td class="py-5 px-5 md:px-6 font-medium text-ink">Lender access</td>
+            <th scope="row" class="py-5 px-5 md:px-6 font-medium text-ink text-left align-top">Lender access</th>
             <td class="py-5 px-5 md:px-6">1–3 (your network)</td>
             <td class="py-5 px-5 md:px-6 font-medium text-primary bg-primary/[0.04] border-l border-line">30+ institutional partners</td>
           </tr>
           <tr class="border-b border-line">
-            <td class="py-5 px-5 md:px-6 font-medium text-ink">Time commitment</td>
+            <th scope="row" class="py-5 px-5 md:px-6 font-medium text-ink text-left align-top">Time commitment</th>
             <td class="py-5 px-5 md:px-6">15+ hours calling &amp; emailing</td>
             <td class="py-5 px-5 md:px-6 font-medium text-primary bg-primary/[0.04] border-l border-line">2-minute single application</td>
           </tr>
           <tr class="border-b border-line">
-            <td class="py-5 px-5 md:px-6 font-medium text-ink">Value score</td>
+            <th scope="row" class="py-5 px-5 md:px-6 font-medium text-ink text-left align-top">Value score</th>
             <td class="py-5 px-5 md:px-6">Market average</td>
             <td class="py-5 px-5 md:px-6 font-medium text-primary bg-primary/[0.04] border-l border-line">Top tier (≈1.4% rate savings)</td>
           </tr>
           <tr>
-            <td class="py-5 px-5 md:px-6 font-medium text-ink">Cost</td>
+            <th scope="row" class="py-5 px-5 md:px-6 font-medium text-ink text-left align-top">Cost</th>
             <td class="py-5 px-5 md:px-6">Standard origination</td>
             <td class="py-5 px-5 md:px-6 font-medium text-primary bg-primary/[0.04] border-l border-line">$0 out of pocket</td>
           </tr>
@@ -529,7 +531,7 @@ tailwind.config = {
       </table>
     </div>
     <div class="text-center mt-10 reveal">
-      <button type="button" class="js-open-lead btn-primary inline-flex bg-primary text-on-primary px-8 py-3.5 rounded-md text-sm font-semibold items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+      <button type="button" class="js-open-lead btn-primary inline-flex bg-primary text-on-primary px-8 py-3.5 rounded-md text-sm font-semibold items-center gap-2 min-h-[48px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
         Get my personalized comparison
         <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
       </button>
@@ -643,7 +645,7 @@ tailwind.config = {
         <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-semibold mb-8 max-w-3xl mx-auto leading-[1.1] text-balance">
           Stop leaving profit on the table. Audit your capital today.
         </h2>
-        <button type="button" class="js-open-lead btn-primary inline-flex bg-tertiary-fixed text-on-tertiary-fixed px-8 py-3.5 rounded-md text-sm font-semibold items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary">
+        <button type="button" class="js-open-lead btn-primary inline-flex bg-tertiary-fixed text-on-tertiary-fixed px-8 py-3.5 rounded-md text-sm font-semibold items-center gap-2 min-h-[48px] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary">
           Get rate analysis
           <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
         </button>
@@ -732,7 +734,7 @@ tailwind.config = {
           <input id="lead-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
         </div>
         <p class="text-xs text-zinc-500">By continuing you agree to our <button type="button" class="text-primary underline js-open-legal" data-legal="terms">Terms</button> and <button type="button" class="text-primary underline js-open-legal" data-legal="privacy">Privacy Policy</button>.</p>
-        <button type="submit" class="w-full btn-primary bg-primary text-on-primary py-3 rounded-md text-sm font-semibold">Continue</button>
+        <button type="submit" class="w-full btn-primary bg-primary text-on-primary py-3 min-h-[48px] rounded-md text-sm font-semibold">Continue</button>
       </form>
     </div>
     <div id="lead-step-2" class="hidden">
@@ -774,8 +776,8 @@ tailwind.config = {
           </select>
         </div>
         <div class="flex gap-2">
-          <button type="button" class="flex-1 py-3 rounded-md border border-line text-sm font-semibold" data-lead-back>Back</button>
-          <button type="submit" id="lead-submit-btn" class="flex-1 btn-primary bg-primary text-on-primary py-3 rounded-md text-sm font-semibold disabled:opacity-60 disabled:cursor-not-allowed">Submit</button>
+          <button type="button" class="flex-1 py-3 min-h-[48px] rounded-md border border-line text-sm font-semibold touch-manipulation" data-lead-back>Back</button>
+          <button type="submit" id="lead-submit-btn" class="flex-1 btn-primary bg-primary text-on-primary py-3 min-h-[48px] rounded-md text-sm font-semibold disabled:opacity-60 disabled:cursor-not-allowed">Submit</button>
         </div>
       </form>
       <div id="lead-mailto-inline" class="mt-2"></div>
@@ -788,7 +790,7 @@ tailwind.config = {
       <h3 class="font-display text-xl font-semibold text-ink mb-2">You’re in the queue</h3>
       <p class="text-sm text-zinc-600 mb-4">We’ll review your snapshot and reach out within one business day with next steps.</p>
       <div id="lead-mailto-slot" class="mb-6"></div>
-      <button type="button" class="btn-primary bg-primary text-on-primary px-6 py-2.5 rounded-md text-sm font-semibold" data-close-lead>Done</button>
+      <button type="button" class="btn-primary bg-primary text-on-primary px-6 py-3 min-h-[48px] rounded-md text-sm font-semibold min-w-[120px]" data-close-lead>Done</button>
     </div>
   </div>
 </div>
@@ -861,6 +863,14 @@ window.BUILDERRATES.newsletterUrl = "";
     patchLd("ld-json-org", function (o) {
       o.url = base;
       if (o.logo && o.logo["@type"] === "ImageObject") o.logo.url = logoUrl;
+      var email = (BR.leadEmail && String(BR.leadEmail).trim()) || "hello@builderrates.com";
+      o.contactPoint = {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": email,
+        "areaServed": "US",
+        "availableLanguage": "en"
+      };
     });
     patchLd("ld-json-website", function (o) {
       o.url = base;
@@ -886,6 +896,7 @@ window.BUILDERRATES.newsletterUrl = "";
   var leadStep3 = document.getElementById("lead-step-3");
   var leadData = {};
   var lastFocus = null;
+  var stickyQuick = document.getElementById("sticky-quick-actions");
 
   var LEGAL = {
     privacy: {
@@ -959,7 +970,17 @@ window.BUILDERRATES.newsletterUrl = "";
   function refreshModalBodyLock() {
     var leadOpen = leadModal && !leadModal.classList.contains("hidden");
     var legalOpen = legalModalEl && !legalModalEl.classList.contains("hidden");
-    document.body.classList.toggle("modal-open", Boolean(leadOpen || legalOpen));
+    var modalsOpen = Boolean(leadOpen || legalOpen);
+    document.body.classList.toggle("modal-open", modalsOpen);
+    if (stickyQuick) {
+      if (modalsOpen) {
+        stickyQuick.setAttribute("aria-hidden", "true");
+        stickyQuick.setAttribute("inert", "");
+      } else {
+        stickyQuick.removeAttribute("aria-hidden");
+        stickyQuick.removeAttribute("inert");
+      }
+    }
   }
 
   function syncMainAriaHidden() {
