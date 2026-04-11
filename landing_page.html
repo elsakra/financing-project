@@ -27,8 +27,12 @@
 {"@type":"Question","name":"How is this free for me?","acceptedAnswer":{"@type":"Answer","text":"We are compensated by lender partners for high-quality, pre-vetted deals. Our service is free to you—we do not stack extra fees on the lender quote."}},
 {"@type":"Question","name":"Do I have to use the lender you recommend?","acceptedAnswer":{"@type":"Answer","text":"No. You are under no obligation to use any recommendation—we provide options; you choose."}},
 {"@type":"Question","name":"Will this impact my credit score?","acceptedAnswer":{"@type":"Answer","text":"Initial analysis uses a soft pull that does not affect your score. A hard pull occurs only when you proceed with a specific lender full application."}},
-{"@type":"Question","name":"How fast can I get funded?","acceptedAnswer":{"@type":"Answer","text":"Term sheets often arrive within 48 hours. Funding timing depends on product and underwriting."}}
+{"@type":"Question","name":"How fast can I get funded?","acceptedAnswer":{"@type":"Answer","text":"Term sheets often arrive within 48 hours. Funding timing depends on product and underwriting."}},
+{"@type":"Question","name":"What areas do you cover?","acceptedAnswer":{"@type":"Answer","text":"Residential and commercial investment properties in all 50 U.S. states."}}
 ]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Debt placement and rate analysis for real estate investors.","sameAs":["https://www.linkedin.com/company/builderrates"]}
 </script>
 <link rel="preload" as="image" href="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8" fetchpriority="high"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -177,7 +181,7 @@ tailwind.config = {
       </div>
       <div class="flex items-center gap-3">
         <button type="button" class="btn-primary js-open-lead hidden sm:inline-flex bg-primary text-on-primary px-4 py-2 rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-          Get Started
+          Get rate analysis
         </button>
         <button type="button" id="nav-toggle" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-line bg-white text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-expanded="false" aria-controls="mobile-menu">
           <span class="material-symbols-outlined" id="nav-icon-menu">menu</span>
@@ -191,14 +195,14 @@ tailwind.config = {
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#products" data-section="products">Products</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#testimonials" data-section="testimonials">Testimonials</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#faq" data-section="faq">FAQ</a>
-      <button type="button" class="mt-4 w-full btn-primary js-open-lead bg-primary text-on-primary py-3 rounded-md font-semibold text-sm">Get Started</button>
+      <button type="button" class="mt-4 w-full btn-primary js-open-lead bg-primary text-on-primary py-3 rounded-md font-semibold text-sm">Get rate analysis</button>
     </div>
   </nav>
 </header>
 
 <div class="fixed bottom-0 left-0 right-0 z-[90] md:hidden border-t border-line bg-white/95 backdrop-blur-sm px-4 py-3 flex gap-2 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]" role="region" aria-label="Quick actions">
   <button type="button" class="js-open-lead flex-1 btn-primary bg-primary text-on-primary py-3 rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Get rate analysis</button>
-  <a href="mailto:hello@builderrates.com" class="inline-flex items-center justify-center px-4 py-3 rounded-md text-sm font-semibold border border-line bg-white text-ink">Email</a>
+  <a href="mailto:hello@builderrates.com" id="sticky-email-link" class="inline-flex items-center justify-center px-4 py-3 rounded-md text-sm font-semibold border border-line bg-white text-ink">Email</a>
 </div>
 
 <!-- Hero Section -->
@@ -270,6 +274,7 @@ tailwind.config = {
         <div class="text-muted font-medium uppercase tracking-[0.16em] text-[11px]">Avg. to term sheet</div>
       </div>
     </div>
+    <p class="text-center text-[11px] text-zinc-400 mt-8 max-w-2xl mx-auto leading-relaxed reveal">Figures are illustrative benchmarks from recent placements; your savings depend on deal size, market, and underwriting.</p>
   </div>
 </section>
 
@@ -330,7 +335,7 @@ tailwind.config = {
     <div class="flex flex-col lg:flex-row justify-between items-end mb-14 md:mb-16 gap-6">
       <div class="max-w-2xl reveal">
         <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-4">Workflow</p>
-        <h2 class="font-display text-3xl md:text-4xl font-semibold mb-4 leading-tight text-ink">The Sovereign Workflow</h2>
+        <h2 class="font-display text-3xl md:text-4xl font-semibold mb-4 leading-tight text-ink">How it works</h2>
         <p class="text-base text-zinc-600 leading-relaxed">We’ve automated capital acquisition so you can focus on the build—not the bank calls.</p>
       </div>
       <div class="font-display text-6xl md:text-7xl font-semibold text-zinc-200 hidden lg:block tracking-tighter select-none" aria-hidden="true">01→03</div>
@@ -393,7 +398,7 @@ tailwind.config = {
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
       <article class="group relative overflow-hidden rounded-md bg-zinc-100 aspect-square md:aspect-auto md:h-[380px] border border-line reveal">
-        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRwX0-wNY2NWsUiV7oqWDEb9ibrys2YKAvaxl-gxJ3o4C7w3mIDJvJ6QFizE_gaFFdVtZ6OsDzwkfHQNd_lQlY1gayVuP0kYk9yrNTXU6NHoIcET6Dt3gCVJC5BkGfHsLXvpQKOESOjpDcPdubZsUQlaYt2rY9X4uPqPWz0OHgZ5ncoAtmfZiz0MEQnyV4gRaPqM4OKE9rsy4-F2t3IxjKYGyDmgjRoiMZvJuOquztXNs7U3AOzDASftNfuauVrogc33nPxqrFR4g"/>
+        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="New construction site with framing and cranes" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRwX0-wNY2NWsUiV7oqWDEb9ibrys2YKAvaxl-gxJ3o4C7w3mIDJvJ6QFizE_gaFFdVtZ6OsDzwkfHQNd_lQlY1gayVuP0kYk9yrNTXU6NHoIcET6Dt3gCVJC5BkGfHsLXvpQKOESOjpDcPdubZsUQlaYt2rY9X4uPqPWz0OHgZ5ncoAtmfZiz0MEQnyV4gRaPqM4OKE9rsy4-F2t3IxjKYGyDmgjRoiMZvJuOquztXNs7U3AOzDASftNfuauVrogc33nPxqrFR4g"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
           <h4 class="text-xl font-semibold text-white mb-1.5 font-display">New Construction</h4>
@@ -401,7 +406,7 @@ tailwind.config = {
         </div>
       </article>
       <article class="group relative overflow-hidden rounded-md bg-zinc-100 h-[380px] border border-line reveal reveal-delay">
-        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-CN6PRDJ1OsMUJNAU66_By9Ylxh0UOpcOnSq_ATh4vNi8LETRyiZqxtDghdFtgjisRlhtCcnqjYHnnbGaWMZorl8pdtI5sSOpS8iUAFuGYVHyeAQOc-ymqdIBThnVEaHp1qB5YLMMkNb5EeySw-HnMb6Xz66GHQwLjD_Qamv84eZXbcmK071PK0-bFB7sp1eIuMy9_3B8S3nKColdeEGB3VyTkFJOHZjFzvk3H4sC8oXsqpCv2BC2e0EVh-XR2YmD5ll4ei6NCo8"/>
+        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Renovated home interior after fix and flip" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-CN6PRDJ1OsMUJNAU66_By9Ylxh0UOpcOnSq_ATh4vNi8LETRyiZqxtDghdFtgjisRlhtCcnqjYHnnbGaWMZorl8pdtI5sSOpS8iUAFuGYVHyeAQOc-ymqdIBThnVEaHp1qB5YLMMkNb5EeySw-HnMb6Xz66GHQwLjD_Qamv84eZXbcmK071PK0-bFB7sp1eIuMy9_3B8S3nKColdeEGB3VyTkFJOHZjFzvk3H4sC8oXsqpCv2BC2e0EVh-XR2YmD5ll4ei6NCo8"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
           <h4 class="text-xl font-semibold text-white mb-1.5 font-display">Fix &amp; Flip</h4>
@@ -409,7 +414,7 @@ tailwind.config = {
         </div>
       </article>
       <article class="group relative overflow-hidden rounded-md bg-zinc-100 h-[380px] border border-line reveal reveal-delay-2">
-        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMGbtoDdITqjAFw4sTaXxa7BFfF2O5pKT69H_FAMM_Rp3RQ2pmhBnmLAmm5N4X1frZIx8u5_-uZVw9tqPh5fTOuPmTzk_hwdNdZlDecF7kNsWLjE0bCNiwlWG7lpDZiDdhxVl0RhpH1CfuAdADNV2_Q3_I1ohhE8ojnqxiq4CqlnGtz9xUiepqNSe2sksSBZNOqHBwwIsXFb191wgCYIRxtPs1dBNIyrmbvqkP_baIqBAkTgWyX8WcgftWJghdr9Jh6ZM8foSqQbk"/>
+        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Residential rental property exterior" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMGbtoDdITqjAFw4sTaXxa7BFfF2O5pKT69H_FAMM_Rp3RQ2pmhBnmLAmm5N4X1frZIx8u5_-uZVw9tqPh5fTOuPmTzk_hwdNdZlDecF7kNsWLjE0bCNiwlWG7lpDZiDdhxVl0RhpH1CfuAdADNV2_Q3_I1ohhE8ojnqxiq4CqlnGtz9xUiepqNSe2sksSBZNOqHBwwIsXFb191wgCYIRxtPs1dBNIyrmbvqkP_baIqBAkTgWyX8WcgftWJghdr9Jh6ZM8foSqQbk"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
           <h4 class="text-xl font-semibold text-white mb-1.5 font-display">DSCR / Rental</h4>
@@ -417,7 +422,7 @@ tailwind.config = {
         </div>
       </article>
       <article class="group relative overflow-hidden rounded-md bg-zinc-100 h-[380px] border border-line reveal">
-        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAri4_JPmFQMn-r5TdGEoHiZYunq4q2zL4t1Hje4T16RX8imFwOUTqegXEcaHsAsQJOAc8mS5LSh__5pA82ucLgZGIIzd8dQNhDsDk0Y4C2S4M_N-9O49PWS6s2Itobn3733S57Vhi4hgC9Ht4-LfpiLqGHTr9KSLt1l1AESD2DvWdJTVg7BRms3_DejvcQdMSdKuQYyYl0bQ29D02E1G6W0ApIYR5MLHwnZUvuG56riEeStOeU4jPn-djhG9ZHXCrt3dBQVk3nsjo"/>
+        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Urban bridge financing property" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAri4_JPmFQMn-r5TdGEoHiZYunq4q2zL4t1Hje4T16RX8imFwOUTqegXEcaHsAsQJOAc8mS5LSh__5pA82ucLgZGIIzd8dQNhDsDk0Y4C2S4M_N-9O49PWS6s2Itobn3733S57Vhi4hgC9Ht4-LfpiLqGHTr9KSLt1l1AESD2DvWdJTVg7BRms3_DejvcQdMSdKuQYyYl0bQ29D02E1G6W0ApIYR5MLHwnZUvuG56riEeStOeU4jPn-djhG9ZHXCrt3dBQVk3nsjo"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
           <h4 class="text-xl font-semibold text-white mb-1.5 font-display">Bridge Loans</h4>
@@ -425,7 +430,7 @@ tailwind.config = {
         </div>
       </article>
       <article class="group relative overflow-hidden rounded-md bg-zinc-100 h-[380px] border border-line reveal reveal-delay">
-        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6rk-iVyHYOyCnwOJ7h0tuLkgr2rFEUXgxC1_pxSDDAl5cV5hVQiWxOfyz_ircbfbD9JFPk89XWj4Krx3ZmfLLnCDsN9iqpk99YQGnfBA5U-IuQnNbhBWXnHqnb6UEfXdgoSlEk_iFTjjJ9Hod_c5U-OcMfSE3mF8gsqshCRjIeC5mlnvEKWdPemvQKHBjeV_W6n2WyDaCMqB9cQ7hmy8mxY8FluIsCVse5THX4OdEK-1DXjQQS91XLHCuHUF86vfCtpnXcGnIgkQ"/>
+        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Commercial multifamily building" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6rk-iVyHYOyCnwOJ7h0tuLkgr2rFEUXgxC1_pxSDDAl5cV5hVQiWxOfyz_ircbfbD9JFPk89XWj4Krx3ZmfLLnCDsN9iqpk99YQGnfBA5U-IuQnNbhBWXnHqnb6UEfXdgoSlEk_iFTjjJ9Hod_c5U-OcMfSE3mF8gsqshCRjIeC5mlnvEKWdPemvQKHBjeV_W6n2WyDaCMqB9cQ7hmy8mxY8FluIsCVse5THX4OdEK-1DXjQQS91XLHCuHUF86vfCtpnXcGnIgkQ"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
           <h4 class="text-xl font-semibold text-white mb-1.5 font-display">Commercial</h4>
@@ -433,7 +438,7 @@ tailwind.config = {
         </div>
       </article>
       <article class="group relative overflow-hidden rounded-md bg-zinc-100 h-[380px] border border-line reveal reveal-delay-2">
-        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAd7kwivVhE0p_wWhArc_kL9JbqJfWRSUrrlB1wjAAjPwAlga01ak982ifp7nm7v-Vcl5RV6ipy1XWDtnwJbo00kFGhJtpTG8NRerN-ySoU-BazX9kfWBv8K536U6-LxwdiwDLixw8-Prz4zyXca4g-RluxWxyjjJ1BOA6zqzhpPuV4Z8MUFBA-EozGln7mSWnUZ-wUejiFeJ6gV7YJSxyVZbsYaQjqtNWdi6JraEIK9amcea5mwBqebOnuXALXI0TOkRWFJMsoIA"/>
+        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Portfolio refinance property" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAd7kwivVhE0p_wWhArc_kL9JbqJfWRSUrrlB1wjAAjPwAlga01ak982ifp7nm7v-Vcl5RV6ipy1XWDtnwJbo00kFGhJtpTG8NRerN-ySoU-BazX9kfWBv8K536U6-LxwdiwDLixw8-Prz4zyXca4g-RluxWxyjjJ1BOA6zqzhpPuV4Z8MUFBA-EozGln7mSWnUZ-wUejiFeJ6gV7YJSxyVZbsYaQjqtNWdi6JraEIK9amcea5mwBqebOnuXALXI0TOkRWFJMsoIA"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
           <h4 class="text-xl font-semibold text-white mb-1.5 font-display">Cash-Out Refi</h4>
@@ -445,7 +450,7 @@ tailwind.config = {
 </section>
 
 <!-- Comparison Table -->
-<section class="py-28 md:py-36 bg-canvas border-b border-line">
+<section id="compare" class="py-28 md:py-36 bg-canvas border-b border-line">
   <div class="max-w-6xl mx-auto px-5 md:px-8">
     <div class="text-center mb-12 md:mb-14 reveal">
       <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-4">Compare</p>
@@ -484,6 +489,13 @@ tailwind.config = {
         </tbody>
       </table>
     </div>
+    <div class="text-center mt-10 reveal">
+      <button type="button" class="js-open-lead btn-primary inline-flex bg-primary text-on-primary px-8 py-3.5 rounded-md text-sm font-semibold items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+        Get my personalized comparison
+        <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
+      </button>
+      <p class="text-xs text-zinc-500 mt-3">No obligation · Typical reply within one business day</p>
+    </div>
   </div>
 </section>
 
@@ -493,7 +505,7 @@ tailwind.config = {
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16 items-center">
       <div class="relative reveal">
         <div class="aspect-square rounded-sm overflow-hidden border border-line">
-          <img class="w-full h-full object-cover saturate-75" alt="" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf8upb415yXOMWnfuT2XcXt36pX5390iQweCbajANZ_NqCLqYChg_0R9oScQ0T5vRgt05RNXtYiTe-vRO31Idtf_ygg16cEs823f7hxTodHtucbmTV1NVN0AAcc5SFG3O8zpxywpajYY8fELFGrCTtwVZ1gUn8NOdn1J-mTCUoyGDuBVdcKxWOLvTN4SrUdJGyedBvTZWSi1_weoO7vEl3ZTIAMdXnxp2EjauS_RwxaSiejquXldb7LUosj7ShGmjGtkS43hh7j1w"/>
+          <img class="w-full h-full object-cover saturate-75" alt="Real estate investor reviewing plans on site" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf8upb415yXOMWnfuT2XcXt36pX5390iQweCbajANZ_NqCLqYChg_0R9oScQ0T5vRgt05RNXtYiTe-vRO31Idtf_ygg16cEs823f7hxTodHtucbmTV1NVN0AAcc5SFG3O8zpxywpajYY8fELFGrCTtwVZ1gUn8NOdn1J-mTCUoyGDuBVdcKxWOLvTN4SrUdJGyedBvTZWSi1_weoO7vEl3ZTIAMdXnxp2EjauS_RwxaSiejquXldb7LUosj7ShGmjGtkS43hh7j1w"/>
         </div>
         <figure class="absolute -bottom-6 -right-2 md:-right-6 bg-white p-6 md:p-7 rounded-sm max-w-sm border border-line shadow-sm">
           <span class="material-symbols-outlined text-3xl mb-3 text-zinc-400" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">format_quote</span>
@@ -614,7 +626,7 @@ tailwind.config = {
       <p class="text-sm text-zinc-600 mb-1"><a href="mailto:hello@builderrates.com" class="text-primary font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">hello@builderrates.com</a></p>
       <p class="text-sm text-zinc-600 mb-3">Same-day reply on business days. Prefer a call? Say so in your note—we’ll coordinate.</p>
       <div class="flex gap-2" aria-label="Social">
-        <a href="https://www.linkedin.com/" rel="noopener noreferrer" target="_blank" class="w-9 h-9 rounded-sm border border-line bg-white flex items-center justify-center text-primary hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="LinkedIn"><span class="material-symbols-outlined text-lg" aria-hidden="true">work</span></a>
+        <a href="https://www.linkedin.com/company/builderrates" rel="noopener noreferrer" target="_blank" class="w-9 h-9 rounded-sm border border-line bg-white flex items-center justify-center text-primary hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="BuilderRates on LinkedIn"><span class="material-symbols-outlined text-lg" aria-hidden="true">work</span></a>
         <a href="#faq" class="w-9 h-9 rounded-sm border border-line bg-white flex items-center justify-center text-primary hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="FAQ"><span class="material-symbols-outlined text-lg" aria-hidden="true">help</span></a>
       </div>
     </div>
@@ -649,7 +661,7 @@ tailwind.config = {
   </div>
   <div class="max-w-6xl mx-auto px-5 md:px-8 mt-12 pt-8 border-t border-line">
     <p class="text-center md:text-left text-zinc-500 text-sm">© 2026 BuilderRates. All rights reserved.</p>
-    <p class="text-center md:text-left text-zinc-400 text-xs mt-2 max-w-3xl">BuilderRates is a marketing and introduction service, not a lender. Rates, terms, and approvals are subject to partner underwriting. Replace canonical URL, contact email, and form endpoint in page settings for production.</p>
+    <p class="text-center md:text-left text-zinc-400 text-xs mt-2 max-w-3xl">BuilderRates is a marketing and introduction service, not a lender. Rates, terms, and approvals are subject to partner underwriting. Not all applicants will qualify.</p>
   </div>
 </footer>
 
@@ -728,6 +740,7 @@ tailwind.config = {
         </div>
       </form>
       <div id="lead-mailto-inline" class="mt-2"></div>
+      <p id="lead-form-error" class="mt-3 text-sm text-red-700 hidden" role="alert"></p>
     </div>
     <div id="lead-step-3" class="hidden text-center py-4">
       <div class="w-14 h-14 rounded-full bg-secondary/15 flex items-center justify-center mx-auto mb-4">
@@ -738,7 +751,6 @@ tailwind.config = {
       <div id="lead-mailto-slot" class="mb-6"></div>
       <button type="button" class="btn-primary bg-primary text-on-primary px-6 py-2.5 rounded-md text-sm font-semibold" data-close-lead>Done</button>
     </div>
-    <p id="lead-form-error" class="mt-3 text-sm text-red-700 hidden" role="alert"></p>
   </div>
 </div>
 
@@ -755,6 +767,7 @@ tailwind.config = {
 
 <script>
 window.BUILDERRATES = window.BUILDERRATES || {};
+window.BUILDERRATES.siteUrl = "https://financing-project.vercel.app/";
 window.BUILDERRATES.leadEmail = "hello@builderrates.com";
 window.BUILDERRATES.formspreeUrl = "";
 </script>
@@ -994,6 +1007,10 @@ window.BUILDERRATES.formspreeUrl = "";
     if (!leadData.name || !leadData.email) return;
     leadStep1.classList.add("hidden");
     leadStep2.classList.remove("hidden");
+    setTimeout(function () {
+      var p = document.getElementById("lead-product");
+      if (p) p.focus();
+    }, 10);
   });
 
   var backBtn = document.querySelector("[data-lead-back]");
@@ -1033,8 +1050,16 @@ window.BUILDERRATES.formspreeUrl = "";
     if (leadModal && !leadModal.classList.contains("hidden")) {
       closeLeadModal();
       e.preventDefault();
+      return;
+    }
+    if (menu && !menu.classList.contains("hidden")) {
+      setOpen(false);
+      e.preventDefault();
     }
   });
+
+  var stickyMail = document.getElementById("sticky-email-link");
+  if (stickyMail && BR.leadEmail) stickyMail.href = "mailto:" + BR.leadEmail;
 
   var nf = document.getElementById("newsletter-form");
   if (nf) {
