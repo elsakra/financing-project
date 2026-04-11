@@ -4,9 +4,24 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="BuilderRates matches real estate investors with 30+ institutional lenders. Maximize profit on every deal with a free rate analysis."/>
+<meta name="robots" content="index, follow"/>
 <meta name="theme-color" content="#012d1d"/>
+<link rel="canonical" href="https://financing-project.vercel.app/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="BuilderRates"/>
+<meta property="og:title" content="BuilderRates | Institutional financing for real estate investors"/>
+<meta property="og:description" content="Compare 30+ capital partners in minutes. Free rate analysis. No obligation."/>
+<meta property="og:url" content="https://financing-project.vercel.app/"/>
+<meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="BuilderRates | Institutional financing for real estate investors"/>
+<meta name="twitter:description" content="Compare 30+ capital partners in minutes. Free rate analysis."/>
 <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<link rel="apple-touch-icon" href="favicon.svg"/>
 <title>BuilderRates | High-Performance Financing for Real Estate Investors</title>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FinancialService","name":"BuilderRates","description":"Debt placement and rate analysis for real estate investors.","url":"https://financing-project.vercel.app/","areaServed":{"@type":"Country","name":"United States"},"serviceType":"Real estate investment financing"}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet"/>
@@ -92,9 +107,36 @@ tailwind.config = {
   }
 
   details summary::-webkit-details-marker { display: none; }
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    z-index: 300;
+    background: #012d1d;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    overflow: visible;
+    outline: 2px solid #2c694e;
+    outline-offset: 2px;
+  }
+  #lead-modal:not(.hidden), #legal-modal:not(.hidden) { display: flex; }
+  #lead-modal.hidden, #legal-modal.hidden { display: none !important; }
+  .modal-panel { max-height: min(90vh, 720px); overflow-y: auto; }
 </style>
 </head>
-<body class="bg-canvas text-ink antialiased">
+<body class="bg-canvas text-ink antialiased pb-[4.5rem] md:pb-0">
+<a href="#main-content" class="skip-link">Skip to content</a>
 <!-- TopNavBar -->
 <header>
   <nav class="fixed top-0 w-full z-[100] border-b border-line bg-white" id="site-nav" aria-label="Primary">
@@ -112,7 +154,7 @@ tailwind.config = {
         <a class="nav-link" href="#testimonials" data-section="testimonials">Testimonials</a>
       </div>
       <div class="flex items-center gap-3">
-        <button type="button" class="btn-primary hidden sm:inline-flex bg-primary text-on-primary px-4 py-2 rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+        <button type="button" class="btn-primary js-open-lead hidden sm:inline-flex bg-primary text-on-primary px-4 py-2 rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
           Get Started
         </button>
         <button type="button" id="nav-toggle" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-line bg-white text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-expanded="false" aria-controls="mobile-menu">
@@ -126,12 +168,18 @@ tailwind.config = {
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#how" data-section="how">How It Works</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#products" data-section="products">Products</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#testimonials" data-section="testimonials">Testimonials</a>
-      <button type="button" class="mt-4 w-full btn-primary bg-primary text-on-primary py-3 rounded-md font-semibold text-sm">Get Started</button>
+      <button type="button" class="mt-4 w-full btn-primary js-open-lead bg-primary text-on-primary py-3 rounded-md font-semibold text-sm">Get Started</button>
     </div>
   </nav>
 </header>
 
+<div class="fixed bottom-0 left-0 right-0 z-[90] md:hidden border-t border-line bg-white/95 backdrop-blur-sm px-4 py-3 flex gap-2 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]" role="region" aria-label="Quick actions">
+  <button type="button" class="js-open-lead flex-1 btn-primary bg-primary text-on-primary py-3 rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Get rate analysis</button>
+  <a href="mailto:hello@builderrates.com" class="inline-flex items-center justify-center px-4 py-3 rounded-md text-sm font-semibold border border-line bg-white text-ink">Email</a>
+</div>
+
 <!-- Hero Section -->
+<main id="main-content">
 <section id="top" class="relative pt-32 pb-16 md:pt-44 md:pb-24 overflow-hidden bg-white border-b border-line" aria-labelledby="hero-heading">
   <div class="max-w-6xl mx-auto px-5 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
     <div class="lg:col-span-7 z-10">
@@ -139,17 +187,22 @@ tailwind.config = {
       <h1 id="hero-heading" class="reveal reveal-delay font-display text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] font-semibold text-ink leading-[1.05] tracking-[-0.03em] mb-6 text-balance">
         You’re leaving <span class="text-secondary">$8,000–$25,000</span> on the table. Every deal.
       </h1>
-      <p class="reveal reveal-delay-2 text-base md:text-lg text-zinc-600 max-w-xl leading-relaxed mb-10">
+      <p class="reveal reveal-delay-2 text-base md:text-lg text-zinc-600 max-w-xl leading-relaxed mb-4">
         Stop settling for the lender you know. We monitor 30+ specialized capital partners so your project keeps the maximum profit—without the shopping marathon.
       </p>
+      <p class="reveal reveal-delay-2 text-xs text-zinc-500 max-w-xl mb-10 flex flex-wrap gap-x-4 gap-y-1">
+        <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-sm text-secondary" aria-hidden="true">check_circle</span> Free analysis</span>
+        <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-sm text-secondary" aria-hidden="true">check_circle</span> No obligation</span>
+        <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-sm text-secondary" aria-hidden="true">check_circle</span> Soft pull for quotes</span>
+      </p>
       <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-3">
-        <button type="button" class="btn-primary group bg-primary text-on-primary px-6 py-3.5 rounded-md text-sm font-semibold flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+        <button type="button" class="js-open-lead btn-primary group bg-primary text-on-primary px-6 py-3.5 rounded-md text-sm font-semibold flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
           Get My Rate Analysis
-          <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
         </button>
-        <button type="button" class="px-6 py-3.5 rounded-md text-sm font-semibold border border-line bg-white text-ink hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-          View Lender Network
-        </button>
+        <a href="#products" class="inline-flex items-center justify-center px-6 py-3.5 rounded-md text-sm font-semibold border border-line bg-white text-ink hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+          View loan programs
+        </a>
       </div>
     </div>
     <div class="lg:col-span-5 relative reveal">
@@ -379,9 +432,9 @@ tailwind.config = {
       <table class="w-full text-left min-w-[640px] text-sm md:text-[15px]">
         <thead>
           <tr class="border-b border-line bg-zinc-50">
-            <th class="py-4 px-5 md:px-6 font-semibold text-xs uppercase tracking-wider text-muted">Feature</th>
-            <th class="py-4 px-5 md:px-6 font-semibold text-zinc-700">Doing it yourself</th>
-            <th class="py-4 px-5 md:px-6 font-semibold text-primary bg-primary/[0.04] border-l border-line">With BuilderRates</th>
+            <th scope="col" class="py-4 px-5 md:px-6 font-semibold text-xs uppercase tracking-wider text-muted">Feature</th>
+            <th scope="col" class="py-4 px-5 md:px-6 font-semibold text-zinc-700">Doing it yourself</th>
+            <th scope="col" class="py-4 px-5 md:px-6 font-semibold text-primary bg-primary/[0.04] border-l border-line">With BuilderRates</th>
           </tr>
         </thead>
         <tbody class="text-zinc-600">
@@ -451,7 +504,7 @@ tailwind.config = {
 </section>
 
 <!-- FAQ Section -->
-<section class="py-28 md:py-36 bg-canvas border-b border-line">
+<section id="faq" class="py-28 md:py-36 bg-canvas border-b border-line">
   <div class="max-w-6xl mx-auto px-5 md:px-8">
     <div class="text-center mb-12 md:mb-14 reveal">
       <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-4">FAQ</p>
@@ -516,7 +569,7 @@ tailwind.config = {
         <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-semibold mb-8 max-w-3xl mx-auto leading-[1.1] text-balance">
           Stop leaving profit on the table. Audit your capital today.
         </h2>
-        <button type="button" class="btn-primary inline-flex bg-tertiary-fixed text-on-tertiary-fixed px-8 py-3.5 rounded-md text-sm font-semibold items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary">
+        <button type="button" class="js-open-lead btn-primary inline-flex bg-tertiary-fixed text-on-tertiary-fixed px-8 py-3.5 rounded-md text-sm font-semibold items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary">
           Get My Rate Analysis
           <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
         </button>
@@ -525,27 +578,29 @@ tailwind.config = {
     </div>
   </div>
 </section>
+</main>
 
 <!-- Footer -->
-<footer class="bg-canvas border-t border-line py-14 md:py-16">
+<footer id="contact" class="bg-canvas border-t border-line py-14 md:py-16">
   <div class="max-w-6xl mx-auto px-5 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:flex lg:justify-between items-start gap-10">
     <div class="max-w-xs">
       <a href="#top" class="inline-block font-display text-lg font-semibold text-primary mb-4 focus:outline-none focus-visible:underline">BuilderRates</a>
       <p class="text-zinc-600 text-sm leading-relaxed mb-5">
         Debt matchmaking for builders who care about yield—without the bank runaround.
       </p>
+      <p class="text-sm text-zinc-600 mb-3"><a href="mailto:hello@builderrates.com" class="text-primary font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">hello@builderrates.com</a></p>
       <div class="flex gap-2" aria-label="Social">
-        <a href="#" class="w-9 h-9 rounded-sm border border-line bg-white flex items-center justify-center text-primary hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Network"><span class="material-symbols-outlined text-lg" aria-hidden="true">hub</span></a>
-        <a href="#" class="w-9 h-9 rounded-sm border border-line bg-white flex items-center justify-center text-primary hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Coverage"><span class="material-symbols-outlined text-lg" aria-hidden="true">public</span></a>
+        <a href="https://www.linkedin.com/" rel="noopener noreferrer" target="_blank" class="w-9 h-9 rounded-sm border border-line bg-white flex items-center justify-center text-primary hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="LinkedIn"><span class="material-symbols-outlined text-lg" aria-hidden="true">work</span></a>
+        <a href="#faq" class="w-9 h-9 rounded-sm border border-line bg-white flex items-center justify-center text-primary hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="FAQ"><span class="material-symbols-outlined text-lg" aria-hidden="true">help</span></a>
       </div>
     </div>
     <div>
       <h5 class="font-semibold text-ink mb-4 uppercase tracking-[0.15em] text-[11px]">Resources</h5>
       <ul class="space-y-2.5">
-        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors focus:outline-none focus-visible:underline" href="#">Privacy Policy</a></li>
-        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors focus:outline-none focus-visible:underline" href="#">Terms of Service</a></li>
-        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors focus:outline-none focus-visible:underline" href="#">Investment Disclosures</a></li>
-        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors focus:outline-none focus-visible:underline" href="#">Licensing</a></li>
+        <li><button type="button" class="text-zinc-600 text-sm hover:text-primary text-left focus:outline-none focus-visible:underline js-open-legal" data-legal="privacy">Privacy Policy</button></li>
+        <li><button type="button" class="text-zinc-600 text-sm hover:text-primary text-left focus:outline-none focus-visible:underline js-open-legal" data-legal="terms">Terms of Service</button></li>
+        <li><button type="button" class="text-zinc-600 text-sm hover:text-primary text-left focus:outline-none focus-visible:underline js-open-legal" data-legal="disclosures">Investment Disclosures</button></li>
+        <li><button type="button" class="text-zinc-600 text-sm hover:text-primary text-left focus:outline-none focus-visible:underline js-open-legal" data-legal="licensing">Licensing</button></li>
       </ul>
     </div>
     <div>
@@ -560,26 +615,150 @@ tailwind.config = {
     <div class="lg:max-w-sm">
       <h5 class="font-semibold text-ink mb-4 uppercase tracking-[0.15em] text-[11px]">Market updates</h5>
       <p class="text-sm text-zinc-600 mb-3">Weekly rate volatility briefs in your inbox.</p>
-      <form class="flex flex-col sm:flex-row gap-2" action="#" method="post">
+      <form id="newsletter-form" class="flex flex-col sm:flex-row gap-2" action="#" method="post">
         <label class="sr-only" for="email-updates">Email</label>
-        <input id="email-updates" name="email" class="bg-white border border-line rounded-sm px-3 py-2 flex-1 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="you@company.com" type="email" autocomplete="email"/>
+        <input id="email-updates" name="email" required class="bg-white border border-line rounded-sm px-3 py-2 flex-1 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="you@company.com" type="email" autocomplete="email"/>
         <button type="submit" class="bg-primary text-on-primary px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-wider btn-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Join</button>
       </form>
+      <p id="newsletter-status" class="mt-2 text-xs text-secondary hidden" role="status"></p>
     </div>
   </div>
   <div class="max-w-6xl mx-auto px-5 md:px-8 mt-12 pt-8 border-t border-line">
     <p class="text-center md:text-left text-zinc-500 text-sm">© 2026 BuilderRates. All rights reserved.</p>
+    <p class="text-center md:text-left text-zinc-400 text-xs mt-2 max-w-3xl">BuilderRates is a marketing and introduction service, not a lender. Rates, terms, and approvals are subject to partner underwriting. Replace canonical URL, contact email, and form endpoint in page settings for production.</p>
   </div>
 </footer>
 
+<div id="lead-modal" class="fixed inset-0 z-[200] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title">
+  <div class="absolute inset-0 bg-black/50" data-modal-backdrop tabindex="-1" aria-hidden="true"></div>
+  <div class="modal-panel relative z-10 w-full max-w-md bg-white rounded-md border border-line shadow-xl p-6 md:p-8">
+    <button type="button" class="absolute top-4 right-4 p-1 rounded-md text-zinc-500 hover:text-ink hover:bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-close-lead aria-label="Close dialog">
+      <span class="material-symbols-outlined" aria-hidden="true">close</span>
+    </button>
+    <div id="lead-step-1">
+      <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-2">Step 1 of 2</p>
+      <h2 id="lead-modal-title" class="font-display text-xl font-semibold text-ink mb-1">Start your rate analysis</h2>
+      <p class="text-sm text-zinc-600 mb-6">Takes about two minutes. We’ll match you to programs—no obligation.</p>
+      <form id="lead-form-step1" class="space-y-4">
+        <div>
+          <label for="lead-name" class="block text-xs font-medium text-zinc-700 mb-1">Full name</label>
+          <input id="lead-name" name="name" required autocomplete="name" class="w-full border border-line rounded-sm px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
+        </div>
+        <div>
+          <label for="lead-email" class="block text-xs font-medium text-zinc-700 mb-1">Work email</label>
+          <input id="lead-email" name="email" type="email" required autocomplete="email" class="w-full border border-line rounded-sm px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
+        </div>
+        <div>
+          <label for="lead-phone" class="block text-xs font-medium text-zinc-700 mb-1">Phone</label>
+          <input id="lead-phone" name="phone" type="tel" autocomplete="tel" class="w-full border border-line rounded-sm px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
+        </div>
+        <p class="text-xs text-zinc-500">By continuing you agree to our <button type="button" class="text-primary underline js-open-legal" data-legal="terms">Terms</button> and <button type="button" class="text-primary underline js-open-legal" data-legal="privacy">Privacy Policy</button>.</p>
+        <button type="submit" class="w-full btn-primary bg-primary text-on-primary py-3 rounded-md text-sm font-semibold">Continue</button>
+      </form>
+    </div>
+    <div id="lead-step-2" class="hidden">
+      <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-2">Step 2 of 2</p>
+      <h3 class="font-display text-xl font-semibold text-ink mb-6">Deal snapshot</h3>
+      <form id="lead-form-step2" class="space-y-4">
+        <div>
+          <label for="lead-product" class="block text-xs font-medium text-zinc-700 mb-1">Primary product</label>
+          <select id="lead-product" name="product" required class="w-full border border-line rounded-sm px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-primary outline-none">
+            <option value="">Select…</option>
+            <option>New construction</option>
+            <option>Fix &amp; flip</option>
+            <option>DSCR / rental</option>
+            <option>Bridge</option>
+            <option>Commercial</option>
+            <option>Refinance / cash-out</option>
+          </select>
+        </div>
+        <div>
+          <label for="lead-state" class="block text-xs font-medium text-zinc-700 mb-1">Property state</label>
+          <select id="lead-state" name="state" required class="w-full border border-line rounded-sm px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-primary outline-none">
+            <option value="">Select state…</option>
+            <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option><option>DC</option>
+          </select>
+        </div>
+        <div>
+          <label for="lead-amount" class="block text-xs font-medium text-zinc-700 mb-1">Estimated loan size</label>
+          <select id="lead-amount" name="amount" class="w-full border border-line rounded-sm px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-primary outline-none">
+            <option value="">Prefer not to say</option>
+            <option>Under $250k</option>
+            <option>$250k – $500k</option>
+            <option>$500k – $1M</option>
+            <option>$1M – $3M</option>
+            <option>$3M+</option>
+          </select>
+        </div>
+        <div class="flex gap-2">
+          <button type="button" class="flex-1 py-3 rounded-md border border-line text-sm font-semibold" data-lead-back>Back</button>
+          <button type="submit" class="flex-1 btn-primary bg-primary text-on-primary py-3 rounded-md text-sm font-semibold">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div id="lead-step-3" class="hidden text-center py-4">
+      <div class="w-14 h-14 rounded-full bg-secondary/15 flex items-center justify-center mx-auto mb-4">
+        <span class="material-symbols-outlined text-3xl text-secondary" aria-hidden="true">check_circle</span>
+      </div>
+      <h3 class="font-display text-xl font-semibold text-ink mb-2">You’re in the queue</h3>
+      <p class="text-sm text-zinc-600 mb-4">We’ll review your snapshot and reach out within one business day with next steps.</p>
+      <div id="lead-mailto-slot" class="mb-6"></div>
+      <button type="button" class="btn-primary bg-primary text-on-primary px-6 py-2.5 rounded-md text-sm font-semibold" data-close-lead>Done</button>
+    </div>
+    <p id="lead-form-error" class="mt-3 text-sm text-red-700 hidden" role="alert"></p>
+  </div>
+</div>
+
+<div id="legal-modal" class="fixed inset-0 z-[210] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
+  <div class="absolute inset-0 bg-black/50" data-legal-backdrop tabindex="-1"></div>
+  <div class="modal-panel relative z-10 w-full max-w-lg bg-white rounded-md border border-line shadow-xl p-6 md:p-8 max-h-[85vh] overflow-y-auto">
+    <button type="button" class="absolute top-4 right-4 p-1 rounded-md text-zinc-500 hover:text-ink hover:bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-close-legal aria-label="Close">
+      <span class="material-symbols-outlined" aria-hidden="true">close</span>
+    </button>
+    <h2 id="legal-modal-title" class="font-display text-lg font-semibold text-ink mb-4 pr-8"></h2>
+    <div id="legal-modal-body" class="text-sm text-zinc-600 space-y-3 leading-relaxed"></div>
+  </div>
+</div>
+
+<script>
+window.BUILDERRATES = window.BUILDERRATES || {};
+window.BUILDERRATES.leadEmail = "hello@builderrates.com";
+window.BUILDERRATES.formspreeUrl = "";
+</script>
 <script>
 (function () {
+  var BR = window.BUILDERRATES || {};
   var nav = document.getElementById("site-nav");
   var toggle = document.getElementById("nav-toggle");
   var menu = document.getElementById("mobile-menu");
   var iconMenu = document.getElementById("nav-icon-menu");
   var iconClose = document.getElementById("nav-icon-close");
   var sectionIds = ["solutions", "how", "products", "testimonials"];
+  var leadModal = document.getElementById("lead-modal");
+  var leadStep1 = document.getElementById("lead-step-1");
+  var leadStep2 = document.getElementById("lead-step-2");
+  var leadStep3 = document.getElementById("lead-step-3");
+  var leadData = {};
+  var lastFocus = null;
+
+  var LEGAL = {
+    privacy: {
+      title: "Privacy Policy",
+      html: "<p>BuilderRates collects information you submit (such as name, email, phone, and deal details) to evaluate fit with our lender network and respond to your request.</p><p>We may share this information with partner lenders and service providers solely to originate or service your inquiry. We do not sell your personal information.</p><p>Replace this summary with counsel-approved language before relying on it in production.</p>"
+    },
+    terms: {
+      title: "Terms of Service",
+      html: "<p>BuilderRates provides introductions and educational information. We are not a lender and do not extend credit. Loan approval, rates, and terms are determined solely by third-party lenders subject to their underwriting.</p><p>Use of this site does not guarantee financing. Replace with full terms reviewed by counsel.</p>"
+    },
+    disclosures: {
+      title: "Investment &amp; lending disclosures",
+      html: "<p>Real estate investments carry risk of loss. Past performance of similar deals is not indicative of future results. BuilderRates does not provide investment, tax, or legal advice.</p><p>Consult licensed professionals regarding your situation.</p>"
+    },
+    licensing: {
+      title: "Licensing",
+      html: "<p>BuilderRates operates as a business introduction and marketing service. Specific mortgage broker or lending licenses vary by state—confirm your entity’s registrations and add NMLS IDs here for production.</p>"
+    }
+  };
 
   function setOpen(open) {
     if (!menu || !toggle) return;
@@ -593,11 +772,11 @@ tailwind.config = {
 
   function applyActiveNav(sectionId) {
     document.querySelectorAll("a[data-section].nav-link").forEach(function (a) {
-      var on = a.getAttribute("data-section") === sectionId;
+      var on = Boolean(sectionId) && a.getAttribute("data-section") === sectionId;
       a.classList.toggle("nav-link-active", on);
     });
     document.querySelectorAll("a[data-section].mobile-nav-link").forEach(function (a) {
-      var on = a.getAttribute("data-section") === sectionId;
+      var on = Boolean(sectionId) && a.getAttribute("data-section") === sectionId;
       a.classList.toggle("mobile-nav-active", on);
       a.classList.toggle("text-zinc-600", !on);
     });
@@ -630,6 +809,172 @@ tailwind.config = {
     }
   }
 
+  function openLeadModal() {
+    if (!leadModal) return;
+    lastFocus = document.activeElement;
+    leadModal.classList.remove("hidden");
+    leadModal.classList.add("flex");
+    leadStep1.classList.remove("hidden");
+    leadStep2.classList.add("hidden");
+    leadStep3.classList.add("hidden");
+    var errEl = document.getElementById("lead-form-error");
+    if (errEl) errEl.classList.add("hidden");
+    var slot = document.getElementById("lead-mailto-slot");
+    if (slot) slot.innerHTML = "";
+    leadData = {};
+    var f1 = document.getElementById("lead-form-step1");
+    var f2 = document.getElementById("lead-form-step2");
+    if (f1) f1.reset();
+    if (f2) f2.reset();
+    var nameEl = document.getElementById("lead-name");
+    if (nameEl) setTimeout(function () { nameEl.focus(); }, 10);
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLeadModal() {
+    if (!leadModal) return;
+    leadModal.classList.add("hidden");
+    leadModal.classList.remove("flex");
+    document.body.style.overflow = "";
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+  }
+
+  function openLegal(key) {
+    var L = LEGAL[key];
+    var lm = document.getElementById("legal-modal");
+    if (!L || !lm) return;
+    document.getElementById("legal-modal-title").textContent = L.title;
+    document.getElementById("legal-modal-body").innerHTML = L.html;
+    lm.classList.remove("hidden");
+    lm.classList.add("flex");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLegal() {
+    var lm = document.getElementById("legal-modal");
+    if (!lm) return;
+    lm.classList.add("hidden");
+    lm.classList.remove("flex");
+    document.body.style.overflow = "";
+  }
+
+  function submitLead() {
+    var err = document.getElementById("lead-form-error");
+    var slot = document.getElementById("lead-mailto-slot");
+    var payload = {
+      name: leadData.name,
+      email: leadData.email,
+      phone: leadData.phone || "",
+      product: document.getElementById("lead-product").value,
+      state: document.getElementById("lead-state").value,
+      amount: document.getElementById("lead-amount").value
+    };
+    var body = Object.keys(payload).map(function (k) { return k + ": " + (payload[k] || ""); }).join("\n");
+    var url = BR.formspreeUrl && String(BR.formspreeUrl).trim();
+    leadStep2.classList.add("hidden");
+    leadStep3.classList.remove("hidden");
+    if (slot) slot.innerHTML = "";
+    if (url) {
+      err.classList.add("hidden");
+      fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ name: payload.name, email: payload.email, _replyto: payload.email, message: body })
+      }).then(function (r) {
+        if (!r.ok) throw new Error("Form error");
+      }).catch(function () {
+        err.textContent = "Could not send. Email " + (BR.leadEmail || "us") + " or use the button below.";
+        err.classList.remove("hidden");
+        if (slot) appendMailto(slot, payload, body);
+      });
+      return;
+    }
+    if (slot) appendMailto(slot, payload, body);
+  }
+
+  function appendMailto(slot, payload, body) {
+    var email = BR.leadEmail || "hello@builderrates.com";
+    var subject = encodeURIComponent("Rate analysis request — " + payload.name);
+    var mailBody = encodeURIComponent(body + "\n\n— Sent from BuilderRates landing");
+    var href = "mailto:" + email + "?subject=" + subject + "&body=" + mailBody;
+    slot.innerHTML = "<p class=\"text-xs text-zinc-500 mb-2\">No server endpoint configured — send via your email app:</p><a href=\"" + href + "\" class=\"inline-flex items-center justify-center w-full btn-primary bg-primary text-on-primary py-3 rounded-md text-sm font-semibold\">Open email with details</a>";
+  }
+
+  document.querySelectorAll(".js-open-lead").forEach(function (btn) {
+    btn.addEventListener("click", openLeadModal);
+  });
+
+  document.querySelectorAll("[data-close-lead], [data-modal-backdrop]").forEach(function (el) {
+    el.addEventListener("click", closeLeadModal);
+  });
+
+
+  var form1 = document.getElementById("lead-form-step1");
+  form1 && form1.addEventListener("submit", function (e) {
+    e.preventDefault();
+    leadData.name = document.getElementById("lead-name").value.trim();
+    leadData.email = document.getElementById("lead-email").value.trim();
+    leadData.phone = document.getElementById("lead-phone").value.trim();
+    if (!leadData.name || !leadData.email) return;
+    leadStep1.classList.add("hidden");
+    leadStep2.classList.remove("hidden");
+  });
+
+  var backBtn = document.querySelector("[data-lead-back]");
+  if (backBtn) {
+    backBtn.addEventListener("click", function () {
+      leadStep2.classList.add("hidden");
+      leadStep1.classList.remove("hidden");
+    });
+  }
+
+  var form2 = document.getElementById("lead-form-step2");
+  form2 && form2.addEventListener("submit", function (e) {
+    e.preventDefault();
+    submitLead();
+  });
+
+  document.querySelectorAll(".js-open-legal").forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      var key = btn.getAttribute("data-legal");
+      if (key) openLegal(key);
+    });
+  });
+
+  document.querySelectorAll("[data-close-legal], [data-legal-backdrop]").forEach(function (el) {
+    el.addEventListener("click", closeLegal);
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    var lm = document.getElementById("legal-modal");
+    if (lm && !lm.classList.contains("hidden")) {
+      closeLegal();
+      e.preventDefault();
+      return;
+    }
+    if (leadModal && !leadModal.classList.contains("hidden")) {
+      closeLeadModal();
+      e.preventDefault();
+    }
+  });
+
+  var nf = document.getElementById("newsletter-form");
+  if (nf) {
+    nf.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var input = document.getElementById("email-updates");
+      var st = document.getElementById("newsletter-status");
+      if (!input || !input.value) return;
+      var em = BR.leadEmail || "hello@builderrates.com";
+      var href = "mailto:" + em + "?subject=" + encodeURIComponent("Newsletter signup") + "&body=" + encodeURIComponent("Please add: " + input.value);
+      st.innerHTML = "<a href=\"" + href + "\" class=\"text-primary font-medium underline\">Tap to send signup email</a> (configure backend to submit in-page).";
+      st.classList.remove("hidden");
+      nf.reset();
+    });
+  }
+
   if (toggle && menu) {
     toggle.addEventListener("click", function () {
       setOpen(menu.classList.contains("hidden"));
@@ -652,11 +997,8 @@ tailwind.config = {
 
   window.addEventListener("scroll", function () {
     if (!nav) return;
-    if (window.scrollY > 8) {
-      nav.classList.add("shadow-sm");
-    } else {
-      nav.classList.remove("shadow-sm");
-    }
+    if (window.scrollY > 8) nav.classList.add("shadow-sm");
+    else nav.classList.remove("shadow-sm");
     onScrollNav();
   }, { passive: true });
 
