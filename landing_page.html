@@ -22,6 +22,15 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FinancialService","name":"BuilderRates","description":"Debt placement and rate analysis for real estate investors.","url":"https://financing-project.vercel.app/","areaServed":{"@type":"Country","name":"United States"},"serviceType":"Real estate investment financing"}
 </script>
+<script type="application/ld+json" id="faq-schema">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How is this free for me?","acceptedAnswer":{"@type":"Answer","text":"We are compensated by lender partners for high-quality, pre-vetted deals. Our service is free to you—we do not stack extra fees on the lender quote."}},
+{"@type":"Question","name":"Do I have to use the lender you recommend?","acceptedAnswer":{"@type":"Answer","text":"No. You are under no obligation to use any recommendation—we provide options; you choose."}},
+{"@type":"Question","name":"Will this impact my credit score?","acceptedAnswer":{"@type":"Answer","text":"Initial analysis uses a soft pull that does not affect your score. A hard pull occurs only when you proceed with a specific lender full application."}},
+{"@type":"Question","name":"How fast can I get funded?","acceptedAnswer":{"@type":"Answer","text":"Term sheets often arrive within 48 hours. Funding timing depends on product and underwriting."}}
+]}
+</script>
+<link rel="preload" as="image" href="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8" fetchpriority="high"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet"/>
@@ -133,6 +142,18 @@ tailwind.config = {
   #lead-modal:not(.hidden), #legal-modal:not(.hidden) { display: flex; }
   #lead-modal.hidden, #legal-modal.hidden { display: none !important; }
   .modal-panel { max-height: min(90vh, 720px); overflow-y: auto; }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  body.modal-open { overflow: hidden; }
 </style>
 </head>
 <body class="bg-canvas text-ink antialiased pb-[4.5rem] md:pb-0">
@@ -147,11 +168,12 @@ tailwind.config = {
         </span>
         <span>BuilderRates</span>
       </a>
-      <div class="hidden md:flex items-center gap-9 text-sm" id="desktop-nav-links">
+      <div class="hidden md:flex items-center gap-8 text-sm" id="desktop-nav-links">
         <a class="nav-link" href="#solutions" data-section="solutions">Solutions</a>
         <a class="nav-link" href="#how" data-section="how">How It Works</a>
         <a class="nav-link" href="#products" data-section="products">Products</a>
         <a class="nav-link" href="#testimonials" data-section="testimonials">Testimonials</a>
+        <a class="nav-link" href="#faq" data-section="faq">FAQ</a>
       </div>
       <div class="flex items-center gap-3">
         <button type="button" class="btn-primary js-open-lead hidden sm:inline-flex bg-primary text-on-primary px-4 py-2 rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
@@ -163,11 +185,12 @@ tailwind.config = {
         </button>
       </div>
     </div>
-    <div id="mobile-menu" class="md:hidden hidden border-t border-line bg-white px-5 py-5 space-y-0" role="dialog" aria-label="Menu">
+    <div id="mobile-menu" class="md:hidden hidden border-t border-line bg-white px-5 py-5 space-y-0" role="navigation" aria-label="Menu">
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#solutions" data-section="solutions">Solutions</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#how" data-section="how">How It Works</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#products" data-section="products">Products</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#testimonials" data-section="testimonials">Testimonials</a>
+      <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#faq" data-section="faq">FAQ</a>
       <button type="button" class="mt-4 w-full btn-primary js-open-lead bg-primary text-on-primary py-3 rounded-md font-semibold text-sm">Get Started</button>
     </div>
   </nav>
@@ -588,7 +611,8 @@ tailwind.config = {
       <p class="text-zinc-600 text-sm leading-relaxed mb-5">
         Debt matchmaking for builders who care about yield—without the bank runaround.
       </p>
-      <p class="text-sm text-zinc-600 mb-3"><a href="mailto:hello@builderrates.com" class="text-primary font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">hello@builderrates.com</a></p>
+      <p class="text-sm text-zinc-600 mb-1"><a href="mailto:hello@builderrates.com" class="text-primary font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">hello@builderrates.com</a></p>
+      <p class="text-sm text-zinc-600 mb-3">Same-day reply on business days. Prefer a call? Say so in your note—we’ll coordinate.</p>
       <div class="flex gap-2" aria-label="Social">
         <a href="https://www.linkedin.com/" rel="noopener noreferrer" target="_blank" class="w-9 h-9 rounded-sm border border-line bg-white flex items-center justify-center text-primary hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="LinkedIn"><span class="material-symbols-outlined text-lg" aria-hidden="true">work</span></a>
         <a href="#faq" class="w-9 h-9 rounded-sm border border-line bg-white flex items-center justify-center text-primary hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="FAQ"><span class="material-symbols-outlined text-lg" aria-hidden="true">help</span></a>
@@ -636,6 +660,10 @@ tailwind.config = {
       <span class="material-symbols-outlined" aria-hidden="true">close</span>
     </button>
     <div id="lead-step-1">
+      <div class="flex gap-1.5 mb-4" aria-hidden="true">
+        <span class="h-1 flex-1 rounded-full bg-primary"></span>
+        <span class="h-1 flex-1 rounded-full bg-zinc-200"></span>
+      </div>
       <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-2">Step 1 of 2</p>
       <h2 id="lead-modal-title" class="font-display text-xl font-semibold text-ink mb-1">Start your rate analysis</h2>
       <p class="text-sm text-zinc-600 mb-6">Takes about two minutes. We’ll match you to programs—no obligation.</p>
@@ -657,6 +685,10 @@ tailwind.config = {
       </form>
     </div>
     <div id="lead-step-2" class="hidden">
+      <div class="flex gap-1.5 mb-4" aria-hidden="true">
+        <span class="h-1 flex-1 rounded-full bg-primary"></span>
+        <span class="h-1 flex-1 rounded-full bg-primary"></span>
+      </div>
       <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-2">Step 2 of 2</p>
       <h3 class="font-display text-xl font-semibold text-ink mb-6">Deal snapshot</h3>
       <form id="lead-form-step2" class="space-y-4">
@@ -692,9 +724,10 @@ tailwind.config = {
         </div>
         <div class="flex gap-2">
           <button type="button" class="flex-1 py-3 rounded-md border border-line text-sm font-semibold" data-lead-back>Back</button>
-          <button type="submit" class="flex-1 btn-primary bg-primary text-on-primary py-3 rounded-md text-sm font-semibold">Submit</button>
+          <button type="submit" id="lead-submit-btn" class="flex-1 btn-primary bg-primary text-on-primary py-3 rounded-md text-sm font-semibold disabled:opacity-60 disabled:cursor-not-allowed">Submit</button>
         </div>
       </form>
+      <div id="lead-mailto-inline" class="mt-2"></div>
     </div>
     <div id="lead-step-3" class="hidden text-center py-4">
       <div class="w-14 h-14 rounded-full bg-secondary/15 flex items-center justify-center mx-auto mb-4">
@@ -733,8 +766,9 @@ window.BUILDERRATES.formspreeUrl = "";
   var menu = document.getElementById("mobile-menu");
   var iconMenu = document.getElementById("nav-icon-menu");
   var iconClose = document.getElementById("nav-icon-close");
-  var sectionIds = ["solutions", "how", "products", "testimonials"];
+  var sectionIds = ["solutions", "how", "products", "testimonials", "faq"];
   var leadModal = document.getElementById("lead-modal");
+  var legalModalEl = document.getElementById("legal-modal");
   var leadStep1 = document.getElementById("lead-step-1");
   var leadStep2 = document.getElementById("lead-step-2");
   var leadStep3 = document.getElementById("lead-step-3");
@@ -809,6 +843,20 @@ window.BUILDERRATES.formspreeUrl = "";
     }
   }
 
+  function refreshModalBodyLock() {
+    var leadOpen = leadModal && !leadModal.classList.contains("hidden");
+    var legalOpen = legalModalEl && !legalModalEl.classList.contains("hidden");
+    document.body.classList.toggle("modal-open", Boolean(leadOpen || legalOpen));
+  }
+
+  function syncMainAriaHidden() {
+    var main = document.getElementById("main-content");
+    if (!main) return;
+    var leadOpen = leadModal && !leadModal.classList.contains("hidden");
+    var legalOpen = legalModalEl && !legalModalEl.classList.contains("hidden");
+    main.setAttribute("aria-hidden", leadOpen || legalOpen ? "true" : "false");
+  }
+
   function openLeadModal() {
     if (!leadModal) return;
     lastFocus = document.activeElement;
@@ -821,6 +869,8 @@ window.BUILDERRATES.formspreeUrl = "";
     if (errEl) errEl.classList.add("hidden");
     var slot = document.getElementById("lead-mailto-slot");
     if (slot) slot.innerHTML = "";
+    var slotIn = document.getElementById("lead-mailto-inline");
+    if (slotIn) slotIn.innerHTML = "";
     leadData = {};
     var f1 = document.getElementById("lead-form-step1");
     var f2 = document.getElementById("lead-form-step2");
@@ -828,14 +878,16 @@ window.BUILDERRATES.formspreeUrl = "";
     if (f2) f2.reset();
     var nameEl = document.getElementById("lead-name");
     if (nameEl) setTimeout(function () { nameEl.focus(); }, 10);
-    document.body.style.overflow = "hidden";
+    refreshModalBodyLock();
+    syncMainAriaHidden();
   }
 
   function closeLeadModal() {
     if (!leadModal) return;
     leadModal.classList.add("hidden");
     leadModal.classList.remove("flex");
-    document.body.style.overflow = "";
+    refreshModalBodyLock();
+    syncMainAriaHidden();
     if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   }
 
@@ -847,7 +899,8 @@ window.BUILDERRATES.formspreeUrl = "";
     document.getElementById("legal-modal-body").innerHTML = L.html;
     lm.classList.remove("hidden");
     lm.classList.add("flex");
-    document.body.style.overflow = "hidden";
+    refreshModalBodyLock();
+    syncMainAriaHidden();
   }
 
   function closeLegal() {
@@ -855,12 +908,15 @@ window.BUILDERRATES.formspreeUrl = "";
     if (!lm) return;
     lm.classList.add("hidden");
     lm.classList.remove("flex");
-    document.body.style.overflow = "";
+    refreshModalBodyLock();
+    syncMainAriaHidden();
   }
 
   function submitLead() {
     var err = document.getElementById("lead-form-error");
     var slot = document.getElementById("lead-mailto-slot");
+    var slotInline = document.getElementById("lead-mailto-inline");
+    var submitBtn = document.getElementById("lead-submit-btn");
     var payload = {
       name: leadData.name,
       email: leadData.email,
@@ -871,24 +927,44 @@ window.BUILDERRATES.formspreeUrl = "";
     };
     var body = Object.keys(payload).map(function (k) { return k + ": " + (payload[k] || ""); }).join("\n");
     var url = BR.formspreeUrl && String(BR.formspreeUrl).trim();
-    leadStep2.classList.add("hidden");
-    leadStep3.classList.remove("hidden");
+
+    function resetSubmitBtn() {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
+      }
+    }
+
     if (slot) slot.innerHTML = "";
+    if (slotInline) slotInline.innerHTML = "";
+
     if (url) {
       err.classList.add("hidden");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+      }
       fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({ name: payload.name, email: payload.email, _replyto: payload.email, message: body })
-      }).then(function (r) {
-        if (!r.ok) throw new Error("Form error");
-      }).catch(function () {
-        err.textContent = "Could not send. Email " + (BR.leadEmail || "us") + " or use the button below.";
-        err.classList.remove("hidden");
-        if (slot) appendMailto(slot, payload, body);
-      });
+      })
+        .then(function (r) {
+          if (!r.ok) throw new Error("Form error");
+          leadStep2.classList.add("hidden");
+          leadStep3.classList.remove("hidden");
+        })
+        .catch(function () {
+          err.textContent = "Could not send. Email " + (BR.leadEmail || "us") + " or use the button below.";
+          err.classList.remove("hidden");
+          if (slotInline) appendMailto(slotInline, payload, body);
+        })
+        .finally(resetSubmitBtn);
       return;
     }
+
+    leadStep2.classList.add("hidden");
+    leadStep3.classList.remove("hidden");
     if (slot) appendMailto(slot, payload, body);
   }
 
