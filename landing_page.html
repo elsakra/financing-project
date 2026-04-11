@@ -12,10 +12,12 @@
 <meta property="og:title" content="BuilderRates | Institutional financing for real estate investors"/>
 <meta property="og:description" content="Compare 30+ capital partners in minutes. Free rate analysis. No obligation."/>
 <meta property="og:url" content="https://financing-project.vercel.app/"/>
+<meta property="og:locale" content="en_US"/>
 <meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="BuilderRates | Institutional financing for real estate investors"/>
 <meta name="twitter:description" content="Compare 30+ capital partners in minutes. Free rate analysis."/>
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8"/>
 <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
 <link rel="apple-touch-icon" href="favicon.svg"/>
 <title>BuilderRates | High-Performance Financing for Real Estate Investors</title>
@@ -33,6 +35,9 @@
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Debt placement and rate analysis for real estate investors.","sameAs":["https://www.linkedin.com/company/builderrates"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Institutional financing matchmaking for real estate investors."}
 </script>
 <link rel="preload" as="image" href="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8" fetchpriority="high"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -81,6 +86,7 @@ tailwind.config = {
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .reveal, .reveal-delay, .reveal-delay-2, .reveal-delay-3 { transition: none !important; }
+    .product-card-img { transition: none !important; transform: none !important; }
   }
   body {
     font-family: var(--font-sans);
@@ -176,6 +182,7 @@ tailwind.config = {
         <a class="nav-link" href="#solutions" data-section="solutions">Solutions</a>
         <a class="nav-link" href="#how" data-section="how">How It Works</a>
         <a class="nav-link" href="#products" data-section="products">Products</a>
+        <a class="nav-link" href="#compare" data-section="compare">Compare</a>
         <a class="nav-link" href="#testimonials" data-section="testimonials">Testimonials</a>
         <a class="nav-link" href="#faq" data-section="faq">FAQ</a>
       </div>
@@ -193,6 +200,7 @@ tailwind.config = {
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#solutions" data-section="solutions">Solutions</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#how" data-section="how">How It Works</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#products" data-section="products">Products</a>
+      <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#compare" data-section="compare">Compare</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#testimonials" data-section="testimonials">Testimonials</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#faq" data-section="faq">FAQ</a>
       <button type="button" class="mt-4 w-full btn-primary js-open-lead bg-primary text-on-primary py-3 rounded-md font-semibold text-sm">Get rate analysis</button>
@@ -398,7 +406,7 @@ tailwind.config = {
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
       <article class="group relative overflow-hidden rounded-md bg-zinc-100 aspect-square md:aspect-auto md:h-[380px] border border-line reveal">
-        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="New construction site with framing and cranes" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRwX0-wNY2NWsUiV7oqWDEb9ibrys2YKAvaxl-gxJ3o4C7w3mIDJvJ6QFizE_gaFFdVtZ6OsDzwkfHQNd_lQlY1gayVuP0kYk9yrNTXU6NHoIcET6Dt3gCVJC5BkGfHsLXvpQKOESOjpDcPdubZsUQlaYt2rY9X4uPqPWz0OHgZ5ncoAtmfZiz0MEQnyV4gRaPqM4OKE9rsy4-F2t3IxjKYGyDmgjRoiMZvJuOquztXNs7U3AOzDASftNfuauVrogc33nPxqrFR4g"/>
+        <img class="product-card-img w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="New construction site with framing and cranes" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRwX0-wNY2NWsUiV7oqWDEb9ibrys2YKAvaxl-gxJ3o4C7w3mIDJvJ6QFizE_gaFFdVtZ6OsDzwkfHQNd_lQlY1gayVuP0kYk9yrNTXU6NHoIcET6Dt3gCVJC5BkGfHsLXvpQKOESOjpDcPdubZsUQlaYt2rY9X4uPqPWz0OHgZ5ncoAtmfZiz0MEQnyV4gRaPqM4OKE9rsy4-F2t3IxjKYGyDmgjRoiMZvJuOquztXNs7U3AOzDASftNfuauVrogc33nPxqrFR4g"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
           <h4 class="text-xl font-semibold text-white mb-1.5 font-display">New Construction</h4>
@@ -406,7 +414,7 @@ tailwind.config = {
         </div>
       </article>
       <article class="group relative overflow-hidden rounded-md bg-zinc-100 h-[380px] border border-line reveal reveal-delay">
-        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Renovated home interior after fix and flip" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-CN6PRDJ1OsMUJNAU66_By9Ylxh0UOpcOnSq_ATh4vNi8LETRyiZqxtDghdFtgjisRlhtCcnqjYHnnbGaWMZorl8pdtI5sSOpS8iUAFuGYVHyeAQOc-ymqdIBThnVEaHp1qB5YLMMkNb5EeySw-HnMb6Xz66GHQwLjD_Qamv84eZXbcmK071PK0-bFB7sp1eIuMy9_3B8S3nKColdeEGB3VyTkFJOHZjFzvk3H4sC8oXsqpCv2BC2e0EVh-XR2YmD5ll4ei6NCo8"/>
+        <img class="product-card-img w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Renovated home interior after fix and flip" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-CN6PRDJ1OsMUJNAU66_By9Ylxh0UOpcOnSq_ATh4vNi8LETRyiZqxtDghdFtgjisRlhtCcnqjYHnnbGaWMZorl8pdtI5sSOpS8iUAFuGYVHyeAQOc-ymqdIBThnVEaHp1qB5YLMMkNb5EeySw-HnMb6Xz66GHQwLjD_Qamv84eZXbcmK071PK0-bFB7sp1eIuMy9_3B8S3nKColdeEGB3VyTkFJOHZjFzvk3H4sC8oXsqpCv2BC2e0EVh-XR2YmD5ll4ei6NCo8"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
           <h4 class="text-xl font-semibold text-white mb-1.5 font-display">Fix &amp; Flip</h4>
@@ -414,7 +422,7 @@ tailwind.config = {
         </div>
       </article>
       <article class="group relative overflow-hidden rounded-md bg-zinc-100 h-[380px] border border-line reveal reveal-delay-2">
-        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Residential rental property exterior" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMGbtoDdITqjAFw4sTaXxa7BFfF2O5pKT69H_FAMM_Rp3RQ2pmhBnmLAmm5N4X1frZIx8u5_-uZVw9tqPh5fTOuPmTzk_hwdNdZlDecF7kNsWLjE0bCNiwlWG7lpDZiDdhxVl0RhpH1CfuAdADNV2_Q3_I1ohhE8ojnqxiq4CqlnGtz9xUiepqNSe2sksSBZNOqHBwwIsXFb191wgCYIRxtPs1dBNIyrmbvqkP_baIqBAkTgWyX8WcgftWJghdr9Jh6ZM8foSqQbk"/>
+        <img class="product-card-img w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Residential rental property exterior" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMGbtoDdITqjAFw4sTaXxa7BFfF2O5pKT69H_FAMM_Rp3RQ2pmhBnmLAmm5N4X1frZIx8u5_-uZVw9tqPh5fTOuPmTzk_hwdNdZlDecF7kNsWLjE0bCNiwlWG7lpDZiDdhxVl0RhpH1CfuAdADNV2_Q3_I1ohhE8ojnqxiq4CqlnGtz9xUiepqNSe2sksSBZNOqHBwwIsXFb191wgCYIRxtPs1dBNIyrmbvqkP_baIqBAkTgWyX8WcgftWJghdr9Jh6ZM8foSqQbk"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
           <h4 class="text-xl font-semibold text-white mb-1.5 font-display">DSCR / Rental</h4>
@@ -422,7 +430,7 @@ tailwind.config = {
         </div>
       </article>
       <article class="group relative overflow-hidden rounded-md bg-zinc-100 h-[380px] border border-line reveal">
-        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Urban bridge financing property" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAri4_JPmFQMn-r5TdGEoHiZYunq4q2zL4t1Hje4T16RX8imFwOUTqegXEcaHsAsQJOAc8mS5LSh__5pA82ucLgZGIIzd8dQNhDsDk0Y4C2S4M_N-9O49PWS6s2Itobn3733S57Vhi4hgC9Ht4-LfpiLqGHTr9KSLt1l1AESD2DvWdJTVg7BRms3_DejvcQdMSdKuQYyYl0bQ29D02E1G6W0ApIYR5MLHwnZUvuG56riEeStOeU4jPn-djhG9ZHXCrt3dBQVk3nsjo"/>
+        <img class="product-card-img w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Urban bridge financing property" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAri4_JPmFQMn-r5TdGEoHiZYunq4q2zL4t1Hje4T16RX8imFwOUTqegXEcaHsAsQJOAc8mS5LSh__5pA82ucLgZGIIzd8dQNhDsDk0Y4C2S4M_N-9O49PWS6s2Itobn3733S57Vhi4hgC9Ht4-LfpiLqGHTr9KSLt1l1AESD2DvWdJTVg7BRms3_DejvcQdMSdKuQYyYl0bQ29D02E1G6W0ApIYR5MLHwnZUvuG56riEeStOeU4jPn-djhG9ZHXCrt3dBQVk3nsjo"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
           <h4 class="text-xl font-semibold text-white mb-1.5 font-display">Bridge Loans</h4>
@@ -430,7 +438,7 @@ tailwind.config = {
         </div>
       </article>
       <article class="group relative overflow-hidden rounded-md bg-zinc-100 h-[380px] border border-line reveal reveal-delay">
-        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Commercial multifamily building" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6rk-iVyHYOyCnwOJ7h0tuLkgr2rFEUXgxC1_pxSDDAl5cV5hVQiWxOfyz_ircbfbD9JFPk89XWj4Krx3ZmfLLnCDsN9iqpk99YQGnfBA5U-IuQnNbhBWXnHqnb6UEfXdgoSlEk_iFTjjJ9Hod_c5U-OcMfSE3mF8gsqshCRjIeC5mlnvEKWdPemvQKHBjeV_W6n2WyDaCMqB9cQ7hmy8mxY8FluIsCVse5THX4OdEK-1DXjQQS91XLHCuHUF86vfCtpnXcGnIgkQ"/>
+        <img class="product-card-img w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Commercial multifamily building" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6rk-iVyHYOyCnwOJ7h0tuLkgr2rFEUXgxC1_pxSDDAl5cV5hVQiWxOfyz_ircbfbD9JFPk89XWj4Krx3ZmfLLnCDsN9iqpk99YQGnfBA5U-IuQnNbhBWXnHqnb6UEfXdgoSlEk_iFTjjJ9Hod_c5U-OcMfSE3mF8gsqshCRjIeC5mlnvEKWdPemvQKHBjeV_W6n2WyDaCMqB9cQ7hmy8mxY8FluIsCVse5THX4OdEK-1DXjQQS91XLHCuHUF86vfCtpnXcGnIgkQ"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
           <h4 class="text-xl font-semibold text-white mb-1.5 font-display">Commercial</h4>
@@ -438,7 +446,7 @@ tailwind.config = {
         </div>
       </article>
       <article class="group relative overflow-hidden rounded-md bg-zinc-100 h-[380px] border border-line reveal reveal-delay-2">
-        <img class="w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Portfolio refinance property" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAd7kwivVhE0p_wWhArc_kL9JbqJfWRSUrrlB1wjAAjPwAlga01ak982ifp7nm7v-Vcl5RV6ipy1XWDtnwJbo00kFGhJtpTG8NRerN-ySoU-BazX9kfWBv8K536U6-LxwdiwDLixw8-Prz4zyXca4g-RluxWxyjjJ1BOA6zqzhpPuV4Z8MUFBA-EozGln7mSWnUZ-wUejiFeJ6gV7YJSxyVZbsYaQjqtNWdi6JraEIK9amcea5mwBqebOnuXALXI0TOkRWFJMsoIA"/>
+        <img class="product-card-img w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Portfolio refinance property" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAd7kwivVhE0p_wWhArc_kL9JbqJfWRSUrrlB1wjAAjPwAlga01ak982ifp7nm7v-Vcl5RV6ipy1XWDtnwJbo00kFGhJtpTG8NRerN-ySoU-BazX9kfWBv8K536U6-LxwdiwDLixw8-Prz4zyXca4g-RluxWxyjjJ1BOA6zqzhpPuV4Z8MUFBA-EozGln7mSWnUZ-wUejiFeJ6gV7YJSxyVZbsYaQjqtNWdi6JraEIK9amcea5mwBqebOnuXALXI0TOkRWFJMsoIA"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
           <h4 class="text-xl font-semibold text-white mb-1.5 font-display">Cash-Out Refi</h4>
@@ -623,7 +631,7 @@ tailwind.config = {
       <p class="text-zinc-600 text-sm leading-relaxed mb-5">
         Debt matchmaking for builders who care about yield—without the bank runaround.
       </p>
-      <p class="text-sm text-zinc-600 mb-1"><a href="mailto:hello@builderrates.com" class="text-primary font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">hello@builderrates.com</a></p>
+      <p class="text-sm text-zinc-600 mb-1"><a href="mailto:hello@builderrates.com" id="footer-email-link" class="text-primary font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">hello@builderrates.com</a></p>
       <p class="text-sm text-zinc-600 mb-3">Same-day reply on business days. Prefer a call? Say so in your note—we’ll coordinate.</p>
       <div class="flex gap-2" aria-label="Social">
         <a href="https://www.linkedin.com/company/builderrates" rel="noopener noreferrer" target="_blank" class="w-9 h-9 rounded-sm border border-line bg-white flex items-center justify-center text-primary hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="BuilderRates on LinkedIn"><span class="material-symbols-outlined text-lg" aria-hidden="true">work</span></a>
@@ -708,12 +716,12 @@ tailwind.config = {
           <label for="lead-product" class="block text-xs font-medium text-zinc-700 mb-1">Primary product</label>
           <select id="lead-product" name="product" required class="w-full border border-line rounded-sm px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-primary outline-none">
             <option value="">Select…</option>
-            <option>New construction</option>
-            <option>Fix &amp; flip</option>
-            <option>DSCR / rental</option>
-            <option>Bridge</option>
-            <option>Commercial</option>
-            <option>Refinance / cash-out</option>
+            <option value="new-construction">New construction</option>
+            <option value="fix-flip">Fix &amp; flip</option>
+            <option value="dscr-rental">DSCR / rental</option>
+            <option value="bridge">Bridge</option>
+            <option value="commercial">Commercial</option>
+            <option value="refinance-cashout">Refinance / cash-out</option>
           </select>
         </div>
         <div>
@@ -755,7 +763,7 @@ tailwind.config = {
 </div>
 
 <div id="legal-modal" class="fixed inset-0 z-[210] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
-  <div class="absolute inset-0 bg-black/50" data-legal-backdrop tabindex="-1"></div>
+  <div class="absolute inset-0 bg-black/50" data-legal-backdrop tabindex="-1" aria-hidden="true"></div>
   <div class="modal-panel relative z-10 w-full max-w-lg bg-white rounded-md border border-line shadow-xl p-6 md:p-8 max-h-[85vh] overflow-y-auto">
     <button type="button" class="absolute top-4 right-4 p-1 rounded-md text-zinc-500 hover:text-ink hover:bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-close-legal aria-label="Close">
       <span class="material-symbols-outlined" aria-hidden="true">close</span>
@@ -770,6 +778,7 @@ window.BUILDERRATES = window.BUILDERRATES || {};
 window.BUILDERRATES.siteUrl = "https://financing-project.vercel.app/";
 window.BUILDERRATES.leadEmail = "hello@builderrates.com";
 window.BUILDERRATES.formspreeUrl = "";
+window.BUILDERRATES.newsletterUrl = "";
 </script>
 <script>
 (function () {
@@ -779,7 +788,7 @@ window.BUILDERRATES.formspreeUrl = "";
   var menu = document.getElementById("mobile-menu");
   var iconMenu = document.getElementById("nav-icon-menu");
   var iconClose = document.getElementById("nav-icon-close");
-  var sectionIds = ["solutions", "how", "products", "testimonials", "faq"];
+  var sectionIds = ["solutions", "how", "products", "compare", "testimonials", "faq"];
   var leadModal = document.getElementById("lead-modal");
   var legalModalEl = document.getElementById("legal-modal");
   var leadStep1 = document.getElementById("lead-step-1");
@@ -914,6 +923,10 @@ window.BUILDERRATES.formspreeUrl = "";
     lm.classList.add("flex");
     refreshModalBodyLock();
     syncMainAriaHidden();
+    setTimeout(function () {
+      var c = lm.querySelector("[data-close-legal]");
+      if (c) c.focus();
+    }, 10);
   }
 
   function closeLegal() {
@@ -923,6 +936,15 @@ window.BUILDERRATES.formspreeUrl = "";
     lm.classList.remove("flex");
     refreshModalBodyLock();
     syncMainAriaHidden();
+  }
+
+  function showLeadStep3() {
+    leadStep2.classList.add("hidden");
+    leadStep3.classList.remove("hidden");
+    setTimeout(function () {
+      var d = document.querySelector("#lead-step-3 [data-close-lead]");
+      if (d) d.focus();
+    }, 50);
   }
 
   function submitLead() {
@@ -939,6 +961,8 @@ window.BUILDERRATES.formspreeUrl = "";
       amount: document.getElementById("lead-amount").value
     };
     var body = Object.keys(payload).map(function (k) { return k + ": " + (payload[k] || ""); }).join("\n");
+    var pageUrl = typeof location !== "undefined" ? location.href : "";
+    var fullMessage = body + "\n\npageUrl: " + pageUrl + "\nsource: landing-lead";
     var url = BR.formspreeUrl && String(BR.formspreeUrl).trim();
 
     function resetSubmitBtn() {
@@ -960,25 +984,29 @@ window.BUILDERRATES.formspreeUrl = "";
       fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ name: payload.name, email: payload.email, _replyto: payload.email, message: body })
+        body: JSON.stringify({
+          name: payload.name,
+          email: payload.email,
+          _replyto: payload.email,
+          _subject: "BuilderRates lead — " + payload.name,
+          message: fullMessage
+        })
       })
         .then(function (r) {
           if (!r.ok) throw new Error("Form error");
-          leadStep2.classList.add("hidden");
-          leadStep3.classList.remove("hidden");
+          showLeadStep3();
         })
         .catch(function () {
           err.textContent = "Could not send. Email " + (BR.leadEmail || "us") + " or use the button below.";
           err.classList.remove("hidden");
-          if (slotInline) appendMailto(slotInline, payload, body);
+          if (slotInline) appendMailto(slotInline, payload, fullMessage);
         })
         .finally(resetSubmitBtn);
       return;
     }
 
-    leadStep2.classList.add("hidden");
-    leadStep3.classList.remove("hidden");
-    if (slot) appendMailto(slot, payload, body);
+    showLeadStep3();
+    if (slot) appendMailto(slot, payload, fullMessage);
   }
 
   function appendMailto(slot, payload, body) {
@@ -1018,6 +1046,10 @@ window.BUILDERRATES.formspreeUrl = "";
     backBtn.addEventListener("click", function () {
       leadStep2.classList.add("hidden");
       leadStep1.classList.remove("hidden");
+      setTimeout(function () {
+        var n = document.getElementById("lead-name");
+        if (n) n.focus();
+      }, 10);
     });
   }
 
@@ -1060,6 +1092,8 @@ window.BUILDERRATES.formspreeUrl = "";
 
   var stickyMail = document.getElementById("sticky-email-link");
   if (stickyMail && BR.leadEmail) stickyMail.href = "mailto:" + BR.leadEmail;
+  var footMail = document.getElementById("footer-email-link");
+  if (footMail && BR.leadEmail) footMail.href = "mailto:" + BR.leadEmail;
 
   var nf = document.getElementById("newsletter-form");
   if (nf) {
@@ -1069,10 +1103,35 @@ window.BUILDERRATES.formspreeUrl = "";
       var st = document.getElementById("newsletter-status");
       if (!input || !input.value) return;
       var em = BR.leadEmail || "hello@builderrates.com";
-      var href = "mailto:" + em + "?subject=" + encodeURIComponent("Newsletter signup") + "&body=" + encodeURIComponent("Please add: " + input.value);
-      st.innerHTML = "<a href=\"" + href + "\" class=\"text-primary font-medium underline\">Tap to send signup email</a> (configure backend to submit in-page).";
-      st.classList.remove("hidden");
-      nf.reset();
+      var nu = BR.newsletterUrl && String(BR.newsletterUrl).trim();
+      function mailtoFallback() {
+        var href = "mailto:" + em + "?subject=" + encodeURIComponent("Newsletter signup") + "&body=" + encodeURIComponent("Please add: " + input.value + "\n\npageUrl: " + (typeof location !== "undefined" ? location.href : ""));
+        st.innerHTML = "<a href=\"" + href + "\" class=\"text-primary font-medium underline\">Open email to complete signup</a>";
+        st.classList.remove("hidden");
+      }
+      if (nu) {
+        fetch(nu, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            email: input.value,
+            _replyto: input.value,
+            _subject: "BuilderRates newsletter signup",
+            message: "Newsletter signup: " + input.value + "\npageUrl: " + (typeof location !== "undefined" ? location.href : "")
+          })
+        })
+          .then(function (r) {
+            if (!r.ok) throw new Error("Newsletter error");
+            st.textContent = "You’re on the list. Next brief ships soon.";
+            st.classList.remove("hidden");
+            st.classList.remove("text-secondary");
+            st.classList.add("text-zinc-700");
+            nf.reset();
+          })
+          .catch(mailtoFallback);
+        return;
+      }
+      mailtoFallback();
     });
   }
 
