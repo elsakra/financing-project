@@ -23,12 +23,13 @@
 <meta name="twitter:title" content="BuilderRates | Institutional financing for real estate investors"/>
 <meta name="twitter:description" content="Compare 30+ capital partners in minutes. Free rate analysis."/>
 <meta name="twitter:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8"/>
+<meta name="twitter:url" content="https://financing-project.vercel.app/"/>
 <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
 <link rel="apple-touch-icon" href="favicon.svg"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
 <title>BuilderRates | High-Performance Financing for Real Estate Investors</title>
-<script type="application/ld+json">
+<script type="application/ld+json" id="ld-json-financial">
 {"@context":"https://schema.org","@type":"FinancialService","name":"BuilderRates","description":"Debt placement and rate analysis for real estate investors.","url":"https://financing-project.vercel.app/","image":"https://financing-project.vercel.app/favicon.svg","areaServed":{"@type":"Country","name":"United States"},"serviceType":"Real estate investment financing"}
 </script>
 <script type="application/ld+json" id="faq-schema">
@@ -40,10 +41,10 @@
 {"@type":"Question","name":"What areas do you cover?","acceptedAnswer":{"@type":"Answer","text":"Residential and commercial investment properties in all 50 U.S. states."}}
 ]}
 </script>
-<script type="application/ld+json">
+<script type="application/ld+json" id="ld-json-org">
 {"@context":"https://schema.org","@type":"Organization","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Debt placement and rate analysis for real estate investors.","logo":{"@type":"ImageObject","url":"https://financing-project.vercel.app/favicon.svg"},"sameAs":["https://www.linkedin.com/company/builderrates"]}
 </script>
-<script type="application/ld+json">
+<script type="application/ld+json" id="ld-json-website">
 {"@context":"https://schema.org","@type":"WebSite","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Institutional financing matchmaking for real estate investors."}
 </script>
 <link rel="preload" as="image" href="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8" fetchpriority="high"/>
@@ -795,7 +796,7 @@ tailwind.config = {
 
 <script>
 window.BUILDERRATES = window.BUILDERRATES || {};
-window.BUILDERRATES.siteUrl = "https://financing-project.vercel.app/";
+window.BUILDERRATES.siteUrl = "";
 window.BUILDERRATES.leadEmail = "hello@builderrates.com";
 window.BUILDERRATES.formspreeUrl = "";
 window.BUILDERRATES.newsletterUrl = "";
@@ -803,6 +804,61 @@ window.BUILDERRATES.newsletterUrl = "";
 <script>
 (function () {
   var BR = window.BUILDERRATES || {};
+
+  function normalizeBase(u) {
+    if (u == null || typeof u !== "string") return "";
+    return u.trim().replace(/\/?$/, "/");
+  }
+
+  function applySiteBase() {
+    var explicit = normalizeBase(BR.siteUrl);
+    var originBase = "";
+    try {
+      if (typeof location !== "undefined" && location.origin && (location.protocol === "http:" || location.protocol === "https:")) {
+        originBase = location.origin + "/";
+      }
+    } catch (e0) {}
+    var base = explicit || originBase || "https://financing-project.vercel.app/";
+    BR.siteUrl = base;
+    var logoUrl = base + "favicon.svg";
+    try {
+      logoUrl = new URL("favicon.svg", base).href;
+    } catch (e1) {}
+
+    var canon = document.querySelector('link[rel="canonical"]');
+    if (canon) canon.setAttribute("href", base);
+    var ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute("content", base);
+    var twUrl = document.querySelector('meta[name="twitter:url"]');
+    if (twUrl) twUrl.setAttribute("content", base);
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(function (l) {
+      l.setAttribute("href", base);
+    });
+
+    function patchLd(id, fn) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      try {
+        var o = JSON.parse(el.textContent);
+        fn(o);
+        el.textContent = JSON.stringify(o);
+      } catch (e2) {}
+    }
+    patchLd("ld-json-financial", function (o) {
+      o.url = base;
+      if (typeof o.image === "string") o.image = logoUrl;
+    });
+    patchLd("ld-json-org", function (o) {
+      o.url = base;
+      if (o.logo && o.logo["@type"] === "ImageObject") o.logo.url = logoUrl;
+    });
+    patchLd("ld-json-website", function (o) {
+      o.url = base;
+    });
+  }
+
+  applySiteBase();
+
   var nav = document.getElementById("site-nav");
   var toggle = document.getElementById("nav-toggle");
   var menu = document.getElementById("mobile-menu");
