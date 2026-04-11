@@ -13,6 +13,7 @@
 <meta name="color-scheme" content="light"/>
 <meta name="geo.region" content="US"/>
 <meta name="apple-mobile-web-app-title" content="BuilderRates"/>
+<meta name="application-name" content="BuilderRates"/>
 <link rel="canonical" href="https://financing-project.vercel.app/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="BuilderRates"/>
@@ -50,7 +51,7 @@
 ]}
 </script>
 <script type="application/ld+json" id="ld-json-org">
-{"@context":"https://schema.org","@type":"Organization","@id":"https://financing-project.vercel.app/#organization","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Debt placement and rate analysis for real estate investors.","logo":{"@type":"ImageObject","url":"https://financing-project.vercel.app/favicon.svg"},"address":{"@type":"PostalAddress","addressCountry":"US"},"sameAs":["https://www.linkedin.com/company/builderrates"],"knowsAbout":["Real estate investment financing","Construction and renovation loans","DSCR rental loans","Bridge financing","Commercial real estate debt"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"hello@builderrates.com","areaServed":"US","availableLanguage":"en"}}
+{"@context":"https://schema.org","@type":"Organization","@id":"https://financing-project.vercel.app/#organization","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Debt placement and rate analysis for real estate investors.","logo":{"@type":"ImageObject","url":"https://financing-project.vercel.app/favicon.svg","width":512,"height":512},"address":{"@type":"PostalAddress","addressCountry":"US"},"sameAs":["https://www.linkedin.com/company/builderrates"],"knowsAbout":["Real estate investment financing","Construction and renovation loans","DSCR rental loans","Bridge financing","Commercial real estate debt"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"hello@builderrates.com","areaServed":"US","availableLanguage":"en"}}
 </script>
 <script type="application/ld+json" id="ld-json-website">
 {"@context":"https://schema.org","@type":"WebSite","@id":"https://financing-project.vercel.app/#website","name":"BuilderRates","url":"https://financing-project.vercel.app/","inLanguage":"en-US","description":"Institutional financing matchmaking for real estate investors.","potentialAction":{"@type":"ContactAction","name":"Email BuilderRates","target":{"@type":"EntryPoint","urlTemplate":"mailto:hello@builderrates.com?subject=Rate%20analysis%20request","actionPlatform":["http://schema.org/DesktopWebPlatform","http://schema.org/MobileWebPlatform"]}}}
@@ -554,9 +555,10 @@ tailwind.config = {
     <div class="text-center mb-12 md:mb-14 reveal">
       <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-4">Compare</p>
       <h2 id="compare-heading" class="font-display text-3xl md:text-4xl font-semibold text-balance text-ink">Better capital, faster.</h2>
+      <p id="compare-scroll-hint" class="sr-only">Comparison table scrolls horizontally on narrow screens.</p>
       <p class="text-xs text-zinc-500 mt-3 md:hidden" aria-hidden="true">Swipe horizontally to see all columns</p>
     </div>
-    <div class="overflow-x-auto border border-line bg-white reveal touch-pan-x overscroll-x-contain" role="region" aria-labelledby="compare-heading">
+    <div class="overflow-x-auto border border-line bg-white reveal touch-pan-x overscroll-x-contain rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" role="region" aria-labelledby="compare-heading" aria-describedby="compare-scroll-hint" tabindex="0">
       <table class="w-full text-left min-w-[640px] text-sm md:text-[15px]">
         <caption class="sr-only">Comparison of shopping lenders yourself versus using BuilderRates</caption>
         <thead>
@@ -959,7 +961,11 @@ window.BuilderRatesTrack = function (name) {
       o.url = base;
       var root = base.replace(/\/?$/, "");
       o["@id"] = root + "/#organization";
-      if (o.logo && o.logo["@type"] === "ImageObject") o.logo.url = logoUrl;
+      if (o.logo && o.logo["@type"] === "ImageObject") {
+        o.logo.url = logoUrl;
+        o.logo.width = 512;
+        o.logo.height = 512;
+      }
       if (!o.address || typeof o.address !== "object") {
         o.address = { "@type": "PostalAddress", addressCountry: "US" };
       } else if (!o.address.addressCountry) {

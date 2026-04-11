@@ -19,6 +19,13 @@
   ],
   "shortcuts": [
     {
+      "name": "Rate analysis",
+      "short_name": "Apply",
+      "description": "Start your free capital review",
+      "url": "/?open=lead",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
       "name": "FAQ",
       "short_name": "FAQ",
       "description": "Answers to common questions",
