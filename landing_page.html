@@ -1,497 +1,780 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="BuilderRates matches real estate investors with 30+ institutional lenders. Maximize profit on every deal with a free rate analysis."/>
+<meta name="theme-color" content="#012d1d"/>
 <title>BuilderRates | High-Performance Financing for Real Estate Investors</title>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,500..900;1,9..144,500..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "tertiary": "#332400",
-                        "error": "#ba1a1a",
-                        "inverse-on-surface": "#f1efff",
-                        "on-secondary-fixed-variant": "#0e5138",
-                        "surface-container-low": "#f4f2ff",
-                        "surface-variant": "#e0e0fc",
-                        "primary-fixed": "#c1ecd4",
-                        "on-primary": "#ffffff",
-                        "on-background": "#181a2e",
-                        "on-tertiary-fixed": "#251a00",
-                        "outline": "#717973",
-                        "tertiary-fixed": "#ffdf9b",
-                        "primary": "#012d1d",
-                        "secondary-container": "#aeeecb",
-                        "tertiary-fixed-dim": "#ecc15b",
-                        "on-tertiary-container": "#caa13f",
-                        "outline-variant": "#c1c8c2",
-                        "on-secondary-container": "#316e52",
-                        "on-secondary-fixed": "#002114",
-                        "surface-bright": "#fbf8ff",
-                        "background": "#fbf8ff",
-                        "on-tertiary-fixed-variant": "#5b4300",
-                        "on-error-container": "#93000a",
-                        "secondary-fixed-dim": "#95d4b3",
-                        "primary-container": "#1b4332",
-                        "on-tertiary": "#ffffff",
-                        "on-surface": "#181a2e",
-                        "tertiary-container": "#4d3900",
-                        "secondary": "#2c694e",
-                        "on-primary-container": "#86af99",
-                        "surface-container-lowest": "#ffffff",
-                        "on-surface-variant": "#414844",
-                        "on-primary-fixed-variant": "#274e3d",
-                        "surface-container-high": "#e6e6ff",
-                        "secondary-fixed": "#b1f0ce",
-                        "on-error": "#ffffff",
-                        "on-secondary": "#ffffff",
-                        "surface-container-highest": "#e0e0fc",
-                        "on-primary-fixed": "#002114",
-                        "surface-container": "#edecff",
-                        "surface": "#fbf8ff",
-                        "surface-dim": "#d7d8f4",
-                        "inverse-surface": "#2d2f44",
-                        "error-container": "#ffdad6",
-                        "inverse-primary": "#a5d0b9",
-                        "primary-fixed-dim": "#a5d0b9",
-                        "surface-tint": "#3f6653"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "fontFamily": {
-                        "headline": ["Manrope"],
-                        "body": ["Inter"],
-                        "label": ["Inter"]
-                    }
-                },
-            },
-        }
-    </script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        tertiary: "#332400",
+        error: "#ba1a1a",
+        "inverse-on-surface": "#f1efff",
+        "on-secondary-fixed-variant": "#0e5138",
+        "surface-container-low": "#f4f2ff",
+        "surface-variant": "#e0e0fc",
+        "primary-fixed": "#c1ecd4",
+        "on-primary": "#ffffff",
+        "on-background": "#181a2e",
+        "on-tertiary-fixed": "#251a00",
+        outline: "#717973",
+        "tertiary-fixed": "#ffdf9b",
+        primary: "#012d1d",
+        "secondary-container": "#aeeecb",
+        "tertiary-fixed-dim": "#ecc15b",
+        "on-tertiary-container": "#caa13f",
+        "outline-variant": "#c1c8c2",
+        "on-secondary-container": "#316e52",
+        "on-secondary-fixed": "#002114",
+        "surface-bright": "#fbf8ff",
+        background: "#fbf8ff",
+        "on-tertiary-fixed-variant": "#5b4300",
+        "on-error-container": "#93000a",
+        "secondary-fixed-dim": "#95d4b3",
+        "primary-container": "#1b4332",
+        "on-tertiary": "#ffffff",
+        "on-surface": "#181a2e",
+        "tertiary-container": "#4d3900",
+        secondary: "#2c694e",
+        "on-primary-container": "#86af99",
+        "surface-container-lowest": "#ffffff",
+        "on-surface-variant": "#414844",
+        "on-primary-fixed-variant": "#274e3d",
+        "surface-container-high": "#e6e6ff",
+        "secondary-fixed": "#b1f0ce",
+        "on-error": "#ffffff",
+        "on-secondary": "#ffffff",
+        "surface-container-highest": "#e0e0fc",
+        "on-primary-fixed": "#002114",
+        "surface-container": "#edecff",
+        surface: "#fbf8ff",
+        "surface-dim": "#d7d8f4",
+        "inverse-surface": "#2d2f44",
+        "error-container": "#ffdad6",
+        "inverse-primary": "#a5d0b9",
+        "primary-fixed-dim": "#a5d0b9",
+        "surface-tint": "#3f6653",
+        accent: "#c9a227",
+      },
+      borderRadius: {
+        DEFAULT: "0.125rem",
+        lg: "0.25rem",
+        xl: "0.5rem",
+        full: "0.75rem",
+      },
+      fontFamily: {
+        headline: ["Fraunces", "Georgia", "serif"],
+        body: ["DM Sans", "system-ui", "sans-serif"],
+        label: ["DM Sans", "system-ui", "sans-serif"],
+      },
+    },
+  },
+};
+</script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
-    </style>
+  :root {
+    --font-display: "Fraunces", Georgia, serif;
+    --font-sans: "DM Sans", system-ui, sans-serif;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-soft: 0 24px 80px -12px rgba(1, 45, 29, 0.12);
+    --shadow-glow: 0 0 0 1px rgba(44, 105, 78, 0.08), 0 32px 64px -24px rgba(1, 45, 29, 0.25);
+  }
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal, .reveal-delay, .float-slow, .grain::before { animation: none !important; transition: none !important; }
+  }
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01" on, "cv01" on;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+  .text-balance { text-wrap: balance; }
+  .tabular-nums { font-variant-numeric: tabular-nums; }
+
+  /* Ambient mesh + grain */
+  .grain {
+    position: relative;
+    isolation: isolate;
+  }
+  .grain::before {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .mesh-hero {
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(174, 238, 203, 0.35), transparent 55%),
+      radial-gradient(900px 500px at 95% 20%, rgba(224, 224, 252, 0.5), transparent 50%),
+      linear-gradient(180deg, #fbf8ff 0%, #f5f3ff 100%);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay { transition-delay: 0.12s; }
+  .reveal-delay-2 { transition-delay: 0.22s; }
+  .reveal-delay-3 { transition-delay: 0.32s; }
+
+  .float-slow {
+    animation: float 14s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(0.3deg); }
+  }
+
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.35s var(--ease-out-expo);
+  }
+  .nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  .nav-link-active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .btn-primary {
+    box-shadow: 0 4px 14px rgba(1, 45, 29, 0.22);
+    transition: transform 0.25s var(--ease-out-expo), box-shadow 0.25s ease;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(1, 45, 29, 0.28);
+  }
+  .btn-primary:active { transform: translateY(0); }
+
+  .card-lift {
+    transition: transform 0.45s var(--ease-out-expo), box-shadow 0.45s ease, border-color 0.35s ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .stat-shine {
+    background: linear-gradient(115deg, #012d1d 0%, #0d3d2c 40%, #012d1d 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-shine::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(circle at 30% 50%, rgba(174, 238, 203, 0.12), transparent 45%);
+    pointer-events: none;
+  }
+
+  .product-card .shine {
+    transition: opacity 0.6s ease;
+    opacity: 0;
+  }
+  .product-card:hover .shine {
+    opacity: 1;
+  }
+
+  details summary::-webkit-details-marker { display: none; }
+  details[open] summary {
+    border-bottom: 1px solid rgba(113, 121, 115, 0.2);
+  }
+</style>
 </head>
-<body class="bg-surface text-on-surface">
+<body class="bg-surface text-on-surface antialiased grain mesh-hero">
 <!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-[#fbf8ff]/70 backdrop-blur-xl transition-all">
-<div class="flex justify-between items-center max-w-[1440px] mx-auto px-6 md:px-12 py-6">
-<div class="text-2xl font-bold tracking-tighter text-[#012d1d]">BuilderRates</div>
-<div class="hidden md:flex items-center space-x-8">
-<a class="font-semibold tracking-tight text-[#012d1d] border-b-2 border-[#2c694e] pb-1" href="#">Solutions</a>
-<a class="font-semibold tracking-tight text-[#181a2e]/60 hover:text-[#012d1d] transition-colors" href="#">How It Works</a>
-<a class="font-semibold tracking-tight text-[#181a2e]/60 hover:text-[#012d1d] transition-colors" href="#">Products</a>
-<a class="font-semibold tracking-tight text-[#181a2e]/60 hover:text-[#012d1d] transition-colors" href="#">Testimonials</a>
-</div>
-<button class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-semibold hover:scale-[1.02] transition-transform duration-200">
-                Get Started
-            </button>
-</div>
-</nav>
+<header>
+  <nav class="fixed top-0 w-full z-[100] border-b border-outline-variant/10 bg-[#fbf8ff]/75 backdrop-blur-2xl supports-[backdrop-filter]:bg-[#fbf8ff]/55 transition-shadow duration-300" id="site-nav" aria-label="Primary">
+    <div class="flex justify-between items-center max-w-[1440px] mx-auto px-5 md:px-12 py-4 md:py-5">
+      <a href="#" class="font-display text-2xl md:text-[1.65rem] font-semibold tracking-tight text-primary">BuilderRates</a>
+      <div class="hidden md:flex items-center gap-10">
+        <a class="nav-link nav-link-active text-sm font-semibold text-primary" href="#solutions">Solutions</a>
+        <a class="nav-link text-sm font-semibold text-on-surface/55 hover:text-primary" href="#how">How It Works</a>
+        <a class="nav-link text-sm font-semibold text-on-surface/55 hover:text-primary" href="#products">Products</a>
+        <a class="nav-link text-sm font-semibold text-on-surface/55 hover:text-primary" href="#testimonials">Testimonials</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button type="button" class="btn-primary hidden sm:inline-flex bg-primary text-on-primary px-5 py-2.5 rounded-xl text-sm font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2">
+          Get Started
+        </button>
+        <button type="button" id="nav-toggle" class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border border-outline-variant/30 bg-surface-container-lowest/80 text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="material-symbols-outlined" id="nav-icon-menu">menu</span>
+          <span class="material-symbols-outlined hidden" id="nav-icon-close">close</span>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden border-t border-outline-variant/10 bg-[#fbf8ff]/95 backdrop-blur-xl px-5 py-6 space-y-1">
+      <a class="block py-3 px-2 rounded-lg font-semibold text-primary bg-secondary-container/40" href="#solutions">Solutions</a>
+      <a class="block py-3 px-2 rounded-lg font-semibold text-on-surface/80 hover:bg-surface-container" href="#how">How It Works</a>
+      <a class="block py-3 px-2 rounded-lg font-semibold text-on-surface/80 hover:bg-surface-container" href="#products">Products</a>
+      <a class="block py-3 px-2 rounded-lg font-semibold text-on-surface/80 hover:bg-surface-container" href="#testimonials">Testimonials</a>
+      <button type="button" class="mt-4 w-full btn-primary bg-primary text-on-primary py-3.5 rounded-xl font-bold">Get Started</button>
+    </div>
+  </nav>
+</header>
+
 <!-- Hero Section -->
-<section class="relative pt-40 pb-24 md:pt-56 md:pb-32 overflow-hidden bg-surface">
-<div class="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<div class="lg:col-span-7 z-10">
-<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold uppercase tracking-widest mb-6">
-                    Performance Capital
-                </span>
-<h1 class="text-5xl md:text-7xl font-extrabold text-on-surface leading-[1.05] tracking-tight mb-8">
-                    You’re leaving <span class="text-secondary">$8,000–$25,000</span> on the table. Every deal.
-                </h1>
-<p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed mb-10">
-                    Stop settling for the lender you know. We monitor 30+ specialized capital partners to ensure your project yields the absolute maximum profit.
-                </p>
-<div class="flex flex-col sm:flex-row gap-4">
-<button class="bg-primary text-on-primary px-8 py-4 rounded-xl text-lg font-bold hover:scale-[1.02] transition-transform flex items-center justify-center">
-                        Get My Rate Analysis <span class="material-symbols-outlined ml-2">arrow_forward</span>
-</button>
-<button class="bg-surface-container text-on-surface px-8 py-4 rounded-xl text-lg font-bold hover:bg-surface-container-high transition-colors">
-                        View Lender Network
-                    </button>
-</div>
-</div>
-<div class="lg:col-span-5 relative">
-<div class="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl relative">
-<img class="w-full h-full object-cover" data-alt="Modern minimalist architectural rendering of a luxury apartment building with floor to ceiling glass and lush greenery in soft daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
-</div>
-<!-- Float Card -->
-<div class="absolute -bottom-8 -left-8 md:-left-16 bg-surface-container-lowest p-6 rounded-2xl shadow-xl border border-outline-variant/20 max-w-xs">
-<div class="flex items-center gap-3 mb-4">
-<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined">trending_up</span>
-</div>
-<span class="font-bold text-sm">Real-Time Yield Audit</span>
-</div>
-<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden mb-2">
-<div class="h-full bg-secondary w-3/4"></div>
-</div>
-<p class="text-xs text-on-surface-variant">Lender spread optimized by 114bps last month.</p>
-</div>
-</div>
-</div>
+<section class="relative pt-36 pb-20 md:pt-48 md:pb-28 overflow-hidden" aria-labelledby="hero-heading">
+  <div class="absolute top-24 right-[-20%] w-[70vw] max-w-[720px] h-[720px] rounded-full bg-gradient-to-br from-secondary/25 via-transparent to-surface-container-high/40 blur-3xl pointer-events-none float-slow" aria-hidden="true"></div>
+  <div class="max-w-[1440px] mx-auto px-5 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-center">
+    <div class="lg:col-span-7 z-10">
+      <span class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-container/90 text-on-secondary-container text-[11px] font-bold uppercase tracking-[0.2em] mb-7 ring-1 ring-secondary/20 shadow-sm">
+        <span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" aria-hidden="true"></span>
+        Performance Capital
+      </span>
+      <h1 id="hero-heading" class="reveal reveal-delay font-display text-[2.65rem] sm:text-6xl md:text-7xl lg:text-[4.25rem] font-semibold text-on-surface leading-[1.02] tracking-[-0.02em] mb-7 text-balance">
+        You’re leaving <span class="italic text-secondary font-medium">$8,000–$25,000</span> on the table. Every deal.
+      </h1>
+      <p class="reveal reveal-delay-2 text-lg md:text-xl text-on-surface-variant max-w-2xl leading-[1.65] mb-10 font-medium">
+        Stop settling for the lender you know. We monitor 30+ specialized capital partners so your project keeps the maximum profit—without the shopping marathon.
+      </p>
+      <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-4">
+        <button type="button" class="btn-primary group bg-primary text-on-primary px-8 py-4 rounded-2xl text-base font-bold flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2">
+          Get My Rate Analysis
+          <span class="material-symbols-outlined text-xl transition-transform group-hover:translate-x-1">arrow_forward</span>
+        </button>
+        <button type="button" class="px-8 py-4 rounded-2xl text-base font-bold border border-outline-variant/40 bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface hover:border-secondary/50 hover:bg-surface-container transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary">
+          View Lender Network
+        </button>
+      </div>
+    </div>
+    <div class="lg:col-span-5 relative reveal">
+      <div class="aspect-[4/5] rounded-[2rem] md:rounded-[2.25rem] overflow-hidden shadow-[var(--shadow-soft)] relative ring-1 ring-black/[0.06]">
+        <img class="w-full h-full object-cover scale-[1.02]" alt="Modern multifamily building with glass facade and greenery" width="800" height="1000" fetchpriority="high" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary/55 via-primary/10 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
+      </div>
+      <div class="absolute -bottom-6 -left-4 md:-left-12 max-w-[min(100%,20rem)] bg-white/90 backdrop-blur-xl p-6 rounded-2xl shadow-[var(--shadow-glow)] border border-white/60 ring-1 ring-black/[0.04]">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-11 h-11 rounded-2xl bg-secondary-container flex items-center justify-center text-secondary shadow-inner">
+            <span class="material-symbols-outlined" aria-hidden="true">trending_up</span>
+          </div>
+          <span class="font-bold text-sm tracking-tight">Real-Time Yield Audit</span>
+        </div>
+        <div class="h-2 w-full bg-surface-container rounded-full overflow-hidden mb-2 ring-1 ring-outline-variant/15">
+          <div class="h-full bg-gradient-to-r from-secondary to-primary w-3/4 rounded-full"></div>
+        </div>
+        <p class="text-xs text-on-surface-variant font-medium">Lender spread optimized by <span class="text-primary font-bold">114 bps</span> last month.</p>
+      </div>
+    </div>
+  </div>
 </section>
+
 <!-- Proof Bar (Stats) -->
-<section class="bg-primary text-on-primary py-16">
-<div class="max-w-[1440px] mx-auto px-6 md:px-12">
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-<div class="text-center lg:text-left">
-<div class="text-3xl md:text-5xl font-extrabold mb-1">30+</div>
-<div class="text-primary-fixed/70 font-medium uppercase tracking-widest text-xs">Lender Partners</div>
-</div>
-<div class="text-center lg:text-left">
-<div class="text-3xl md:text-5xl font-extrabold mb-1">1.4%</div>
-<div class="text-primary-fixed/70 font-medium uppercase tracking-widest text-xs">Avg. Rate Savings</div>
-</div>
-<div class="text-center lg:text-left">
-<div class="text-3xl md:text-5xl font-extrabold mb-1">$12,800</div>
-<div class="text-primary-fixed/70 font-medium uppercase tracking-widest text-xs">Avg. Saved Per Deal</div>
-</div>
-<div class="text-center lg:text-left">
-<div class="text-3xl md:text-5xl font-extrabold mb-1">48hrs</div>
-<div class="text-primary-fixed/70 font-medium uppercase tracking-widest text-xs">Avg. to Term Sheet</div>
-</div>
-</div>
-</div>
+<section class="stat-shine text-on-primary py-14 md:py-20 relative z-10" aria-label="Key metrics">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-12 relative z-10">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-14">
+      <div class="text-center lg:text-left reveal">
+        <div class="font-display text-4xl md:text-5xl font-semibold mb-2 tabular-nums tracking-tight">30+</div>
+        <div class="text-primary-fixed/75 font-semibold uppercase tracking-[0.18em] text-[11px]">Lender Partners</div>
+      </div>
+      <div class="text-center lg:text-left reveal reveal-delay">
+        <div class="font-display text-4xl md:text-5xl font-semibold mb-2 tabular-nums tracking-tight">1.4%</div>
+        <div class="text-primary-fixed/75 font-semibold uppercase tracking-[0.18em] text-[11px]">Avg. Rate Savings</div>
+      </div>
+      <div class="text-center lg:text-left reveal reveal-delay-2">
+        <div class="font-display text-4xl md:text-5xl font-semibold mb-2 tabular-nums tracking-tight">$12,800</div>
+        <div class="text-primary-fixed/75 font-semibold uppercase tracking-[0.18em] text-[11px]">Avg. Saved Per Deal</div>
+      </div>
+      <div class="text-center lg:text-left reveal reveal-delay-3">
+        <div class="font-display text-4xl md:text-5xl font-semibold mb-2 tabular-nums tracking-tight">48hrs</div>
+        <div class="text-primary-fixed/75 font-semibold uppercase tracking-[0.18em] text-[11px]">Avg. to Term Sheet</div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- Social proof: lender archetypes (illustrative categories, not trademarks) -->
+<section class="py-10 md:py-12 border-y border-outline-variant/10 bg-surface/80" aria-labelledby="network-label">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-12">
+    <p id="network-label" class="text-center text-[11px] font-bold uppercase tracking-[0.22em] text-on-surface-variant mb-8 md:mb-10 reveal">Offers benchmarked across capital archetypes</p>
+    <div class="flex flex-wrap justify-center items-stretch gap-4 md:gap-5 reveal">
+      <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-outline-variant/20 bg-surface-container-lowest/90 min-w-[7.5rem] shadow-sm">
+        <span class="font-display text-lg font-semibold text-primary tabular-nums">PD</span>
+        <span class="text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant mt-1">Private debt</span>
+      </div>
+      <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-outline-variant/20 bg-surface-container-lowest/90 min-w-[7.5rem] shadow-sm">
+        <span class="font-display text-lg font-semibold text-primary tabular-nums">CU</span>
+        <span class="text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant mt-1">Credit unions</span>
+      </div>
+      <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-outline-variant/20 bg-surface-container-lowest/90 min-w-[7.5rem] shadow-sm">
+        <span class="font-display text-lg font-semibold text-primary tabular-nums">RB</span>
+        <span class="text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant mt-1">Regional banks</span>
+      </div>
+      <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-outline-variant/20 bg-surface-container-lowest/90 min-w-[7.5rem] shadow-sm">
+        <span class="font-display text-lg font-semibold text-primary tabular-nums">BS</span>
+        <span class="text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant mt-1">Bridge specialists</span>
+      </div>
+      <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-outline-variant/20 bg-surface-container-lowest/90 min-w-[7.5rem] shadow-sm">
+        <span class="font-display text-lg font-semibold text-primary tabular-nums">DS</span>
+        <span class="text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant mt-1">DSCR &amp; rental</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Problem Section -->
-<section class="py-32 bg-surface">
-<div class="max-w-[1440px] mx-auto px-6 md:px-12">
-<div class="mb-20 text-center max-w-3xl mx-auto">
-<h2 class="text-4xl md:text-5xl font-extrabold mb-6">Finding the right lender shouldn’t be a second job.</h2>
-<p class="text-lg text-on-surface-variant">Traditional financing is opaque and slow. Most investors lose thousands simply because they don't have the time to shop 30 different institutions.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-<div class="p-8 bg-surface-container rounded-2xl transition-all hover:bg-surface-container-high group">
-<span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform">lock_person</span>
-<h3 class="text-xl font-bold mb-4">Stuck with who you know</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">Loyalty to one local bank is costing you thousands in missed rate reductions and flexible terms.</p>
-</div>
-<div class="p-8 bg-surface-container rounded-2xl transition-all hover:bg-surface-container-high group">
-<span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform">monitoring</span>
-<h3 class="text-xl font-bold mb-4">Rates change weekly</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">The best deal last month isn't the best deal today. Capital markets move faster than your network.</p>
-</div>
-<div class="p-8 bg-surface-container rounded-2xl transition-all hover:bg-surface-container-high group">
-<span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform">money_off</span>
-<h3 class="text-xl font-bold mb-4">Lost profit</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">High origination fees and hidden points eat into your net proceeds before you even break ground.</p>
-</div>
-<div class="p-8 bg-surface-container rounded-2xl transition-all hover:bg-surface-container-high group">
-<span class="material-symbols-outlined text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform">notifications_paused</span>
-<h3 class="text-xl font-bold mb-4">Last to know</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">Retail investors are the last to hear about new institutional debt funds entering the market.</p>
-</div>
-</div>
-</div>
+<section id="solutions" class="py-24 md:py-32 bg-surface relative">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-12">
+    <div class="mb-16 md:mb-24 text-center max-w-3xl mx-auto reveal">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">The real cost</p>
+      <h2 class="font-display text-4xl md:text-[2.75rem] font-semibold mb-6 text-balance leading-tight">Finding the right lender shouldn’t be a second job.</h2>
+      <p class="text-lg text-on-surface-variant leading-relaxed">Traditional financing is opaque and slow. Most investors lose thousands simply because they don't have time to shop dozens of institutions.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7">
+      <div class="card-lift p-8 bg-surface-container-lowest rounded-3xl border border-outline-variant/15 shadow-sm group reveal">
+        <span class="material-symbols-outlined text-4xl text-secondary mb-6 inline-flex p-3 rounded-2xl bg-secondary-container/50 group-hover:scale-105 transition-transform duration-300" aria-hidden="true">lock_person</span>
+        <h3 class="text-xl font-bold mb-3 font-display">Stuck with who you know</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Loyalty to one local bank costs you in missed rate cuts and flexible terms.</p>
+      </div>
+      <div class="card-lift p-8 bg-surface-container-lowest rounded-3xl border border-outline-variant/15 shadow-sm group reveal reveal-delay">
+        <span class="material-symbols-outlined text-4xl text-secondary mb-6 inline-flex p-3 rounded-2xl bg-secondary-container/50 group-hover:scale-105 transition-transform duration-300" aria-hidden="true">monitoring</span>
+        <h3 class="text-xl font-bold mb-3 font-display">Rates change weekly</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Last month’s best deal isn’t today’s. Markets move faster than your network.</p>
+      </div>
+      <div class="card-lift p-8 bg-surface-container-lowest rounded-3xl border border-outline-variant/15 shadow-sm group reveal reveal-delay-2">
+        <span class="material-symbols-outlined text-4xl text-secondary mb-6 inline-flex p-3 rounded-2xl bg-secondary-container/50 group-hover:scale-105 transition-transform duration-300" aria-hidden="true">money_off</span>
+        <h3 class="text-xl font-bold mb-3 font-display">Lost profit</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Origination fees and hidden points eat net proceeds before you break ground.</p>
+      </div>
+      <div class="card-lift p-8 bg-surface-container-lowest rounded-3xl border border-outline-variant/15 shadow-sm group reveal reveal-delay-3">
+        <span class="material-symbols-outlined text-4xl text-secondary mb-6 inline-flex p-3 rounded-2xl bg-secondary-container/50 group-hover:scale-105 transition-transform duration-300" aria-hidden="true">notifications_paused</span>
+        <h3 class="text-xl font-bold mb-3 font-display">Last to know</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Retail investors hear about new debt funds last—if they hear at all.</p>
+      </div>
+    </div>
+  </div>
 </section>
+
 <!-- How It Works -->
-<section class="py-32 bg-surface-container-low">
-<div class="max-w-[1440px] mx-auto px-6 md:px-12">
-<div class="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
-<div class="max-w-2xl">
-<h2 class="text-4xl md:text-5xl font-extrabold mb-4">The Sovereign Workflow</h2>
-<p class="text-lg text-on-surface-variant">We've automated the heavy lifting of capital acquisition so you can focus on the build.</p>
-</div>
-<div class="text-primary font-bold text-7xl opacity-5 hidden lg:block tracking-tighter">PROCESS</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
-<div class="relative">
-<div class="text-8xl font-black text-secondary/10 absolute -top-12 -left-4">01</div>
-<div class="relative z-10">
-<h3 class="text-2xl font-bold mb-4">Tell us about your deal</h3>
-<p class="text-on-surface-variant leading-relaxed">Fill out our 2-minute project brief. No hard credit pull required to start seeing preliminary quotes.</p>
-</div>
-</div>
-<div class="relative">
-<div class="text-8xl font-black text-secondary/10 absolute -top-12 -left-4">02</div>
-<div class="relative z-10">
-<h3 class="text-2xl font-bold mb-4">We shop 30+ lenders</h3>
-<p class="text-on-surface-variant leading-relaxed">Our proprietary algorithm matches your deal parameters against our deep-capital network in real-time.</p>
-</div>
-</div>
-<div class="relative">
-<div class="text-8xl font-black text-secondary/10 absolute -top-12 -left-4">03</div>
-<div class="relative z-10">
-<h3 class="text-2xl font-bold mb-4">Pick your lender</h3>
-<p class="text-on-surface-variant leading-relaxed">Review a side-by-side comparison of the top 3 term sheets. Select the best fit and close with confidence.</p>
-</div>
-</div>
-</div>
-</div>
+<section id="how" class="py-24 md:py-32 bg-surface-container-low/80 border-y border-outline-variant/10">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-12">
+    <div class="flex flex-col lg:flex-row justify-between items-end mb-16 md:mb-20 gap-8">
+      <div class="max-w-2xl reveal">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">Workflow</p>
+        <h2 class="font-display text-4xl md:text-[2.75rem] font-semibold mb-4 leading-tight">The Sovereign Workflow</h2>
+        <p class="text-lg text-on-surface-variant leading-relaxed">We’ve automated capital acquisition so you can focus on the build—not the bank calls.</p>
+      </div>
+      <div class="font-display text-7xl md:text-8xl font-semibold text-secondary/[0.07] hidden lg:block tracking-tighter select-none" aria-hidden="true">01→03</div>
+    </div>
+    <p class="sr-only">Workflow in three steps: submit your brief, we match lenders, you choose terms.</p>
+    <div class="mb-14 md:mb-16 reveal overflow-x-auto pb-2 md:pb-0 -mx-2 px-2 md:mx-0 md:px-0">
+      <svg class="mx-auto min-w-[min(100%,520px)] md:min-w-0 w-full max-w-3xl h-auto" viewBox="0 0 640 112" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="pipe" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#2c694e" stop-opacity="0.2"/>
+            <stop offset="50%" stop-color="#2c694e" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#2c694e" stop-opacity="0.2"/>
+          </linearGradient>
+        </defs>
+        <path d="M104 56 H248" stroke="url(#pipe)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M392 56 H536" stroke="url(#pipe)" stroke-width="2" stroke-linecap="round"/>
+        <polygon points="268,56 252,48 252,64" fill="#2c694e" fill-opacity="0.55"/>
+        <polygon points="556,56 540,48 540,64" fill="#2c694e" fill-opacity="0.55"/>
+        <circle cx="72" cy="56" r="36" fill="#fbf8ff" stroke="#2c694e" stroke-opacity="0.35" stroke-width="1.5"/>
+        <text x="72" y="64" text-anchor="middle" fill="#012d1d" font-family="Fraunces, Georgia, serif" font-size="17" font-weight="600">01</text>
+        <circle cx="320" cy="56" r="36" fill="#fbf8ff" stroke="#2c694e" stroke-opacity="0.35" stroke-width="1.5"/>
+        <text x="320" y="64" text-anchor="middle" fill="#012d1d" font-family="Fraunces, Georgia, serif" font-size="17" font-weight="600">02</text>
+        <circle cx="568" cy="56" r="36" fill="#fbf8ff" stroke="#2c694e" stroke-opacity="0.35" stroke-width="1.5"/>
+        <text x="568" y="64" text-anchor="middle" fill="#012d1d" font-family="Fraunces, Georgia, serif" font-size="17" font-weight="600">03</text>
+      </svg>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10 relative">
+      <div class="hidden md:block absolute top-10 left-[12%] right-[12%] h-px bg-gradient-to-r from-transparent via-outline-variant/35 to-transparent pointer-events-none" aria-hidden="true"></div>
+      <div class="relative reveal">
+        <div class="font-display text-7xl font-semibold text-secondary/15 absolute -top-10 -left-1 tabular-nums" aria-hidden="true">01</div>
+        <div class="relative z-10 pt-8 md:pt-10 border-t md:border-t-0 border-outline-variant/20 md:border-none">
+          <h3 class="text-2xl font-bold mb-4 font-display">Tell us about your deal</h3>
+          <p class="text-on-surface-variant leading-relaxed">A 2-minute brief. No hard credit pull to see preliminary quotes.</p>
+        </div>
+      </div>
+      <div class="relative reveal reveal-delay">
+        <div class="font-display text-7xl font-semibold text-secondary/15 absolute -top-10 -left-1 tabular-nums" aria-hidden="true">02</div>
+        <div class="relative z-10 pt-8 md:pt-10 border-t md:border-t-0 border-outline-variant/20 md:border-none">
+          <h3 class="text-2xl font-bold mb-4 font-display">We shop 30+ lenders</h3>
+          <p class="text-on-surface-variant leading-relaxed">Matching your deal to our capital network in real time—not spreadsheets.</p>
+        </div>
+      </div>
+      <div class="relative reveal reveal-delay-2">
+        <div class="font-display text-7xl font-semibold text-secondary/15 absolute -top-10 -left-1 tabular-nums" aria-hidden="true">03</div>
+        <div class="relative z-10 pt-8 md:pt-10 border-t md:border-t-0 border-outline-variant/20 md:border-none">
+          <h3 class="text-2xl font-bold mb-4 font-display">Pick your lender</h3>
+          <p class="text-on-surface-variant leading-relaxed">Compare the top term sheets side by side. Choose fit—then close with confidence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
 <!-- Loan Products -->
-<section class="py-32 bg-surface">
-<div class="max-w-[1440px] mx-auto px-6 md:px-12">
-<h2 class="text-4xl font-extrabold mb-16">Specialized Loan Products</h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-<!-- Card 1 -->
-<div class="group relative overflow-hidden rounded-3xl bg-surface-container aspect-square md:aspect-auto md:h-[400px]">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Close up of modern wood and steel framing of a luxury home under construction against a clear blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRwX0-wNY2NWsUiV7oqWDEb9ibrys2YKAvaxl-gxJ3o4C7w3mIDJvJ6QFizE_gaFFdVtZ6OsDzwkfHQNd_lQlY1gayVuP0kYk9yrNTXU6NHoIcET6Dt3gCVJC5BkGfHsLXvpQKOESOjpDcPdubZsUQlaYt2rY9X4uPqPWz0OHgZ5ncoAtmfZiz0MEQnyV4gRaPqM4OKE9rsy4-F2t3IxjKYGyDmgjRoiMZvJuOquztXNs7U3AOzDASftNfuauVrogc33nPxqrFR4g"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent"></div>
-<div class="absolute bottom-0 p-8">
-<h4 class="text-2xl font-bold text-on-primary mb-2">New Construction</h4>
-<p class="text-primary-fixed/80 text-sm">Up to 90% LTC with competitive interest-only periods.</p>
-</div>
-</div>
-<!-- Card 2 -->
-<div class="group relative overflow-hidden rounded-3xl bg-surface-container h-[400px]">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Interior of a luxury home renovation with white oak floors and large windows during golden hour" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-CN6PRDJ1OsMUJNAU66_By9Ylxh0UOpcOnSq_ATh4vNi8LETRyiZqxtDghdFtgjisRlhtCcnqjYHnnbGaWMZorl8pdtI5sSOpS8iUAFuGYVHyeAQOc-ymqdIBThnVEaHp1qB5YLMMkNb5EeySw-HnMb6Xz66GHQwLjD_Qamv84eZXbcmK071PK0-bFB7sp1eIuMy9_3B8S3nKColdeEGB3VyTkFJOHZjFzvk3H4sC8oXsqpCv2BC2e0EVh-XR2YmD5ll4ei6NCo8"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent"></div>
-<div class="absolute bottom-0 p-8">
-<h4 class="text-2xl font-bold text-on-primary mb-2">Fix &amp; Flip</h4>
-<p class="text-primary-fixed/80 text-sm">Rapid funding for acquisition and 100% of rehab costs.</p>
-</div>
-</div>
-<!-- Card 3 -->
-<div class="group relative overflow-hidden rounded-3xl bg-surface-container h-[400px]">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Modern minimalist duplex apartment building with sleek balconies and architectural lighting at twilight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMGbtoDdITqjAFw4sTaXxa7BFfF2O5pKT69H_FAMM_Rp3RQ2pmhBnmLAmm5N4X1frZIx8u5_-uZVw9tqPh5fTOuPmTzk_hwdNdZlDecF7kNsWLjE0bCNiwlWG7lpDZiDdhxVl0RhpH1CfuAdADNV2_Q3_I1ohhE8ojnqxiq4CqlnGtz9xUiepqNSe2sksSBZNOqHBwwIsXFb191wgCYIRxtPs1dBNIyrmbvqkP_baIqBAkTgWyX8WcgftWJghdr9Jh6ZM8foSqQbk"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent"></div>
-<div class="absolute bottom-0 p-8">
-<h4 class="text-2xl font-bold text-on-primary mb-2">DSCR / Rental</h4>
-<p class="text-primary-fixed/80 text-sm">No personal income verification. Based on asset performance.</p>
-</div>
-</div>
-<!-- Card 4 -->
-<div class="group relative overflow-hidden rounded-3xl bg-surface-container h-[400px]">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Detail of high-end urban development project with glass facade and steel structures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAri4_JPmFQMn-r5TdGEoHiZYunq4q2zL4t1Hje4T16RX8imFwOUTqegXEcaHsAsQJOAc8mS5LSh__5pA82ucLgZGIIzd8dQNhDsDk0Y4C2S4M_N-9O49PWS6s2Itobn3733S57Vhi4hgC9Ht4-LfpiLqGHTr9KSLt1l1AESD2DvWdJTVg7BRms3_DejvcQdMSdKuQYyYl0bQ29D02E1G6W0ApIYR5MLHwnZUvuG56riEeStOeU4jPn-djhG9ZHXCrt3dBQVk3nsjo"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent"></div>
-<div class="absolute bottom-0 p-8">
-<h4 class="text-2xl font-bold text-on-primary mb-2">Bridge Loans</h4>
-<p class="text-primary-fixed/80 text-sm">Short-term capital for quick transitions and acquisitions.</p>
-</div>
-</div>
-<!-- Card 5 -->
-<div class="group relative overflow-hidden rounded-3xl bg-surface-container h-[400px]">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Exterior of a contemporary boutique office building with sustainable design features" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6rk-iVyHYOyCnwOJ7h0tuLkgr2rFEUXgxC1_pxSDDAl5cV5hVQiWxOfyz_ircbfbD9JFPk89XWj4Krx3ZmfLLnCDsN9iqpk99YQGnfBA5U-IuQnNbhBWXnHqnb6UEfXdgoSlEk_iFTjjJ9Hod_c5U-OcMfSE3mF8gsqshCRjIeC5mlnvEKWdPemvQKHBjeV_W6n2WyDaCMqB9cQ7hmy8mxY8FluIsCVse5THX4OdEK-1DXjQQS91XLHCuHUF86vfCtpnXcGnIgkQ"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent"></div>
-<div class="absolute bottom-0 p-8">
-<h4 class="text-2xl font-bold text-on-primary mb-2">Commercial</h4>
-<p class="text-primary-fixed/80 text-sm">Multi-family and mixed-use specialized debt options.</p>
-</div>
-</div>
-<!-- Card 6 -->
-<div class="group relative overflow-hidden rounded-3xl bg-surface-container h-[400px]">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Close up of modern architectural details with concrete and wood textures in soft shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAd7kwivVhE0p_wWhArc_kL9JbqJfWRSUrrlB1wjAAjPwAlga01ak982ifp7nm7v-Vcl5RV6ipy1XWDtnwJbo00kFGhJtpTG8NRerN-ySoU-BazX9kfWBv8K536U6-LxwdiwDLixw8-Prz4zyXca4g-RluxWxyjjJ1BOA6zqzhpPuV4Z8MUFBA-EozGln7mSWnUZ-wUejiFeJ6gV7YJSxyVZbsYaQjqtNWdi6JraEIK9amcea5mwBqebOnuXALXI0TOkRWFJMsoIA"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent"></div>
-<div class="absolute bottom-0 p-8">
-<h4 class="text-2xl font-bold text-on-primary mb-2">Cash-Out Refi</h4>
-<p class="text-primary-fixed/80 text-sm">Unlock equity from your portfolio for your next project.</p>
-</div>
-</div>
-</div>
-</div>
+<section id="products" class="py-24 md:py-32 bg-surface">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-12">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 md:mb-16 reveal">
+      <h2 class="font-display text-4xl md:text-[2.75rem] font-semibold">Specialized Loan Products</h2>
+      <p class="text-on-surface-variant max-w-md text-sm md:text-base">Purpose-built programs for builders, flippers, and buy-and-hold operators.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <article class="product-card group relative overflow-hidden rounded-[1.75rem] bg-surface-container aspect-square md:aspect-auto md:h-[400px] card-lift reveal">
+        <img class="w-full h-full object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-105" alt="" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRwX0-wNY2NWsUiV7oqWDEb9ibrys2YKAvaxl-gxJ3o4C7w3mIDJvJ6QFizE_gaFFdVtZ6OsDzwkfHQNd_lQlY1gayVuP0kYk9yrNTXU6NHoIcET6Dt3gCVJC5BkGfHsLXvpQKOESOjpDcPdubZsUQlaYt2rY9X4uPqPWz0OHgZ5ncoAtmfZiz0MEQnyV4gRaPqM4OKE9rsy4-F2t3IxjKYGyDmgjRoiMZvJuOquztXNs7U3AOzDASftNfuauVrogc33nPxqrFR4g"/>
+        <div class="shine absolute inset-0 bg-gradient-to-tr from-white/25 via-transparent to-transparent mix-blend-overlay pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/35 to-transparent"></div>
+        <div class="absolute bottom-0 p-8 w-full">
+          <h4 class="text-2xl font-bold text-on-primary mb-2 font-display">New Construction</h4>
+          <p class="text-primary-fixed/85 text-sm leading-snug max-w-[28ch]">Up to 90% LTC with competitive interest-only periods.</p>
+        </div>
+      </article>
+      <article class="product-card group relative overflow-hidden rounded-[1.75rem] bg-surface-container h-[400px] card-lift reveal reveal-delay">
+        <img class="w-full h-full object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-105" alt="" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-CN6PRDJ1OsMUJNAU66_By9Ylxh0UOpcOnSq_ATh4vNi8LETRyiZqxtDghdFtgjisRlhtCcnqjYHnnbGaWMZorl8pdtI5sSOpS8iUAFuGYVHyeAQOc-ymqdIBThnVEaHp1qB5YLMMkNb5EeySw-HnMb6Xz66GHQwLjD_Qamv84eZXbcmK071PK0-bFB7sp1eIuMy9_3B8S3nKColdeEGB3VyTkFJOHZjFzvk3H4sC8oXsqpCv2BC2e0EVh-XR2YmD5ll4ei6NCo8"/>
+        <div class="shine absolute inset-0 bg-gradient-to-tr from-white/25 via-transparent to-transparent mix-blend-overlay pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/35 to-transparent"></div>
+        <div class="absolute bottom-0 p-8 w-full">
+          <h4 class="text-2xl font-bold text-on-primary mb-2 font-display">Fix &amp; Flip</h4>
+          <p class="text-primary-fixed/85 text-sm leading-snug max-w-[28ch]">Rapid funding for acquisition and 100% of rehab costs.</p>
+        </div>
+      </article>
+      <article class="product-card group relative overflow-hidden rounded-[1.75rem] bg-surface-container h-[400px] card-lift reveal reveal-delay-2">
+        <img class="w-full h-full object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-105" alt="" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMGbtoDdITqjAFw4sTaXxa7BFfF2O5pKT69H_FAMM_Rp3RQ2pmhBnmLAmm5N4X1frZIx8u5_-uZVw9tqPh5fTOuPmTzk_hwdNdZlDecF7kNsWLjE0bCNiwlWG7lpDZiDdhxVl0RhpH1CfuAdADNV2_Q3_I1ohhE8ojnqxiq4CqlnGtz9xUiepqNSe2sksSBZNOqHBwwIsXFb191wgCYIRxtPs1dBNIyrmbvqkP_baIqBAkTgWyX8WcgftWJghdr9Jh6ZM8foSqQbk"/>
+        <div class="shine absolute inset-0 bg-gradient-to-tr from-white/25 via-transparent to-transparent mix-blend-overlay pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/35 to-transparent"></div>
+        <div class="absolute bottom-0 p-8 w-full">
+          <h4 class="text-2xl font-bold text-on-primary mb-2 font-display">DSCR / Rental</h4>
+          <p class="text-primary-fixed/85 text-sm leading-snug max-w-[28ch]">No personal income verification—based on asset performance.</p>
+        </div>
+      </article>
+      <article class="product-card group relative overflow-hidden rounded-[1.75rem] bg-surface-container h-[400px] card-lift reveal">
+        <img class="w-full h-full object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-105" alt="" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAri4_JPmFQMn-r5TdGEoHiZYunq4q2zL4t1Hje4T16RX8imFwOUTqegXEcaHsAsQJOAc8mS5LSh__5pA82ucLgZGIIzd8dQNhDsDk0Y4C2S4M_N-9O49PWS6s2Itobn3733S57Vhi4hgC9Ht4-LfpiLqGHTr9KSLt1l1AESD2DvWdJTVg7BRms3_DejvcQdMSdKuQYyYl0bQ29D02E1G6W0ApIYR5MLHwnZUvuG56riEeStOeU4jPn-djhG9ZHXCrt3dBQVk3nsjo"/>
+        <div class="shine absolute inset-0 bg-gradient-to-tr from-white/25 via-transparent to-transparent mix-blend-overlay pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/35 to-transparent"></div>
+        <div class="absolute bottom-0 p-8 w-full">
+          <h4 class="text-2xl font-bold text-on-primary mb-2 font-display">Bridge Loans</h4>
+          <p class="text-primary-fixed/85 text-sm leading-snug max-w-[28ch]">Short-term capital for quick transitions and acquisitions.</p>
+        </div>
+      </article>
+      <article class="product-card group relative overflow-hidden rounded-[1.75rem] bg-surface-container h-[400px] card-lift reveal reveal-delay">
+        <img class="w-full h-full object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-105" alt="" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6rk-iVyHYOyCnwOJ7h0tuLkgr2rFEUXgxC1_pxSDDAl5cV5hVQiWxOfyz_ircbfbD9JFPk89XWj4Krx3ZmfLLnCDsN9iqpk99YQGnfBA5U-IuQnNbhBWXnHqnb6UEfXdgoSlEk_iFTjjJ9Hod_c5U-OcMfSE3mF8gsqshCRjIeC5mlnvEKWdPemvQKHBjeV_W6n2WyDaCMqB9cQ7hmy8mxY8FluIsCVse5THX4OdEK-1DXjQQS91XLHCuHUF86vfCtpnXcGnIgkQ"/>
+        <div class="shine absolute inset-0 bg-gradient-to-tr from-white/25 via-transparent to-transparent mix-blend-overlay pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/35 to-transparent"></div>
+        <div class="absolute bottom-0 p-8 w-full">
+          <h4 class="text-2xl font-bold text-on-primary mb-2 font-display">Commercial</h4>
+          <p class="text-primary-fixed/85 text-sm leading-snug max-w-[28ch]">Multi-family and mixed-use specialized debt options.</p>
+        </div>
+      </article>
+      <article class="product-card group relative overflow-hidden rounded-[1.75rem] bg-surface-container h-[400px] card-lift reveal reveal-delay-2">
+        <img class="w-full h-full object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-105" alt="" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAd7kwivVhE0p_wWhArc_kL9JbqJfWRSUrrlB1wjAAjPwAlga01ak982ifp7nm7v-Vcl5RV6ipy1XWDtnwJbo00kFGhJtpTG8NRerN-ySoU-BazX9kfWBv8K536U6-LxwdiwDLixw8-Prz4zyXca4g-RluxWxyjjJ1BOA6zqzhpPuV4Z8MUFBA-EozGln7mSWnUZ-wUejiFeJ6gV7YJSxyVZbsYaQjqtNWdi6JraEIK9amcea5mwBqebOnuXALXI0TOkRWFJMsoIA"/>
+        <div class="shine absolute inset-0 bg-gradient-to-tr from-white/25 via-transparent to-transparent mix-blend-overlay pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/35 to-transparent"></div>
+        <div class="absolute bottom-0 p-8 w-full">
+          <h4 class="text-2xl font-bold text-on-primary mb-2 font-display">Cash-Out Refi</h4>
+          <p class="text-primary-fixed/85 text-sm leading-snug max-w-[28ch]">Unlock equity from your portfolio for your next project.</p>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
+
 <!-- Comparison Table -->
-<section class="py-32 bg-surface-container">
-<div class="max-w-[1440px] mx-auto px-6 md:px-12">
-<h2 class="text-4xl md:text-5xl font-extrabold mb-16 text-center">Better Capital, Faster.</h2>
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="border-b border-outline-variant/30">
-<th class="py-6 px-4 font-bold text-lg">Feature</th>
-<th class="py-6 px-4 font-bold text-lg text-on-surface-variant">Doing It Yourself</th>
-<th class="py-6 px-4 font-bold text-lg text-primary bg-surface-container-lowest rounded-t-2xl border-x border-t border-outline-variant/10">With BuilderRates</th>
-</tr>
-</thead>
-<tbody class="text-on-surface-variant">
-<tr class="border-b border-outline-variant/10">
-<td class="py-8 px-4 font-semibold text-on-surface">Lender Access</td>
-<td class="py-8 px-4">1-3 (Your Network)</td>
-<td class="py-8 px-4 font-bold text-primary bg-surface-container-lowest border-x border-outline-variant/10">30+ Institutional Partners</td>
-</tr>
-<tr class="border-b border-outline-variant/10">
-<td class="py-8 px-4 font-semibold text-on-surface">Time Commitment</td>
-<td class="py-8 px-4">15+ Hours Calling &amp; Emailing</td>
-<td class="py-8 px-4 font-bold text-primary bg-surface-container-lowest border-x border-outline-variant/10">2 Minute Single Application</td>
-</tr>
-<tr class="border-b border-outline-variant/10">
-<td class="py-8 px-4 font-semibold text-on-surface">Value Score</td>
-<td class="py-8 px-4">Market Average</td>
-<td class="py-8 px-4 font-bold text-primary bg-surface-container-lowest border-x border-outline-variant/10">Top-Tier (1.4% Rate Savings)</td>
-</tr>
-<tr class="border-b border-outline-variant/10">
-<td class="py-8 px-4 font-semibold text-on-surface">Cost</td>
-<td class="py-8 px-4">Standard Origination</td>
-<td class="py-8 px-4 font-bold text-primary bg-surface-container-lowest rounded-b-2xl border-x border-b border-outline-variant/10">0 Out-of-Pocket</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<section class="py-24 md:py-32 bg-surface-container border-y border-outline-variant/10">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-12">
+    <div class="text-center mb-12 md:mb-16 reveal">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">Compare</p>
+      <h2 class="font-display text-4xl md:text-[2.75rem] font-semibold text-balance">Better capital, faster.</h2>
+    </div>
+    <div class="overflow-x-auto rounded-3xl border border-outline-variant/15 bg-surface-container-lowest/80 shadow-[var(--shadow-soft)] backdrop-blur-sm reveal">
+      <table class="w-full text-left min-w-[640px]">
+        <thead>
+          <tr class="border-b border-outline-variant/20">
+            <th class="py-5 px-5 md:px-8 font-bold text-sm uppercase tracking-wider text-on-surface-variant">Feature</th>
+            <th class="py-5 px-5 md:px-8 font-bold text-sm text-on-surface-variant">Doing It Yourself</th>
+            <th class="py-5 px-5 md:px-8 font-bold text-base text-primary bg-secondary-container/25 border-x border-secondary/15 rounded-t-2xl">With BuilderRates</th>
+          </tr>
+        </thead>
+        <tbody class="text-on-surface-variant text-sm md:text-[15px]">
+          <tr class="border-b border-outline-variant/10">
+            <td class="py-6 px-5 md:px-8 font-semibold text-on-surface">Lender Access</td>
+            <td class="py-6 px-5 md:px-8">1–3 (your network)</td>
+            <td class="py-6 px-5 md:px-8 font-semibold text-primary bg-secondary-container/15 border-x border-secondary/10">30+ institutional partners</td>
+          </tr>
+          <tr class="border-b border-outline-variant/10">
+            <td class="py-6 px-5 md:px-8 font-semibold text-on-surface">Time Commitment</td>
+            <td class="py-6 px-5 md:px-8">15+ hours calling &amp; emailing</td>
+            <td class="py-6 px-5 md:px-8 font-semibold text-primary bg-secondary-container/15 border-x border-secondary/10">2-minute single application</td>
+          </tr>
+          <tr class="border-b border-outline-variant/10">
+            <td class="py-6 px-5 md:px-8 font-semibold text-on-surface">Value Score</td>
+            <td class="py-6 px-5 md:px-8">Market average</td>
+            <td class="py-6 px-5 md:px-8 font-semibold text-primary bg-secondary-container/15 border-x border-secondary/10">Top tier (≈1.4% rate savings)</td>
+          </tr>
+          <tr>
+            <td class="py-6 px-5 md:px-8 font-semibold text-on-surface">Cost</td>
+            <td class="py-6 px-5 md:px-8">Standard origination</td>
+            <td class="py-6 px-5 md:px-8 font-semibold text-primary bg-secondary-container/15 border-x border-secondary/10 rounded-b-2xl">$0 out of pocket</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
+
 <!-- Testimonial Section -->
-<section class="py-32 bg-surface">
-<div class="max-w-[1440px] mx-auto px-6 md:px-12">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-<div class="relative">
-<div class="aspect-square rounded-[3rem] overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Confident professional man in mid-40s standing in front of a modern architectural project, dressed in smart casual attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf8upb415yXOMWnfuT2XcXt36pX5390iQweCbajANZ_NqCLqYChg_0R9oScQ0T5vRgt05RNXtYiTe-vRO31Idtf_ygg16cEs823f7hxTodHtucbmTV1NVN0AAcc5SFG3O8zpxywpajYY8fELFGrCTtwVZ1gUn8NOdn1J-mTCUoyGDuBVdcKxWOLvTN4SrUdJGyedBvTZWSi1_weoO7vEl3ZTIAMdXnxp2EjauS_RwxaSiejquXldb7LUosj7ShGmjGtkS43hh7j1w"/>
-</div>
-<div class="absolute -bottom-8 -right-8 bg-tertiary-fixed text-on-tertiary-fixed p-8 rounded-2xl shadow-xl max-w-sm">
-<span class="material-symbols-outlined text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">format_quote</span>
-<p class="font-bold text-lg leading-tight mb-4 italic">"They found me a lender I’d never heard of that offered 125bps lower than my usual bank. That’s $14k straight to my bottom line."</p>
-<div>
-<div class="font-black">Marcus R.</div>
-<div class="text-sm opacity-75">Fix &amp; Flip Investor | 24 Units Yearly</div>
-</div>
-</div>
-</div>
-<div>
-<h2 class="text-4xl md:text-5xl font-extrabold mb-8">Trusted by the Modern Developer.</h2>
-<div class="space-y-6">
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-secondary text-2xl">verified</span>
-<p class="text-on-surface-variant">Over $450M in construction volume analyzed in the last 12 months.</p>
-</div>
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-secondary text-2xl">verified</span>
-<p class="text-on-surface-variant">Exclusive access to institutional private debt funds.</p>
-</div>
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-secondary text-2xl">verified</span>
-<p class="text-on-surface-variant">Personal deal strategist assigned to every premium submission.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+<section id="testimonials" class="py-24 md:py-32 bg-surface">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+      <div class="relative reveal">
+        <div class="aspect-square rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-[var(--shadow-soft)] ring-1 ring-black/[0.06]">
+          <img class="w-full h-full object-cover" alt="" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf8upb415yXOMWnfuT2XcXt36pX5390iQweCbajANZ_NqCLqYChg_0R9oScQ0T5vRgt05RNXtYiTe-vRO31Idtf_ygg16cEs823f7hxTodHtucbmTV1NVN0AAcc5SFG3O8zpxywpajYY8fELFGrCTtwVZ1gUn8NOdn1J-mTCUoyGDuBVdcKxWOLvTN4SrUdJGyedBvTZWSi1_weoO7vEl3ZTIAMdXnxp2EjauS_RwxaSiejquXldb7LUosj7ShGmjGtkS43hh7j1w"/>
+        </div>
+        <figure class="absolute -bottom-8 -right-4 md:-right-8 bg-gradient-to-br from-tertiary-fixed to-[#e8b84a] text-on-tertiary-fixed p-8 rounded-2xl shadow-[var(--shadow-glow)] max-w-sm border border-white/20">
+          <span class="material-symbols-outlined text-4xl mb-3 opacity-90" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">format_quote</span>
+          <blockquote class="font-display font-semibold text-lg leading-snug mb-5">“They found a lender I’d never heard of—125 bps lower than my usual bank. That’s $14k to my bottom line.”</blockquote>
+          <figcaption>
+            <div class="font-bold tracking-tight">Marcus R.</div>
+            <div class="text-sm opacity-85 font-medium">Fix &amp; Flip investor · 24 units yearly</div>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="reveal reveal-delay">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">Proof</p>
+        <h2 class="font-display text-4xl md:text-[2.75rem] font-semibold mb-8 leading-tight">Trusted by the modern developer.</h2>
+        <ul class="space-y-6">
+          <li class="flex gap-4 items-start">
+            <span class="material-symbols-outlined text-secondary shrink-0 mt-0.5" aria-hidden="true">verified</span>
+            <p class="text-on-surface-variant leading-relaxed"><span class="text-on-surface font-semibold">$450M+</span> in construction volume analyzed in the last 12 months.</p>
+          </li>
+          <li class="flex gap-4 items-start">
+            <span class="material-symbols-outlined text-secondary shrink-0 mt-0.5" aria-hidden="true">verified</span>
+            <p class="text-on-surface-variant leading-relaxed">Access to institutional private debt funds—not just retail banks.</p>
+          </li>
+          <li class="flex gap-4 items-start">
+            <span class="material-symbols-outlined text-secondary shrink-0 mt-0.5" aria-hidden="true">verified</span>
+            <p class="text-on-surface-variant leading-relaxed">A deal strategist on premium submissions—real humans, real leverage.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
+
 <!-- FAQ Section -->
-<section class="py-32 bg-surface-container-low">
-<div class="max-w-[1440px] mx-auto px-6 md:px-12">
-<div class="text-center mb-16">
-<h2 class="text-4xl font-extrabold mb-4">Capital Intelligence FAQ</h2>
-</div>
-<div class="max-w-3xl mx-auto space-y-4">
-<details class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm" open="">
-<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-on-surface">
-                        How is this free for me?
-                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
-</summary>
-<div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
-                        We are compensated by our lender partners for bringing them high-quality, pre-vetted deals. Our service is 100% free for the investor, and we never add extra fees on top of the lender's quote.
-                    </div>
-</details>
-<details class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm">
-<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-on-surface">
-                        Do I have to use the lender you recommend?
-                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
-</summary>
-<div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
-                        No. You are under no obligation to use any of our recommendations. We provide the data and the options; the final decision is always yours.
-                    </div>
-</details>
-<details class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm">
-<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-on-surface">
-                        Will this impact my credit score?
-                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
-</summary>
-<div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
-                        Initial analysis and preliminary term sheets are generated using a soft credit pull which does not impact your score. Only when you proceed to a full application with a specific lender will a hard pull occur.
-                    </div>
-</details>
-<details class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm">
-<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-on-surface">
-                        How fast can I get funded?
-                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
-</summary>
-<div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
-                        Term sheets are usually delivered within 48 hours. Depending on the product (e.g., Fix &amp; Flip), funding can occur in as little as 7-10 business days.
-                    </div>
-</details>
-<details class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm">
-<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-on-surface">
-                        What areas do you cover?
-                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
-</summary>
-<div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
-                        We facilitate financing for residential and commercial investment properties in all 50 U.S. states.
-                    </div>
-</details>
-</div>
-</div>
+<section class="py-24 md:py-32 bg-surface-container-low/90 border-t border-outline-variant/10">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-12">
+    <div class="text-center mb-12 md:mb-16 reveal">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-4">FAQ</p>
+      <h2 class="font-display text-4xl md:text-[2.75rem] font-semibold">Capital intelligence FAQ</h2>
+    </div>
+    <div class="max-w-3xl mx-auto space-y-3">
+      <details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/15 overflow-hidden shadow-sm reveal" open>
+        <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-on-surface list-none focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-secondary">
+          How is this free for me?
+          <span class="material-symbols-outlined shrink-0 transition-transform duration-300 group-open:rotate-180" aria-hidden="true">expand_more</span>
+        </summary>
+        <div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed border-t border-outline-variant/10 pt-4">
+          We’re compensated by lender partners for high-quality, pre-vetted deals. Our service is free to you—we don’t stack extra fees on the lender’s quote.
+        </div>
+      </details>
+      <details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/15 overflow-hidden shadow-sm reveal">
+        <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-on-surface list-none focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-secondary">
+          Do I have to use the lender you recommend?
+          <span class="material-symbols-outlined shrink-0 transition-transform duration-300 group-open:rotate-180" aria-hidden="true">expand_more</span>
+        </summary>
+        <div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed border-t border-outline-variant/10 pt-4">
+          No. You’re never obligated to use our recommendations—we provide options; you choose.
+        </div>
+      </details>
+      <details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/15 overflow-hidden shadow-sm reveal">
+        <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-on-surface list-none focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-secondary">
+          Will this impact my credit score?
+          <span class="material-symbols-outlined shrink-0 transition-transform duration-300 group-open:rotate-180" aria-hidden="true">expand_more</span>
+        </summary>
+        <div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed border-t border-outline-variant/10 pt-4">
+          Initial analysis uses a soft pull that doesn’t affect your score. A hard pull happens only when you proceed with a specific lender’s full application.
+        </div>
+      </details>
+      <details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/15 overflow-hidden shadow-sm reveal">
+        <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-on-surface list-none focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-secondary">
+          How fast can I get funded?
+          <span class="material-symbols-outlined shrink-0 transition-transform duration-300 group-open:rotate-180" aria-hidden="true">expand_more</span>
+        </summary>
+        <div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed border-t border-outline-variant/10 pt-4">
+          Term sheets often land within 48 hours. Depending on product, funding can hit in as little as 7–10 business days.
+        </div>
+      </details>
+      <details class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/15 overflow-hidden shadow-sm reveal">
+        <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-on-surface list-none focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-secondary">
+          What areas do you cover?
+          <span class="material-symbols-outlined shrink-0 transition-transform duration-300 group-open:rotate-180" aria-hidden="true">expand_more</span>
+        </summary>
+        <div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed border-t border-outline-variant/10 pt-4">
+          Residential and commercial investment properties in all 50 U.S. states.
+        </div>
+      </details>
+    </div>
+  </div>
 </section>
+
 <!-- Final CTA -->
-<section class="py-24 bg-surface">
-<div class="max-w-[1440px] mx-auto px-6 md:px-12">
-<div class="bg-primary rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden">
-<!-- Background Decoration -->
-<div class="absolute top-0 right-0 w-1/3 h-full bg-secondary/10 rotate-12 translate-x-12 translate-y-12"></div>
-<div class="relative z-10">
-<span class="bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full text-xs font-bold uppercase mb-8 inline-block">
-                        Limited: 15 New Analyses Available This Week
-                    </span>
-<h2 class="text-4xl md:text-6xl font-extrabold text-on-primary mb-8 max-w-4xl mx-auto leading-tight">
-                        Stop leaving profit on the table. Audit your capital today.
-                    </h2>
-<button class="bg-tertiary-fixed text-on-tertiary-fixed px-10 py-5 rounded-xl text-xl font-bold hover:scale-[1.05] transition-transform flex items-center justify-center mx-auto shadow-2xl">
-                        Get My Rate Analysis <span class="material-symbols-outlined ml-2">arrow_forward</span>
-</button>
-<p class="text-primary-fixed/60 mt-8 text-sm">Takes less than 2 minutes. Completely confidential.</p>
-</div>
-</div>
-</div>
+<section class="py-20 md:py-28 bg-surface">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-12">
+    <div class="relative rounded-[2.5rem] md:rounded-[3rem] p-12 md:p-20 lg:p-24 text-center overflow-hidden bg-gradient-to-br from-primary via-[#063d28] to-primary text-on-primary shadow-[var(--shadow-soft)] ring-1 ring-white/10 reveal">
+      <div class="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-secondary/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-black/20 to-transparent pointer-events-none" aria-hidden="true"></div>
+      <div class="relative z-10">
+        <span class="inline-flex items-center gap-2 bg-secondary-container/25 text-secondary-fixed border border-secondary/30 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.18em] mb-8">
+          Limited · 15 analyses this week
+        </span>
+        <h2 class="font-display text-3xl sm:text-5xl md:text-6xl font-semibold mb-8 max-w-4xl mx-auto leading-[1.08] text-balance">
+          Stop leaving profit on the table. Audit your capital today.
+        </h2>
+        <button type="button" class="btn-primary inline-flex bg-tertiary-fixed text-on-tertiary-fixed px-10 py-5 rounded-2xl text-lg font-bold items-center gap-2 shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary">
+          Get My Rate Analysis
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        </button>
+        <p class="text-primary-fixed/65 mt-8 text-sm font-medium">Takes under 2 minutes. Completely confidential.</p>
+      </div>
+    </div>
+  </div>
 </section>
+
 <!-- Footer -->
-<footer class="bg-surface-container py-20">
-<div class="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:flex lg:justify-between items-start gap-12">
-<div class="max-w-xs">
-<div class="text-xl font-black text-[#012d1d] mb-6">BuilderRates</div>
-<p class="text-[#181a2e]/70 text-sm leading-relaxed mb-6">
-                    Professional debt matchmaking for the sovereign modernist developer. Maximizing yields through institutional capital access.
-                </p>
-<div class="flex gap-4">
-<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-sm">hub</span>
-</div>
-<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-sm">public</span>
-</div>
-</div>
-</div>
-<div>
-<h5 class="font-bold text-on-surface mb-6 uppercase tracking-widest text-xs">Resources</h5>
-<ul class="space-y-4">
-<li><a class="text-[#181a2e]/70 text-sm hover:text-[#2c694e] transition-colors" href="#">Privacy Policy</a></li>
-<li><a class="text-[#181a2e]/70 text-sm hover:text-[#2c694e] transition-colors" href="#">Terms of Service</a></li>
-<li><a class="text-[#181a2e]/70 text-sm hover:text-[#2c694e] transition-colors" href="#">Investment Disclosures</a></li>
-<li><a class="text-[#181a2e]/70 text-sm hover:text-[#2c694e] transition-colors" href="#">Licensing</a></li>
-</ul>
-</div>
-<div>
-<h5 class="font-bold text-on-surface mb-6 uppercase tracking-widest text-xs">Products</h5>
-<ul class="space-y-4">
-<li><a class="text-[#181a2e]/70 text-sm hover:text-[#2c694e] transition-colors" href="#">Construction Debt</a></li>
-<li><a class="text-[#181a2e]/70 text-sm hover:text-[#2c694e] transition-colors" href="#">Bridge Financing</a></li>
-<li><a class="text-[#181a2e]/70 text-sm hover:text-[#2c694e] transition-colors" href="#">DSCR Loans</a></li>
-<li><a class="text-[#181a2e]/70 text-sm hover:text-[#2c694e] transition-colors" href="#">Refinance Portfolio</a></li>
-</ul>
-</div>
-<div class="lg:max-w-sm">
-<h5 class="font-bold text-on-surface mb-6 uppercase tracking-widest text-xs">Market Updates</h5>
-<p class="text-sm text-[#181a2e]/70 mb-4">Get weekly rate volatility reports delivered to your inbox.</p>
-<form class="flex gap-2">
-<input class="bg-surface-container-lowest border-outline-variant/30 rounded-lg px-4 py-2 flex-1 text-sm focus:ring-secondary focus:border-secondary" placeholder="Email" type="email"/>
-<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-widest">Join</button>
-</form>
-</div>
-</div>
-<div class="max-w-[1440px] mx-auto px-12 mt-20 pt-8 border-t border-outline-variant/20">
-<p class="text-center md:text-left text-[#181a2e]/70 text-sm">© 2024 BuilderRates. All rights reserved. Built for the Sovereign Modernist.</p>
-</div>
+<footer class="bg-surface-container border-t border-outline-variant/15 py-16 md:py-20">
+  <div class="max-w-[1440px] mx-auto px-5 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:flex lg:justify-between items-start gap-12">
+    <div class="max-w-xs">
+      <div class="font-display text-xl font-semibold text-primary mb-5">BuilderRates</div>
+      <p class="text-on-surface/70 text-sm leading-relaxed mb-6">
+        Debt matchmaking for builders who care about yield—without the bank-runaround.
+      </p>
+      <div class="flex gap-3" aria-label="Social">
+        <a href="#" class="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center text-primary hover:bg-primary/15 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary" aria-label="Network"><span class="material-symbols-outlined text-lg" aria-hidden="true">hub</span></a>
+        <a href="#" class="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center text-primary hover:bg-primary/15 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary" aria-label="Coverage"><span class="material-symbols-outlined text-lg" aria-hidden="true">public</span></a>
+      </div>
+    </div>
+    <div>
+      <h5 class="font-bold text-on-surface mb-5 uppercase tracking-[0.18em] text-[11px]">Resources</h5>
+      <ul class="space-y-3">
+        <li><a class="text-on-surface/70 text-sm hover:text-secondary transition-colors focus:outline-none focus-visible:underline" href="#">Privacy Policy</a></li>
+        <li><a class="text-on-surface/70 text-sm hover:text-secondary transition-colors focus:outline-none focus-visible:underline" href="#">Terms of Service</a></li>
+        <li><a class="text-on-surface/70 text-sm hover:text-secondary transition-colors focus:outline-none focus-visible:underline" href="#">Investment Disclosures</a></li>
+        <li><a class="text-on-surface/70 text-sm hover:text-secondary transition-colors focus:outline-none focus-visible:underline" href="#">Licensing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold text-on-surface mb-5 uppercase tracking-[0.18em] text-[11px]">Products</h5>
+      <ul class="space-y-3">
+        <li><a class="text-on-surface/70 text-sm hover:text-secondary transition-colors" href="#products">Construction Debt</a></li>
+        <li><a class="text-on-surface/70 text-sm hover:text-secondary transition-colors" href="#products">Bridge Financing</a></li>
+        <li><a class="text-on-surface/70 text-sm hover:text-secondary transition-colors" href="#products">DSCR Loans</a></li>
+        <li><a class="text-on-surface/70 text-sm hover:text-secondary transition-colors" href="#products">Refinance Portfolio</a></li>
+      </ul>
+    </div>
+    <div class="lg:max-w-sm">
+      <h5 class="font-bold text-on-surface mb-5 uppercase tracking-[0.18em] text-[11px]">Market updates</h5>
+      <p class="text-sm text-on-surface/70 mb-4">Weekly rate volatility briefs in your inbox.</p>
+      <form class="flex flex-col sm:flex-row gap-2" action="#" method="post">
+        <label class="sr-only" for="email-updates">Email</label>
+        <input id="email-updates" name="email" class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl px-4 py-2.5 flex-1 text-sm focus:ring-2 focus:ring-secondary focus:border-secondary outline-none" placeholder="you@company.com" type="email" autocomplete="email"/>
+        <button type="submit" class="bg-primary text-on-primary px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest btn-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary">Join</button>
+      </form>
+    </div>
+  </div>
+  <div class="max-w-[1440px] mx-auto px-5 md:px-12 mt-14 pt-8 border-t border-outline-variant/15">
+    <p class="text-center md:text-left text-on-surface/60 text-sm">© 2026 BuilderRates. All rights reserved.</p>
+  </div>
 </footer>
-</body></html>
+
+<script>
+(function () {
+  var nav = document.getElementById("site-nav");
+  var toggle = document.getElementById("nav-toggle");
+  var menu = document.getElementById("mobile-menu");
+  var iconMenu = document.getElementById("nav-icon-menu");
+  var iconClose = document.getElementById("nav-icon-close");
+
+  function setOpen(open) {
+    if (!menu || !toggle) return;
+    menu.classList.toggle("hidden", !open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    if (iconMenu && iconClose) {
+      iconMenu.classList.toggle("hidden", open);
+      iconClose.classList.toggle("hidden", !open);
+    }
+  }
+
+  if (toggle && menu) {
+    toggle.addEventListener("click", function () {
+      setOpen(menu.classList.contains("hidden"));
+    });
+    menu.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () { setOpen(false); });
+    });
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!nav) return;
+    if (window.scrollY > 12) {
+      nav.classList.add("shadow-md", "shadow-primary/5");
+    } else {
+      nav.classList.remove("shadow-md", "shadow-primary/5");
+    }
+  }, { passive: true });
+
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var els = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window && els.length) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+      els.forEach(function (el) { io.observe(el); });
+    } else {
+      els.forEach(function (el) { el.classList.add("is-visible"); });
+    }
+  } else {
+    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("is-visible"); });
+  }
+})();
+</script>
+</body>
+</html>
