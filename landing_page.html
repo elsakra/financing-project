@@ -2,7 +2,7 @@
 <html class="light" lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"/>
 <meta name="format-detection" content="telephone=no"/>
 <link rel="alternate" hreflang="en-US" href="https://financing-project.vercel.app/"/>
 <link rel="alternate" hreflang="x-default" href="https://financing-project.vercel.app/"/>
@@ -42,10 +42,10 @@
 </script>
 <script type="application/ld+json" id="faq-schema">
 {"@context":"https://schema.org","@type":"FAQPage","url":"https://financing-project.vercel.app/#faq","mainEntity":[
-{"@type":"Question","name":"How is this free for me?","acceptedAnswer":{"@type":"Answer","text":"We are compensated by lender partners for high-quality, pre-vetted deals. Our service is free to you—we do not stack extra fees on the lender quote."}},
-{"@type":"Question","name":"Do I have to use the lender you recommend?","acceptedAnswer":{"@type":"Answer","text":"No. You are under no obligation to use any recommendation—we provide options; you choose."}},
-{"@type":"Question","name":"Will this impact my credit score?","acceptedAnswer":{"@type":"Answer","text":"Initial analysis uses a soft pull that does not affect your score. A hard pull occurs only when you proceed with a specific lender full application."}},
-{"@type":"Question","name":"How fast can I get funded?","acceptedAnswer":{"@type":"Answer","text":"Term sheets often arrive within 48 hours. Funding timing depends on product and underwriting."}},
+{"@type":"Question","name":"How is this free for me?","acceptedAnswer":{"@type":"Answer","text":"We’re compensated by lender partners for high-quality, pre-vetted deals. Our service is free to you—we don’t stack extra fees on the lender’s quote."}},
+{"@type":"Question","name":"Do I have to use the lender you recommend?","acceptedAnswer":{"@type":"Answer","text":"No. You’re never obligated to use our recommendations—we provide options; you choose."}},
+{"@type":"Question","name":"Will this impact my credit score?","acceptedAnswer":{"@type":"Answer","text":"Initial analysis uses a soft pull that doesn’t affect your score. A hard pull happens only when you proceed with a specific lender’s full application."}},
+{"@type":"Question","name":"How fast can I get funded?","acceptedAnswer":{"@type":"Answer","text":"Term sheets often land within 48 hours. Depending on product, funding can hit in as little as 7–10 business days."}},
 {"@type":"Question","name":"What areas do you cover?","acceptedAnswer":{"@type":"Answer","text":"Residential and commercial investment properties in all 50 U.S. states."}}
 ]}
 </script>
@@ -232,6 +232,14 @@ tailwind.config = {
   }
   @media (prefers-reduced-motion: reduce) {
     details summary .transition-transform { transition: none !important; }
+  }
+  /* Main/footer columns: respect notch / home-indicator on small screens */
+  @media (max-width: 767.98px) {
+    body main .max-w-6xl.mx-auto.px-5,
+    body footer .max-w-6xl.mx-auto.px-5 {
+      padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+      padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+    }
   }
 </style>
 </head>
@@ -885,6 +893,21 @@ window.BuilderRatesTrack = function (name) {
 (function () {
   var BR = window.BUILDERRATES || {};
 
+  function utmQueryString() {
+    try {
+      var u = new URLSearchParams(typeof location !== "undefined" ? location.search || "" : "");
+      var keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "fbclid"];
+      var parts = [];
+      keys.forEach(function (k) {
+        var v = u.get(k);
+        if (v) parts.push(k + "=" + v);
+      });
+      return parts.length ? parts.join("&") : "";
+    } catch (e) {
+      return "";
+    }
+  }
+
   function normalizeBase(u) {
     if (u == null || typeof u !== "string") return "";
     return u.trim().replace(/\/?$/, "/");
@@ -1290,7 +1313,9 @@ window.BuilderRatesTrack = function (name) {
     };
     var body = Object.keys(payload).map(function (k) { return k + ": " + (payload[k] || ""); }).join("\n");
     var pageUrl = typeof location !== "undefined" ? location.href : "";
-    var fullMessage = body + "\n\npageUrl: " + pageUrl + "\nsource: landing-lead";
+    var utm = utmQueryString();
+    var fullMessage =
+      body + "\n\npageUrl: " + pageUrl + (utm ? "\nattribution: " + utm : "") + "\nsource: landing-lead";
     var url = BR.formspreeUrl && String(BR.formspreeUrl).trim();
 
     function resetSubmitBtn() {
@@ -1364,6 +1389,7 @@ window.BuilderRatesTrack = function (name) {
     leadData.email = document.getElementById("lead-email").value.trim();
     leadData.phone = document.getElementById("lead-phone").value.trim();
     if (!leadData.name || !leadData.email) return;
+    if (window.BuilderRatesTrack) window.BuilderRatesTrack("lead-funnel-step2");
     leadStep1.classList.add("hidden");
     leadStep2.classList.remove("hidden");
     setTimeout(function () {
@@ -1439,6 +1465,7 @@ window.BuilderRatesTrack = function (name) {
       }
       if (!input || !input.value) return;
       var em = BR.leadEmail || "hello@builderrates.com";
+      var utm = utmQueryString();
       var nu = BR.newsletterUrl && String(BR.newsletterUrl).trim();
       function resetNBtn() {
         if (nSub) {
@@ -1448,7 +1475,19 @@ window.BuilderRatesTrack = function (name) {
       }
       function mailtoFallback() {
         if (window.BuilderRatesTrack) window.BuilderRatesTrack("newsletter-mailto-fallback");
-        var href = "mailto:" + em + "?subject=" + encodeURIComponent("Newsletter signup") + "&body=" + encodeURIComponent("Please add: " + input.value + "\n\npageUrl: " + (typeof location !== "undefined" ? location.href : ""));
+        var href =
+          "mailto:" +
+          em +
+          "?subject=" +
+          encodeURIComponent("Newsletter signup") +
+          "&body=" +
+          encodeURIComponent(
+            "Please add: " +
+              input.value +
+              "\n\npageUrl: " +
+              (typeof location !== "undefined" ? location.href : "") +
+              (utm ? "\nattribution: " + utm : "")
+          );
         st.innerHTML = "<a href=\"" + href + "\" class=\"text-primary font-medium underline\">Open email to complete signup</a>";
         st.classList.remove("hidden");
         resetNBtn();
@@ -1465,7 +1504,12 @@ window.BuilderRatesTrack = function (name) {
             email: input.value,
             _replyto: input.value,
             _subject: "BuilderRates newsletter signup",
-            message: "Newsletter signup: " + input.value + "\npageUrl: " + (typeof location !== "undefined" ? location.href : "")
+            message:
+              "Newsletter signup: " +
+              input.value +
+              "\npageUrl: " +
+              (typeof location !== "undefined" ? location.href : "") +
+              (utm ? "\nattribution: " + utm : "")
           })
         })
           .then(function (r) {
@@ -1536,6 +1580,27 @@ window.BuilderRatesTrack = function (name) {
   }
 
   /* Deep links for ads/email: #get-started, #rate-analysis, #apply, ?open=lead, ?lead=1 */
+  function stripCampaignFromUrl() {
+    try {
+      var u = new URL(location.href);
+      var changed = false;
+      if (u.searchParams.get("open") === "lead") {
+        u.searchParams.delete("open");
+        changed = true;
+      }
+      if (u.searchParams.get("lead") === "1") {
+        u.searchParams.delete("lead");
+        changed = true;
+      }
+      var hh = (u.hash || "").replace(/^#/, "");
+      if (hh === "get-started" || hh === "rate-analysis" || hh === "apply") {
+        u.hash = "";
+        changed = true;
+      }
+      if (changed) history.replaceState(null, "", u.pathname + u.search + u.hash);
+    } catch (e0) {}
+  }
+
   function maybeOpenLeadFromCampaign() {
     try {
       var h = (location.hash || "").replace(/^#/, "");
@@ -1543,6 +1608,7 @@ window.BuilderRatesTrack = function (name) {
         setTimeout(function () {
           if (window.BuilderRatesTrack) window.BuilderRatesTrack("lead-open-campaign-hash");
           openLeadModal();
+          stripCampaignFromUrl();
         }, 350);
         return;
       }
@@ -1551,6 +1617,7 @@ window.BuilderRatesTrack = function (name) {
         setTimeout(function () {
           if (window.BuilderRatesTrack) window.BuilderRatesTrack("lead-open-campaign-query");
           openLeadModal();
+          stripCampaignFromUrl();
         }, 350);
       }
     } catch (e) {}
