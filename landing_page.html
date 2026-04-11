@@ -10,6 +10,8 @@
 <meta name="author" content="BuilderRates"/>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
 <meta name="theme-color" content="#012d1d"/>
+<meta name="apple-mobile-web-app-title" content="BuilderRates"/>
+<meta name="mobile-web-app-capable" content="yes"/>
 <link rel="canonical" href="https://financing-project.vercel.app/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="BuilderRates"/>
@@ -49,12 +51,19 @@
 {"@context":"https://schema.org","@type":"Organization","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Debt placement and rate analysis for real estate investors.","logo":{"@type":"ImageObject","url":"https://financing-project.vercel.app/favicon.svg"},"sameAs":["https://www.linkedin.com/company/builderrates"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"hello@builderrates.com","areaServed":"US","availableLanguage":"en"}}
 </script>
 <script type="application/ld+json" id="ld-json-website">
-{"@context":"https://schema.org","@type":"WebSite","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Institutional financing matchmaking for real estate investors."}
+{"@context":"https://schema.org","@type":"WebSite","@id":"https://financing-project.vercel.app/#website","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Institutional financing matchmaking for real estate investors.","potentialAction":{"@type":"ContactAction","name":"Email BuilderRates","target":{"@type":"EntryPoint","urlTemplate":"mailto:hello@builderrates.com?subject=Rate%20analysis%20request","actionPlatform":["http://schema.org/DesktopWebPlatform","http://schema.org/MobileWebPlatform"]}}}
+</script>
+<script type="application/ld+json" id="ld-json-webpage">
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://financing-project.vercel.app/#webpage","name":"BuilderRates | High-Performance Financing for Real Estate Investors","description":"Compare 30+ institutional lenders for real estate investment deals. Free rate analysis, no obligation.","url":"https://financing-project.vercel.app/","inLanguage":"en-US","isPartOf":{"@id":"https://financing-project.vercel.app/#website"},"about":{"@type":"FinancialService","name":"BuilderRates","url":"https://financing-project.vercel.app/"}}
+</script>
+<script type="application/ld+json" id="ld-json-breadcrumb">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://financing-project.vercel.app/"}]}
 </script>
 <link rel="preload" as="image" href="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8" fetchpriority="high"/>
 <link rel="dns-prefetch" href="https://cdn.tailwindcss.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -109,6 +118,13 @@ tailwind.config = {
     font-family: var(--font-sans);
     font-feature-settings: "ss01" on, "cv01" on;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  details summary {
+    touch-action: manipulation;
+    min-height: 2.75rem;
+    align-items: center;
   }
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
@@ -218,7 +234,7 @@ tailwind.config = {
         <a class="nav-link" href="#faq" data-section="faq">FAQ</a>
       </div>
       <div class="flex items-center gap-3">
-        <button type="button" class="btn-primary js-open-lead hidden sm:inline-flex bg-primary text-on-primary px-4 py-2 rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+        <button type="button" data-br-track="cta-nav-desktop" class="btn-primary js-open-lead hidden sm:inline-flex bg-primary text-on-primary px-4 py-2 rounded-md text-sm font-semibold min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
           Get rate analysis
         </button>
         <button type="button" id="nav-toggle" class="md:hidden inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-md border border-line bg-white text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-expanded="false" aria-controls="mobile-menu">
@@ -234,13 +250,13 @@ tailwind.config = {
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#compare" data-section="compare">Compare</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#testimonials" data-section="testimonials">Testimonials</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#faq" data-section="faq">FAQ</a>
-      <button type="button" class="mt-4 w-full btn-primary js-open-lead bg-primary text-on-primary py-3 rounded-md font-semibold text-sm">Get rate analysis</button>
+      <button type="button" data-br-track="cta-nav-mobile" class="mt-4 w-full btn-primary js-open-lead bg-primary text-on-primary py-3 min-h-[48px] rounded-md font-semibold text-sm">Get rate analysis</button>
     </div>
   </nav>
 </header>
 
 <div id="sticky-quick-actions" class="sticky-safe fixed bottom-0 left-0 right-0 z-[90] md:hidden border-t border-line bg-white/95 backdrop-blur-sm px-4 pt-3 flex gap-2 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]" role="region" aria-label="Quick actions">
-  <button type="button" class="js-open-lead flex-1 btn-primary bg-primary text-on-primary py-3 min-h-[48px] rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Get rate analysis</button>
+  <button type="button" data-br-track="cta-sticky" class="js-open-lead flex-1 btn-primary bg-primary text-on-primary py-3 min-h-[48px] rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Get rate analysis</button>
   <a href="mailto:hello@builderrates.com" id="sticky-email-link" class="inline-flex items-center justify-center min-h-[48px] min-w-[4.5rem] px-4 py-3 rounded-md text-sm font-semibold border border-line bg-white text-ink touch-manipulation">Email</a>
 </div>
 
@@ -263,7 +279,7 @@ tailwind.config = {
       </p>
       <p class="reveal reveal-delay-3 text-[11px] text-zinc-400 mb-3 md:hidden">HTTPS · We never sell your contact info</p>
       <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-3">
-        <button type="button" class="js-open-lead btn-primary group bg-primary text-on-primary px-6 py-3.5 rounded-md text-sm font-semibold flex items-center justify-center gap-2 min-h-[48px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+        <button type="button" data-br-track="cta-hero-primary" class="js-open-lead btn-primary group bg-primary text-on-primary px-6 py-3.5 rounded-md text-sm font-semibold flex items-center justify-center gap-2 min-h-[48px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
           Get rate analysis
           <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
         </button>
@@ -291,6 +307,12 @@ tailwind.config = {
       </div>
     </div>
   </div>
+</section>
+
+<section class="bg-zinc-50/90 border-b border-line py-4 md:py-3" aria-label="What to expect">
+  <p class="text-center text-[11px] sm:text-xs text-zinc-600 px-5 max-w-2xl mx-auto leading-relaxed">
+    <span class="text-ink font-medium">How it works:</span> 2-minute brief → we match 30+ lenders → you compare term sheets. Replies within one business day.
+  </p>
 </section>
 
 <!-- Proof Bar (Stats) -->
@@ -437,7 +459,7 @@ tailwind.config = {
       <p class="text-zinc-600 max-w-md text-sm md:text-base">Purpose-built programs for builders, flippers, and buy-and-hold operators.</p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-      <article class="group relative overflow-hidden rounded-md bg-zinc-100 aspect-square md:aspect-auto md:h-[380px] border border-line reveal">
+      <article class="group relative overflow-hidden rounded-md bg-zinc-100 aspect-[4/5] sm:aspect-square md:aspect-auto md:h-[380px] border border-line reveal">
         <img class="product-card-img w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="New construction site with framing and cranes" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRwX0-wNY2NWsUiV7oqWDEb9ibrys2YKAvaxl-gxJ3o4C7w3mIDJvJ6QFizE_gaFFdVtZ6OsDzwkfHQNd_lQlY1gayVuP0kYk9yrNTXU6NHoIcET6Dt3gCVJC5BkGfHsLXvpQKOESOjpDcPdubZsUQlaYt2rY9X4uPqPWz0OHgZ5ncoAtmfZiz0MEQnyV4gRaPqM4OKE9rsy4-F2t3IxjKYGyDmgjRoiMZvJuOquztXNs7U3AOzDASftNfuauVrogc33nPxqrFR4g"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
@@ -495,8 +517,9 @@ tailwind.config = {
     <div class="text-center mb-12 md:mb-14 reveal">
       <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-4">Compare</p>
       <h2 id="compare-heading" class="font-display text-3xl md:text-4xl font-semibold text-balance text-ink">Better capital, faster.</h2>
+      <p class="text-xs text-zinc-500 mt-3 md:hidden" aria-hidden="true">Swipe horizontally to see all columns</p>
     </div>
-    <div class="overflow-x-auto border border-line bg-white reveal touch-pan-x" role="region" aria-labelledby="compare-heading">
+    <div class="overflow-x-auto border border-line bg-white reveal touch-pan-x overscroll-x-contain" role="region" aria-labelledby="compare-heading">
       <table class="w-full text-left min-w-[640px] text-sm md:text-[15px]">
         <caption class="sr-only">Comparison of shopping lenders yourself versus using BuilderRates</caption>
         <thead>
@@ -531,7 +554,7 @@ tailwind.config = {
       </table>
     </div>
     <div class="text-center mt-10 reveal">
-      <button type="button" class="js-open-lead btn-primary inline-flex bg-primary text-on-primary px-8 py-3.5 rounded-md text-sm font-semibold items-center gap-2 min-h-[48px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+      <button type="button" data-br-track="cta-compare" class="js-open-lead btn-primary inline-flex bg-primary text-on-primary px-8 py-3.5 rounded-md text-sm font-semibold items-center gap-2 min-h-[48px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
         Get my personalized comparison
         <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
       </button>
@@ -645,7 +668,7 @@ tailwind.config = {
         <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-semibold mb-8 max-w-3xl mx-auto leading-[1.1] text-balance">
           Stop leaving profit on the table. Audit your capital today.
         </h2>
-        <button type="button" class="js-open-lead btn-primary inline-flex bg-tertiary-fixed text-on-tertiary-fixed px-8 py-3.5 rounded-md text-sm font-semibold items-center gap-2 min-h-[48px] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary">
+        <button type="button" data-br-track="cta-final" class="js-open-lead btn-primary inline-flex bg-tertiary-fixed text-on-tertiary-fixed px-8 py-3.5 rounded-md text-sm font-semibold items-center gap-2 min-h-[48px] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary">
           Get rate analysis
           <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
         </button>
@@ -813,6 +836,11 @@ window.BUILDERRATES.siteUrl = "";
 window.BUILDERRATES.leadEmail = "hello@builderrates.com";
 window.BUILDERRATES.formspreeUrl = "";
 window.BUILDERRATES.newsletterUrl = "";
+window.BuilderRatesTrack = function (name) {
+  try {
+    window.dispatchEvent(new CustomEvent("br:track", { detail: { name: name, t: Date.now() } }));
+  } catch (e) {}
+};
 </script>
 <script>
 (function () {
@@ -875,6 +903,23 @@ window.BUILDERRATES.newsletterUrl = "";
     });
     patchLd("ld-json-website", function (o) {
       o.url = base;
+      var root = base.replace(/\/?$/, "");
+      o["@id"] = root + "/#website";
+      var email = (BR.leadEmail && String(BR.leadEmail).trim()) || "hello@builderrates.com";
+      if (o.potentialAction && o.potentialAction.target) {
+        o.potentialAction.target.urlTemplate =
+          "mailto:" + email + "?subject=" + encodeURIComponent("Rate analysis request");
+      }
+    });
+    patchLd("ld-json-webpage", function (o) {
+      o.url = base;
+      var root = base.replace(/\/?$/, "");
+      o["@id"] = root + "/#webpage";
+      if (o.isPartOf && typeof o.isPartOf === "object") o.isPartOf["@id"] = root + "/#website";
+      if (o.about && typeof o.about === "object") o.about.url = base;
+    });
+    patchLd("ld-json-breadcrumb", function (o) {
+      if (o.itemListElement && o.itemListElement[0]) o.itemListElement[0].item = base;
     });
     patchLd("faq-schema", function (o) {
       var root = base.replace(/\/?$/, "");
@@ -883,6 +928,17 @@ window.BUILDERRATES.newsletterUrl = "";
   }
 
   applySiteBase();
+
+  document.addEventListener(
+    "click",
+    function (e) {
+      var el = e.target && e.target.closest && e.target.closest("[data-br-track]");
+      if (!el) return;
+      var n = el.getAttribute("data-br-track");
+      if (n && window.BuilderRatesTrack) window.BuilderRatesTrack("click:" + n);
+    },
+    true
+  );
 
   var nav = document.getElementById("site-nav");
   var toggle = document.getElementById("nav-toggle");
@@ -1113,9 +1169,11 @@ window.BUILDERRATES.newsletterUrl = "";
       })
         .then(function (r) {
           if (!r.ok) throw new Error("Form error");
+          if (window.BuilderRatesTrack) window.BuilderRatesTrack("lead-submit-success");
           showLeadStep3();
         })
         .catch(function () {
+          if (window.BuilderRatesTrack) window.BuilderRatesTrack("lead-submit-error");
           err.textContent = "Could not send. Email " + (BR.leadEmail || "us") + " or use the button below.";
           err.classList.remove("hidden");
           if (slotInline) appendMailto(slotInline, payload, fullMessage);
@@ -1125,6 +1183,7 @@ window.BUILDERRATES.newsletterUrl = "";
     }
 
     showLeadStep3();
+    if (window.BuilderRatesTrack) window.BuilderRatesTrack("lead-complete-mailto");
     if (slot) appendMailto(slot, payload, fullMessage);
   }
 
@@ -1231,6 +1290,7 @@ window.BUILDERRATES.newsletterUrl = "";
         }
       }
       function mailtoFallback() {
+        if (window.BuilderRatesTrack) window.BuilderRatesTrack("newsletter-mailto-fallback");
         var href = "mailto:" + em + "?subject=" + encodeURIComponent("Newsletter signup") + "&body=" + encodeURIComponent("Please add: " + input.value + "\n\npageUrl: " + (typeof location !== "undefined" ? location.href : ""));
         st.innerHTML = "<a href=\"" + href + "\" class=\"text-primary font-medium underline\">Open email to complete signup</a>";
         st.classList.remove("hidden");
@@ -1253,6 +1313,7 @@ window.BUILDERRATES.newsletterUrl = "";
         })
           .then(function (r) {
             if (!r.ok) throw new Error("Newsletter error");
+            if (window.BuilderRatesTrack) window.BuilderRatesTrack("newsletter-success");
             st.textContent = "You’re on the list. Next brief ships soon.";
             st.classList.remove("hidden");
             st.classList.remove("text-secondary");
