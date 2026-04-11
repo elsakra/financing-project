@@ -11,7 +11,6 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
 <meta name="theme-color" content="#012d1d"/>
 <meta name="apple-mobile-web-app-title" content="BuilderRates"/>
-<meta name="mobile-web-app-capable" content="yes"/>
 <link rel="canonical" href="https://financing-project.vercel.app/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="BuilderRates"/>
@@ -35,6 +34,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
 <title>BuilderRates | High-Performance Financing for Real Estate Investors</title>
+<!-- br:inject-gtm-head -->
 <script type="application/ld+json" id="ld-json-financial">
 {"@context":"https://schema.org","@type":"FinancialService","name":"BuilderRates","description":"Debt placement and rate analysis for real estate investors.","url":"https://financing-project.vercel.app/","image":"https://financing-project.vercel.app/favicon.svg","areaServed":{"@type":"Country","name":"United States"},"serviceType":"Real estate investment financing"}
 </script>
@@ -214,6 +214,7 @@ tailwind.config = {
 </style>
 </head>
 <body class="bg-canvas text-ink antialiased pb-[calc(5rem+env(safe-area-inset-bottom,0px))] md:pb-0">
+<!-- br:inject-gtm-body -->
 <a href="#main-content" class="skip-link">Skip to content</a>
 <!-- TopNavBar -->
 <header>
@@ -830,7 +831,7 @@ tailwind.config = {
 </div>
 
 <script>
-/* Optional endpoints are injected at deploy time via FORMSPREE_URL / NEWSLETTER_URL (see scripts/inject-site-url.js). */
+/* Optional values injected at deploy: FORMSPREE_URL, NEWSLETTER_URL, LEAD_EMAIL, GTM_ID (see scripts/inject-site-url.js). */
 window.BUILDERRATES = window.BUILDERRATES || {};
 window.BUILDERRATES.siteUrl = "";
 window.BUILDERRATES.leadEmail = "hello@builderrates.com";
@@ -925,6 +926,18 @@ window.BuilderRatesTrack = function (name) {
       var root = base.replace(/\/?$/, "");
       o.url = root + "#faq";
     });
+    syncContactEmails();
+  }
+
+  function syncContactEmails() {
+    var em = (BR.leadEmail && String(BR.leadEmail).trim()) || "hello@builderrates.com";
+    var sticky = document.getElementById("sticky-email-link");
+    var foot = document.getElementById("footer-email-link");
+    if (sticky) sticky.setAttribute("href", "mailto:" + em);
+    if (foot) {
+      foot.setAttribute("href", "mailto:" + em);
+      foot.textContent = em;
+    }
   }
 
   applySiteBase();
@@ -940,6 +953,8 @@ window.BuilderRatesTrack = function (name) {
     true
   );
 
+  document.addEventListener("keydown", onModalTabTrap, true);
+
   var nav = document.getElementById("site-nav");
   var toggle = document.getElementById("nav-toggle");
   var menu = document.getElementById("mobile-menu");
@@ -953,6 +968,7 @@ window.BuilderRatesTrack = function (name) {
   var leadStep3 = document.getElementById("lead-step-3");
   var leadData = {};
   var lastFocus = null;
+  var legalReturnFocus = null;
   var stickyQuick = document.getElementById("sticky-quick-actions");
 
   var LEGAL = {
@@ -1092,6 +1108,7 @@ window.BuilderRatesTrack = function (name) {
     var L = LEGAL[key];
     var lm = document.getElementById("legal-modal");
     if (!L || !lm) return;
+    legalReturnFocus = document.activeElement;
     document.getElementById("legal-modal-title").textContent = L.title;
     document.getElementById("legal-modal-body").innerHTML = L.html;
     lm.classList.remove("hidden");
@@ -1111,6 +1128,61 @@ window.BuilderRatesTrack = function (name) {
     lm.classList.remove("flex");
     refreshModalBodyLock();
     syncMainAriaHidden();
+    var ref = legalReturnFocus;
+    legalReturnFocus = null;
+    setTimeout(function () {
+      if (ref && typeof ref.focus === "function") {
+        try {
+          ref.focus();
+        } catch (e) {}
+      }
+    }, 0);
+  }
+
+  function getActiveModalPanel() {
+    if (legalModalEl && !legalModalEl.classList.contains("hidden")) {
+      return legalModalEl.querySelector(".modal-panel");
+    }
+    if (leadModal && !leadModal.classList.contains("hidden")) {
+      return leadModal.querySelector(".modal-panel");
+    }
+    return null;
+  }
+
+  function collectFocusables(panel) {
+    if (!panel) return [];
+    var sel =
+      'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    var nodes = panel.querySelectorAll(sel);
+    var out = [];
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      if (!el.getClientRects || el.getClientRects().length === 0) continue;
+      out.push(el);
+    }
+    return out;
+  }
+
+  function onModalTabTrap(e) {
+    if (e.key !== "Tab") return;
+    var panel = getActiveModalPanel();
+    if (!panel) return;
+    var focusables = collectFocusables(panel);
+    if (focusables.length === 0) return;
+    var first = focusables[0];
+    var last = focusables[focusables.length - 1];
+    var active = document.activeElement;
+    if (e.shiftKey) {
+      if (active === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   }
 
   function showLeadStep3() {
@@ -1267,11 +1339,6 @@ window.BuilderRatesTrack = function (name) {
       e.preventDefault();
     }
   });
-
-  var stickyMail = document.getElementById("sticky-email-link");
-  if (stickyMail && BR.leadEmail) stickyMail.href = "mailto:" + BR.leadEmail;
-  var footMail = document.getElementById("footer-email-link");
-  if (footMail && BR.leadEmail) footMail.href = "mailto:" + BR.leadEmail;
 
   var nf = document.getElementById("newsletter-form");
   var nSub = document.getElementById("newsletter-submit-btn");
