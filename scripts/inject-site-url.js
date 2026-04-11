@@ -83,6 +83,8 @@ html = html.replace("<!-- br:inject-gtm-head -->", gtmHead || "<!-- br:inject-gt
 html = html.replace("<!-- br:inject-gtm-body -->", gtmBody || "<!-- br:inject-gtm-body -->");
 
 fs.writeFileSync(lpPath, html, "utf8");
+/* Vercel and most static hosts serve / from index.html before relying on rewrites. */
+fs.writeFileSync(path.join(ROOT, "index.html"), html, "utf8");
 
 fs.writeFileSync(
   path.join(ROOT, "robots.txt"),
@@ -105,6 +107,7 @@ fs.writeFileSync(
 );
 
 const securityPath = path.join(ROOT, ".well-known", "security.txt");
+fs.mkdirSync(path.dirname(securityPath), { recursive: true });
 fs.writeFileSync(
   securityPath,
   [
