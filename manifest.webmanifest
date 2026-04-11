@@ -1,7 +1,9 @@
 {
+  "id": "/",
   "name": "BuilderRates",
   "short_name": "BuilderRates",
   "description": "Institutional financing matchmaking for real estate investors.",
+  "scope": "/",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fafafa",

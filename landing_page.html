@@ -807,6 +807,7 @@ tailwind.config = {
 </div>
 
 <script>
+/* Optional endpoints are injected at deploy time via FORMSPREE_URL / NEWSLETTER_URL (see scripts/inject-site-url.js). */
 window.BUILDERRATES = window.BUILDERRATES || {};
 window.BUILDERRATES.siteUrl = "";
 window.BUILDERRATES.leadEmail = "hello@builderrates.com";
@@ -926,6 +927,8 @@ window.BUILDERRATES.newsletterUrl = "";
       iconMenu.classList.toggle("hidden", open);
       iconClose.classList.toggle("hidden", !open);
     }
+    refreshModalBodyLock();
+    syncMainAriaHidden();
   }
 
   function applyActiveNav(sectionId) {
@@ -970,10 +973,12 @@ window.BUILDERRATES.newsletterUrl = "";
   function refreshModalBodyLock() {
     var leadOpen = leadModal && !leadModal.classList.contains("hidden");
     var legalOpen = legalModalEl && !legalModalEl.classList.contains("hidden");
+    var menuOpen = menu && !menu.classList.contains("hidden");
     var modalsOpen = Boolean(leadOpen || legalOpen);
     document.body.classList.toggle("modal-open", modalsOpen);
+    var blockSticky = Boolean(modalsOpen || menuOpen);
     if (stickyQuick) {
-      if (modalsOpen) {
+      if (blockSticky) {
         stickyQuick.setAttribute("aria-hidden", "true");
         stickyQuick.setAttribute("inert", "");
       } else {
@@ -988,7 +993,8 @@ window.BUILDERRATES.newsletterUrl = "";
     if (!main) return;
     var leadOpen = leadModal && !leadModal.classList.contains("hidden");
     var legalOpen = legalModalEl && !legalModalEl.classList.contains("hidden");
-    main.setAttribute("aria-hidden", leadOpen || legalOpen ? "true" : "false");
+    var menuOpen = menu && !menu.classList.contains("hidden");
+    main.setAttribute("aria-hidden", leadOpen || legalOpen || menuOpen ? "true" : "false");
   }
 
   function openLeadModal() {
