@@ -60,11 +60,16 @@
 <script type="application/ld+json" id="ld-json-breadcrumb">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://financing-project.vercel.app/"}]}
 </script>
+<script type="application/ld+json" id="ld-json-nav">
+{"@context":"https://schema.org","@type":"ItemList","name":"Primary navigation","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","name":"Solutions","url":"https://financing-project.vercel.app/#solutions"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","name":"How it works","url":"https://financing-project.vercel.app/#how"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","name":"Products","url":"https://financing-project.vercel.app/#products"}},{"@type":"ListItem","position":4,"item":{"@type":"WebPage","name":"Compare","url":"https://financing-project.vercel.app/#compare"}},{"@type":"ListItem","position":5,"item":{"@type":"WebPage","name":"Testimonials","url":"https://financing-project.vercel.app/#testimonials"}},{"@type":"ListItem","position":6,"item":{"@type":"WebPage","name":"FAQ","url":"https://financing-project.vercel.app/#faq"}},{"@type":"ListItem","position":7,"item":{"@type":"WebPage","name":"Contact","url":"https://financing-project.vercel.app/#contact"}}]}
+</script>
 <link rel="preload" as="image" href="https://lh3.googleusercontent.com/aida-public/AB6AXuBssnhn5ZAC63ak5lXRBK_4_fJKuMxjCO_1-cc0_qmwUHKGJ38JENe5AUjqbvhaHx57RYg7pZHgrQtVx1Dz5xiAmwAe-Ql9snb2tYU6XURvXQUhcG_KVjI8yYm8WeQgDNRkXEAxvfRMMfXDE2uqDqDkqY3-c2KDSTimEVtd8Ubc5tLK81VKrIbinCo8bc4M9ndBAclgUtDlc2zyvIVzuFriNX3pzKrQIc4s2hxeNwYLNOp-XaeiTO1nHPzOKfzD99QDBCcHefWU5j8" fetchpriority="high"/>
 <link rel="dns-prefetch" href="https://cdn.tailwindcss.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin/>
+<link rel="dns-prefetch" href="https://www.googletagmanager.com"/>
+<link rel="dns-prefetch" href="https://www.google-analytics.com"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -928,6 +933,29 @@ window.BuilderRatesTrack = function (name) {
     patchLd("faq-schema", function (o) {
       var root = base.replace(/\/?$/, "");
       o.url = root + "#faq";
+    });
+    patchLd("ld-json-nav", function (o) {
+      var root = base.replace(/\/?$/, "");
+      var items = [
+        ["Solutions", "solutions"],
+        ["How it works", "how"],
+        ["Products", "products"],
+        ["Compare", "compare"],
+        ["Testimonials", "testimonials"],
+        ["FAQ", "faq"],
+        ["Contact", "contact"]
+      ];
+      o.itemListElement = items.map(function (pair, idx) {
+        return {
+          "@type": "ListItem",
+          position: idx + 1,
+          item: {
+            "@type": "WebPage",
+            name: pair[0],
+            url: root + "#" + pair[1]
+          }
+        };
+      });
     });
     syncContactEmails();
   }

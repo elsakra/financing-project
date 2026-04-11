@@ -3,6 +3,7 @@
   "name": "BuilderRates",
   "short_name": "BuilderRates",
   "description": "Institutional financing matchmaking for real estate investors.",
+  "categories": ["business", "finance", "productivity"],
   "scope": "/",
   "start_url": "/",
   "display": "standalone",
@@ -14,6 +15,22 @@
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "FAQ",
+      "short_name": "FAQ",
+      "description": "Answers to common questions",
+      "url": "/#faq",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Email and resources",
+      "url": "/#contact",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
     }
   ]
 }
