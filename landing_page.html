@@ -50,7 +50,7 @@
 ]}
 </script>
 <script type="application/ld+json" id="ld-json-org">
-{"@context":"https://schema.org","@type":"Organization","@id":"https://financing-project.vercel.app/#organization","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Debt placement and rate analysis for real estate investors.","logo":{"@type":"ImageObject","url":"https://financing-project.vercel.app/favicon.svg"},"sameAs":["https://www.linkedin.com/company/builderrates"],"knowsAbout":["Real estate investment financing","Construction and renovation loans","DSCR rental loans","Bridge financing","Commercial real estate debt"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"hello@builderrates.com","areaServed":"US","availableLanguage":"en"}}
+{"@context":"https://schema.org","@type":"Organization","@id":"https://financing-project.vercel.app/#organization","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Debt placement and rate analysis for real estate investors.","logo":{"@type":"ImageObject","url":"https://financing-project.vercel.app/favicon.svg"},"address":{"@type":"PostalAddress","addressCountry":"US"},"sameAs":["https://www.linkedin.com/company/builderrates"],"knowsAbout":["Real estate investment financing","Construction and renovation loans","DSCR rental loans","Bridge financing","Commercial real estate debt"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"hello@builderrates.com","areaServed":"US","availableLanguage":"en"}}
 </script>
 <script type="application/ld+json" id="ld-json-website">
 {"@context":"https://schema.org","@type":"WebSite","@id":"https://financing-project.vercel.app/#website","name":"BuilderRates","url":"https://financing-project.vercel.app/","inLanguage":"en-US","description":"Institutional financing matchmaking for real estate investors.","potentialAction":{"@type":"ContactAction","name":"Email BuilderRates","target":{"@type":"EntryPoint","urlTemplate":"mailto:hello@builderrates.com?subject=Rate%20analysis%20request","actionPlatform":["http://schema.org/DesktopWebPlatform","http://schema.org/MobileWebPlatform"]}}}
@@ -111,7 +111,8 @@ tailwind.config = {
   html {
     scroll-behavior: smooth;
     scroll-padding-top: calc(5.5rem + env(safe-area-inset-top, 0px));
-    scroll-padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+    /* Match sticky mobile CTA + caption so in-page anchors aren’t hidden */
+    scroll-padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
   }
   @media (min-width: 768px) {
     html { scroll-padding-bottom: 0; }
@@ -216,6 +217,19 @@ tailwind.config = {
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
   }
+  @supports (height: 100dvh) {
+    .modal-panel {
+      max-height: min(90dvh, 720px);
+    }
+  }
+  .legal-modal-panel {
+    max-height: min(85vh, 720px);
+  }
+  @supports (height: 100dvh) {
+    .legal-modal-panel {
+      max-height: min(85dvh, 720px);
+    }
+  }
   @media (prefers-reduced-motion: reduce) {
     details summary .transition-transform { transition: none !important; }
   }
@@ -253,7 +267,7 @@ tailwind.config = {
         </button>
       </div>
     </div>
-    <div id="mobile-menu" class="md:hidden hidden border-t border-line bg-white px-5 py-5 space-y-0 max-h-[min(70vh,28rem)] overflow-y-auto overscroll-contain" role="navigation" aria-label="Menu">
+    <div id="mobile-menu" class="md:hidden hidden border-t border-line bg-white pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] py-5 space-y-0 max-h-[min(70vh,28rem)] overflow-y-auto overscroll-contain" role="navigation" aria-label="Menu">
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#solutions" data-section="solutions">Solutions</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#how" data-section="how">How It Works</a>
       <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#products" data-section="products">Products</a>
@@ -477,7 +491,7 @@ tailwind.config = {
         <img class="product-card-img w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="New construction site with framing and cranes" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRwX0-wNY2NWsUiV7oqWDEb9ibrys2YKAvaxl-gxJ3o4C7w3mIDJvJ6QFizE_gaFFdVtZ6OsDzwkfHQNd_lQlY1gayVuP0kYk9yrNTXU6NHoIcET6Dt3gCVJC5BkGfHsLXvpQKOESOjpDcPdubZsUQlaYt2rY9X4uPqPWz0OHgZ5ncoAtmfZiz0MEQnyV4gRaPqM4OKE9rsy4-F2t3IxjKYGyDmgjRoiMZvJuOquztXNs7U3AOzDASftNfuauVrogc33nPxqrFR4g"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
-          <h4 class="text-xl font-semibold text-white mb-1.5 font-display">New Construction</h4>
+          <h3 class="text-xl font-semibold text-white mb-1.5 font-display">New Construction</h3>
           <p class="text-white/80 text-sm leading-snug max-w-[28ch]">Up to 90% LTC with competitive interest-only periods.</p>
         </div>
       </article>
@@ -485,7 +499,7 @@ tailwind.config = {
         <img class="product-card-img w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Renovated home interior after fix and flip" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-CN6PRDJ1OsMUJNAU66_By9Ylxh0UOpcOnSq_ATh4vNi8LETRyiZqxtDghdFtgjisRlhtCcnqjYHnnbGaWMZorl8pdtI5sSOpS8iUAFuGYVHyeAQOc-ymqdIBThnVEaHp1qB5YLMMkNb5EeySw-HnMb6Xz66GHQwLjD_Qamv84eZXbcmK071PK0-bFB7sp1eIuMy9_3B8S3nKColdeEGB3VyTkFJOHZjFzvk3H4sC8oXsqpCv2BC2e0EVh-XR2YmD5ll4ei6NCo8"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
-          <h4 class="text-xl font-semibold text-white mb-1.5 font-display">Fix &amp; Flip</h4>
+          <h3 class="text-xl font-semibold text-white mb-1.5 font-display">Fix &amp; Flip</h3>
           <p class="text-white/80 text-sm leading-snug max-w-[28ch]">Rapid funding for acquisition and 100% of rehab costs.</p>
         </div>
       </article>
@@ -493,7 +507,7 @@ tailwind.config = {
         <img class="product-card-img w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Residential rental property exterior" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMGbtoDdITqjAFw4sTaXxa7BFfF2O5pKT69H_FAMM_Rp3RQ2pmhBnmLAmm5N4X1frZIx8u5_-uZVw9tqPh5fTOuPmTzk_hwdNdZlDecF7kNsWLjE0bCNiwlWG7lpDZiDdhxVl0RhpH1CfuAdADNV2_Q3_I1ohhE8ojnqxiq4CqlnGtz9xUiepqNSe2sksSBZNOqHBwwIsXFb191wgCYIRxtPs1dBNIyrmbvqkP_baIqBAkTgWyX8WcgftWJghdr9Jh6ZM8foSqQbk"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
-          <h4 class="text-xl font-semibold text-white mb-1.5 font-display">DSCR / Rental</h4>
+          <h3 class="text-xl font-semibold text-white mb-1.5 font-display">DSCR / Rental</h3>
           <p class="text-white/80 text-sm leading-snug max-w-[28ch]">No personal income verification—based on asset performance.</p>
         </div>
       </article>
@@ -501,7 +515,7 @@ tailwind.config = {
         <img class="product-card-img w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Urban bridge financing property" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAri4_JPmFQMn-r5TdGEoHiZYunq4q2zL4t1Hje4T16RX8imFwOUTqegXEcaHsAsQJOAc8mS5LSh__5pA82ucLgZGIIzd8dQNhDsDk0Y4C2S4M_N-9O49PWS6s2Itobn3733S57Vhi4hgC9Ht4-LfpiLqGHTr9KSLt1l1AESD2DvWdJTVg7BRms3_DejvcQdMSdKuQYyYl0bQ29D02E1G6W0ApIYR5MLHwnZUvuG56riEeStOeU4jPn-djhG9ZHXCrt3dBQVk3nsjo"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
-          <h4 class="text-xl font-semibold text-white mb-1.5 font-display">Bridge Loans</h4>
+          <h3 class="text-xl font-semibold text-white mb-1.5 font-display">Bridge Loans</h3>
           <p class="text-white/80 text-sm leading-snug max-w-[28ch]">Short-term capital for quick transitions and acquisitions.</p>
         </div>
       </article>
@@ -509,7 +523,7 @@ tailwind.config = {
         <img class="product-card-img w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Commercial multifamily building" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6rk-iVyHYOyCnwOJ7h0tuLkgr2rFEUXgxC1_pxSDDAl5cV5hVQiWxOfyz_ircbfbD9JFPk89XWj4Krx3ZmfLLnCDsN9iqpk99YQGnfBA5U-IuQnNbhBWXnHqnb6UEfXdgoSlEk_iFTjjJ9Hod_c5U-OcMfSE3mF8gsqshCRjIeC5mlnvEKWdPemvQKHBjeV_W6n2WyDaCMqB9cQ7hmy8mxY8FluIsCVse5THX4OdEK-1DXjQQS91XLHCuHUF86vfCtpnXcGnIgkQ"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
-          <h4 class="text-xl font-semibold text-white mb-1.5 font-display">Commercial</h4>
+          <h3 class="text-xl font-semibold text-white mb-1.5 font-display">Commercial</h3>
           <p class="text-white/80 text-sm leading-snug max-w-[28ch]">Multi-family and mixed-use specialized debt options.</p>
         </div>
       </article>
@@ -517,7 +531,7 @@ tailwind.config = {
         <img class="product-card-img w-full h-full object-cover saturate-75 transition-transform duration-700 ease-out group-hover:scale-[1.02]" alt="Portfolio refinance property" loading="lazy" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAd7kwivVhE0p_wWhArc_kL9JbqJfWRSUrrlB1wjAAjPwAlga01ak982ifp7nm7v-Vcl5RV6ipy1XWDtnwJbo00kFGhJtpTG8NRerN-ySoU-BazX9kfWBv8K536U6-LxwdiwDLixw8-Prz4zyXca4g-RluxWxyjjJ1BOA6zqzhpPuV4Z8MUFBA-EozGln7mSWnUZ-wUejiFeJ6gV7YJSxyVZbsYaQjqtNWdi6JraEIK9amcea5mwBqebOnuXALXI0TOkRWFJMsoIA"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
         <div class="absolute bottom-0 p-6 md:p-7 w-full">
-          <h4 class="text-xl font-semibold text-white mb-1.5 font-display">Cash-Out Refi</h4>
+          <h3 class="text-xl font-semibold text-white mb-1.5 font-display">Cash-Out Refi</h3>
           <p class="text-white/80 text-sm leading-snug max-w-[28ch]">Unlock equity from your portfolio for your next project.</p>
         </div>
       </article>
@@ -696,6 +710,7 @@ tailwind.config = {
 
 <!-- Footer -->
 <footer id="contact" class="bg-canvas border-t border-line py-14 md:py-16">
+  <h2 class="sr-only">Contact, resources, and newsletter</h2>
   <div class="max-w-6xl mx-auto px-5 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:flex lg:justify-between items-start gap-10">
     <div class="max-w-xs">
       <a href="#top" class="inline-block font-display text-lg font-semibold text-primary mb-4 focus:outline-none focus-visible:underline">BuilderRates</a>
@@ -710,7 +725,7 @@ tailwind.config = {
       </div>
     </div>
     <div>
-      <h5 class="font-semibold text-ink mb-4 uppercase tracking-[0.15em] text-[11px]">Resources</h5>
+      <h3 class="font-semibold text-ink mb-4 uppercase tracking-[0.15em] text-[11px]">Resources</h3>
       <ul class="space-y-2.5">
         <li><button type="button" class="text-zinc-600 text-sm hover:text-primary text-left py-2 min-h-[44px] w-full focus:outline-none focus-visible:underline js-open-legal" data-legal="privacy">Privacy Policy</button></li>
         <li><button type="button" class="text-zinc-600 text-sm hover:text-primary text-left py-2 min-h-[44px] w-full focus:outline-none focus-visible:underline js-open-legal" data-legal="terms">Terms of Service</button></li>
@@ -719,7 +734,7 @@ tailwind.config = {
       </ul>
     </div>
     <div>
-      <h5 class="font-semibold text-ink mb-4 uppercase tracking-[0.15em] text-[11px]">Products</h5>
+      <h3 class="font-semibold text-ink mb-4 uppercase tracking-[0.15em] text-[11px]">Products</h3>
       <ul class="space-y-2.5">
         <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="#products">Construction Debt</a></li>
         <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="#products">Bridge Financing</a></li>
@@ -728,15 +743,16 @@ tailwind.config = {
       </ul>
     </div>
     <div class="lg:max-w-sm">
-      <h5 class="font-semibold text-ink mb-4 uppercase tracking-[0.15em] text-[11px]">Market updates</h5>
+      <h3 class="font-semibold text-ink mb-4 uppercase tracking-[0.15em] text-[11px]">Market updates</h3>
       <p class="text-sm text-zinc-600 mb-3">Weekly rate volatility briefs in your inbox.</p>
-      <form id="newsletter-form" class="flex flex-col sm:flex-row gap-2" action="#" method="post">
+      <form id="newsletter-form" class="flex flex-col sm:flex-row gap-2" action="#" method="post" novalidate>
         <label class="sr-only" for="email-updates">Email</label>
+        <p id="newsletter-hint" class="sr-only">Weekly rate briefs. Unsubscribe anytime.</p>
         <div class="sr-only" aria-hidden="true">
           <label for="newsletter-hp">Website</label>
           <input id="newsletter-hp" name="company_website" type="text" tabindex="-1" autocomplete="off"/>
         </div>
-        <input id="email-updates" name="email" required class="bg-white border border-line rounded-sm px-3 py-2.5 flex-1 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="you@company.com" type="email" autocomplete="email" inputmode="email"/>
+        <input id="email-updates" name="email" required class="bg-white border border-line rounded-sm px-3 py-2.5 flex-1 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="you@company.com" type="email" autocomplete="email" inputmode="email" enterkeyhint="go" aria-describedby="newsletter-hint"/>
         <button type="submit" id="newsletter-submit-btn" data-br-track="newsletter-submit" class="bg-primary text-on-primary px-4 py-2.5 rounded-sm font-semibold text-xs uppercase tracking-wider btn-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary min-h-[44px] shrink-0 disabled:opacity-60 disabled:cursor-not-allowed">Join</button>
       </form>
       <p id="newsletter-status" class="mt-2 text-xs text-secondary hidden" role="status"></p>
@@ -765,15 +781,15 @@ tailwind.config = {
       <form id="lead-form-step1" class="space-y-4">
         <div>
           <label for="lead-name" class="block text-xs font-medium text-zinc-700 mb-1">Full name</label>
-          <input id="lead-name" name="name" required autocomplete="name" class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
+          <input id="lead-name" name="name" required autocomplete="name" enterkeyhint="next" class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
         </div>
         <div>
           <label for="lead-email" class="block text-xs font-medium text-zinc-700 mb-1">Work email</label>
-          <input id="lead-email" name="email" type="email" required autocomplete="email" inputmode="email" class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
+          <input id="lead-email" name="email" type="email" required autocomplete="email" inputmode="email" enterkeyhint="next" class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
         </div>
         <div>
           <label for="lead-phone" class="block text-xs font-medium text-zinc-700 mb-1">Phone</label>
-          <input id="lead-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
+          <input id="lead-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" enterkeyhint="go" class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
         </div>
         <div class="sr-only" aria-hidden="true">
           <label for="lead-hp">Company website</label>
@@ -843,7 +859,7 @@ tailwind.config = {
 
 <div id="legal-modal" class="fixed inset-0 z-[210] hidden items-center justify-center px-4 pt-[max(1rem,env(safe-area-inset-top,0px))] pb-[max(1rem,env(safe-area-inset-bottom,0px))]" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
   <div class="absolute inset-0 bg-black/50" data-legal-backdrop tabindex="-1" aria-hidden="true"></div>
-  <div class="modal-panel relative z-10 w-full max-w-lg bg-white rounded-md border border-line shadow-xl p-6 md:p-8 max-h-[85vh] overflow-y-auto">
+  <div class="modal-panel legal-modal-panel relative z-10 w-full max-w-lg bg-white rounded-md border border-line shadow-xl p-6 md:p-8 overflow-y-auto">
     <button type="button" class="absolute top-3 right-3 sm:top-4 sm:right-4 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md text-zinc-500 hover:text-ink hover:bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-close-legal aria-label="Close">
       <span class="material-symbols-outlined" aria-hidden="true">close</span>
     </button>
@@ -917,6 +933,11 @@ window.BuilderRatesTrack = function (name) {
       var root = base.replace(/\/?$/, "");
       o["@id"] = root + "/#organization";
       if (o.logo && o.logo["@type"] === "ImageObject") o.logo.url = logoUrl;
+      if (!o.address || typeof o.address !== "object") {
+        o.address = { "@type": "PostalAddress", addressCountry: "US" };
+      } else if (!o.address.addressCountry) {
+        o.address.addressCountry = "US";
+      }
       var email = (BR.leadEmail && String(BR.leadEmail).trim()) || "hello@builderrates.com";
       o.contactPoint = {
         "@type": "ContactPoint",
