@@ -112,8 +112,13 @@ tailwind.config = {
   html {
     scroll-behavior: smooth;
     scroll-padding-top: calc(5.5rem + env(safe-area-inset-top, 0px));
-    /* Match sticky mobile CTA + caption so in-page anchors aren’t hidden */
-    scroll-padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+    scroll-padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  /* Only reserve bottom scroll padding when the mobile sticky bar is active (see .sticky-bar-active) */
+  @media (max-width: 767.98px) {
+    html.sticky-bar-active {
+      scroll-padding-bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+    }
   }
   @media (min-width: 768px) {
     html { scroll-padding-bottom: 0; }
@@ -129,6 +134,12 @@ tailwind.config = {
     overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+  }
+  @media (max-width: 767.98px) {
+    html,
+    body {
+      overscroll-behavior-y: none;
+    }
   }
   details summary {
     display: flex;
@@ -212,6 +223,31 @@ tailwind.config = {
   .sticky-safe {
     padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
   }
+  @media (max-width: 767.98px) {
+    #sticky-quick-actions {
+      transition: transform 0.28s var(--ease-out), opacity 0.22s ease;
+      transform: translate3d(0, 110%, 0);
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+    #sticky-quick-actions.sticky-quick-actions--revealed {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+  }
+  @media (max-width: 767.98px) and (prefers-reduced-motion: reduce) {
+    #sticky-quick-actions {
+      transition: none;
+    }
+  }
+  @media (max-width: 767.98px) {
+    body.has-sticky-quick {
+      padding-bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+    }
+  }
   .modal-panel {
     max-height: min(90vh, 720px);
     overflow-y: auto;
@@ -245,7 +281,7 @@ tailwind.config = {
   }
 </style>
 </head>
-<body class="bg-canvas text-ink antialiased pb-[calc(6rem+env(safe-area-inset-bottom,0px))] md:pb-0">
+<body class="bg-canvas text-ink antialiased pb-0 md:pb-0">
 <!-- br:inject-gtm-body -->
 <a href="#main-content" class="skip-link">Skip to content</a>
 <!-- TopNavBar -->
@@ -290,7 +326,7 @@ tailwind.config = {
   </nav>
 </header>
 
-<div id="sticky-quick-actions" class="sticky-safe fixed bottom-0 left-0 right-0 z-[90] md:hidden border-t border-line bg-white/95 backdrop-blur-sm pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-2 pb-1 flex flex-col gap-1 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]" role="region" aria-label="Quick actions">
+<div id="sticky-quick-actions" class="sticky-safe fixed bottom-0 left-0 right-0 z-[90] md:hidden border-t border-line bg-white/95 backdrop-blur-sm pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-2 pb-1 flex flex-col gap-1 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]" role="region" aria-label="Quick actions" aria-hidden="true" inert="">
   <div class="flex gap-2 w-full">
     <button type="button" data-br-track="cta-sticky" class="js-open-lead flex-1 btn-primary bg-primary text-on-primary py-3 min-h-[48px] rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Get rate analysis</button>
     <a href="mailto:hello@builderrates.com" id="sticky-email-link" class="inline-flex items-center justify-center min-h-[48px] min-w-[4.5rem] px-4 py-3 rounded-md text-sm font-semibold border border-line bg-white text-ink touch-manipulation">Email</a>
@@ -1164,22 +1200,58 @@ window.BuilderRatesTrack = function (name) {
     }
   }
 
-  function refreshModalBodyLock() {
+  var stickyHeroTick = false;
+  function onStickyHeroScroll() {
+    if (stickyHeroTick) return;
+    stickyHeroTick = true;
+    requestAnimationFrame(function () {
+      stickyHeroTick = false;
+      syncStickyQuickVisibility();
+    });
+  }
+
+  function syncStickyQuickVisibility() {
+    if (!stickyQuick) return;
+    if (window.matchMedia("(min-width: 768px)").matches) {
+      stickyQuick.classList.remove("sticky-quick-actions--revealed");
+      document.body.classList.remove("has-sticky-quick");
+      document.documentElement.classList.remove("sticky-bar-active");
+      stickyQuick.setAttribute("aria-hidden", "true");
+      stickyQuick.setAttribute("inert", "");
+      return;
+    }
+    var heroEl = document.getElementById("top");
+    var pastHero = heroEl && heroEl.getBoundingClientRect().bottom <= 1;
     var leadOpen = leadModal && !leadModal.classList.contains("hidden");
     var legalOpen = legalModalEl && !legalModalEl.classList.contains("hidden");
     var menuOpen = menu && !menu.classList.contains("hidden");
+    var blockSticky = Boolean(leadOpen || legalOpen || menuOpen);
+    if (!pastHero) {
+      stickyQuick.classList.remove("sticky-quick-actions--revealed");
+      document.body.classList.remove("has-sticky-quick");
+      document.documentElement.classList.remove("sticky-bar-active");
+      stickyQuick.setAttribute("aria-hidden", "true");
+      stickyQuick.setAttribute("inert", "");
+      return;
+    }
+    stickyQuick.classList.add("sticky-quick-actions--revealed");
+    document.body.classList.add("has-sticky-quick");
+    document.documentElement.classList.add("sticky-bar-active");
+    if (blockSticky) {
+      stickyQuick.setAttribute("aria-hidden", "true");
+      stickyQuick.setAttribute("inert", "");
+    } else {
+      stickyQuick.removeAttribute("aria-hidden");
+      stickyQuick.removeAttribute("inert");
+    }
+  }
+
+  function refreshModalBodyLock() {
+    var leadOpen = leadModal && !leadModal.classList.contains("hidden");
+    var legalOpen = legalModalEl && !legalModalEl.classList.contains("hidden");
     var modalsOpen = Boolean(leadOpen || legalOpen);
     document.body.classList.toggle("modal-open", modalsOpen);
-    var blockSticky = Boolean(modalsOpen || menuOpen);
-    if (stickyQuick) {
-      if (blockSticky) {
-        stickyQuick.setAttribute("aria-hidden", "true");
-        stickyQuick.setAttribute("inert", "");
-      } else {
-        stickyQuick.removeAttribute("aria-hidden");
-        stickyQuick.removeAttribute("inert");
-      }
-    }
+    syncStickyQuickVisibility();
   }
 
   function syncMainAriaHidden() {
@@ -1578,14 +1650,19 @@ window.BuilderRatesTrack = function (name) {
   });
 
   window.addEventListener("scroll", function () {
-    if (!nav) return;
-    if (window.scrollY > 8) nav.classList.add("shadow-sm");
-    else nav.classList.remove("shadow-sm");
+    if (nav) {
+      if (window.scrollY > 8) nav.classList.add("shadow-sm");
+      else nav.classList.remove("shadow-sm");
+    }
     onScrollNav();
+    onStickyHeroScroll();
   }, { passive: true });
+
+  window.addEventListener("resize", onStickyHeroScroll, { passive: true });
 
   window.addEventListener("load", function () {
     updateActiveNavFromScroll();
+    syncStickyQuickVisibility();
   });
 
   if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -1650,6 +1727,7 @@ window.BuilderRatesTrack = function (name) {
       }
     } catch (e) {}
   }
+  syncStickyQuickVisibility();
   maybeOpenLeadFromCampaign();
 })();
 </script>
