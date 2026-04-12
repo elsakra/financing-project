@@ -591,42 +591,100 @@ tailwind.config = {
     <div class="text-center mb-12 md:mb-14 reveal">
       <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-4">Compare</p>
       <h2 id="compare-heading" class="font-display text-3xl md:text-4xl font-semibold text-balance text-ink">Better capital, faster.</h2>
-      <p id="compare-scroll-hint" class="sr-only">Comparison table scrolls horizontally on narrow screens.</p>
-      <p class="text-xs text-zinc-500 mt-3 md:hidden" aria-hidden="true">Swipe horizontally to see all columns</p>
+      <p id="compare-scroll-hint" class="text-sm text-zinc-500 max-w-lg mx-auto mt-4 text-balance text-center lg:sr-only px-1">
+        Each row compares <span class="font-medium text-zinc-700">doing it yourself</span> with <span class="font-semibold text-primary">BuilderRates</span>.
+      </p>
     </div>
-    <div class="overflow-x-auto border border-line bg-white reveal touch-pan-x overscroll-x-contain rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" role="region" aria-labelledby="compare-heading" aria-describedby="compare-scroll-hint" tabindex="0">
-      <table class="w-full text-left min-w-[640px] text-sm md:text-[15px]">
-        <caption class="sr-only">Comparison of shopping lenders yourself versus using BuilderRates</caption>
-        <thead>
-          <tr class="border-b border-line bg-zinc-50">
-            <th scope="col" class="py-4 px-5 md:px-6 font-semibold text-xs uppercase tracking-wider text-muted">Feature</th>
-            <th scope="col" class="py-4 px-5 md:px-6 font-semibold text-zinc-700">Doing it yourself</th>
-            <th scope="col" class="py-4 px-5 md:px-6 font-semibold text-primary bg-primary/[0.04] border-l border-line">With BuilderRates</th>
-          </tr>
-        </thead>
-        <tbody class="text-zinc-600">
-          <tr class="border-b border-line">
-            <th scope="row" class="py-5 px-5 md:px-6 font-medium text-ink text-left align-top">Lender access</th>
-            <td class="py-5 px-5 md:px-6">1–3 (your network)</td>
-            <td class="py-5 px-5 md:px-6 font-medium text-primary bg-primary/[0.04] border-l border-line">30+ institutional partners</td>
-          </tr>
-          <tr class="border-b border-line">
-            <th scope="row" class="py-5 px-5 md:px-6 font-medium text-ink text-left align-top">Time commitment</th>
-            <td class="py-5 px-5 md:px-6">15+ hours calling &amp; emailing</td>
-            <td class="py-5 px-5 md:px-6 font-medium text-primary bg-primary/[0.04] border-l border-line">2-minute single application</td>
-          </tr>
-          <tr class="border-b border-line">
-            <th scope="row" class="py-5 px-5 md:px-6 font-medium text-ink text-left align-top">Value score</th>
-            <td class="py-5 px-5 md:px-6">Market average</td>
-            <td class="py-5 px-5 md:px-6 font-medium text-primary bg-primary/[0.04] border-l border-line">Top tier (≈1.4% rate savings)</td>
-          </tr>
-          <tr>
-            <th scope="row" class="py-5 px-5 md:px-6 font-medium text-ink text-left align-top">Cost</th>
-            <td class="py-5 px-5 md:px-6">Standard origination</td>
-            <td class="py-5 px-5 md:px-6 font-medium text-primary bg-primary/[0.04] border-l border-line">$0 out of pocket</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="reveal" role="region" aria-labelledby="compare-heading" aria-describedby="compare-scroll-hint">
+      <!-- Stacked below lg: three-way comparison stays visible without horizontal scroll (see #compare-table-desktop). -->
+      <div id="compare-cards-mobile" class="border border-line bg-white rounded-sm overflow-hidden divide-y divide-line lg:hidden">
+        <section class="p-5" aria-labelledby="cmp-m-lender">
+          <h3 id="cmp-m-lender" class="text-[11px] font-semibold uppercase tracking-wider text-muted mb-4">Lender access</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-xs font-medium text-zinc-500 mb-1.5">Doing it yourself</p>
+              <p class="text-sm text-zinc-600">1–3 (your network)</p>
+            </div>
+            <div class="rounded-sm bg-primary/[0.04] border border-line border-primary/15 p-4">
+              <p class="text-xs font-semibold text-primary mb-1.5">With BuilderRates</p>
+              <p class="text-sm font-medium text-primary">30+ institutional partners</p>
+            </div>
+          </div>
+        </section>
+        <section class="p-5" aria-labelledby="cmp-m-time">
+          <h3 id="cmp-m-time" class="text-[11px] font-semibold uppercase tracking-wider text-muted mb-4">Time commitment</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-xs font-medium text-zinc-500 mb-1.5">Doing it yourself</p>
+              <p class="text-sm text-zinc-600">15+ hours calling &amp; emailing</p>
+            </div>
+            <div class="rounded-sm bg-primary/[0.04] border border-line border-primary/15 p-4">
+              <p class="text-xs font-semibold text-primary mb-1.5">With BuilderRates</p>
+              <p class="text-sm font-medium text-primary">2-minute single application</p>
+            </div>
+          </div>
+        </section>
+        <section class="p-5" aria-labelledby="cmp-m-value">
+          <h3 id="cmp-m-value" class="text-[11px] font-semibold uppercase tracking-wider text-muted mb-4">Value score</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-xs font-medium text-zinc-500 mb-1.5">Doing it yourself</p>
+              <p class="text-sm text-zinc-600">Market average</p>
+            </div>
+            <div class="rounded-sm bg-primary/[0.04] border border-line border-primary/15 p-4">
+              <p class="text-xs font-semibold text-primary mb-1.5">With BuilderRates</p>
+              <p class="text-sm font-medium text-primary">Top tier (≈1.4% rate savings)</p>
+            </div>
+          </div>
+        </section>
+        <section class="p-5" aria-labelledby="cmp-m-cost">
+          <h3 id="cmp-m-cost" class="text-[11px] font-semibold uppercase tracking-wider text-muted mb-4">Cost</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-xs font-medium text-zinc-500 mb-1.5">Doing it yourself</p>
+              <p class="text-sm text-zinc-600">Standard origination</p>
+            </div>
+            <div class="rounded-sm bg-primary/[0.04] border border-line border-primary/15 p-4">
+              <p class="text-xs font-semibold text-primary mb-1.5">With BuilderRates</p>
+              <p class="text-sm font-medium text-primary">$0 out of pocket</p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div id="compare-table-desktop" class="hidden lg:block overflow-x-auto border border-line bg-white touch-pan-x overscroll-x-contain rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" tabindex="0">
+        <table class="w-full table-fixed text-left min-w-[640px] text-[15px]">
+          <caption class="sr-only">Comparison of shopping lenders yourself versus using BuilderRates</caption>
+          <thead>
+            <tr class="border-b border-line bg-zinc-50">
+              <th scope="col" class="py-4 px-6 font-semibold text-xs uppercase tracking-wider text-muted">Feature</th>
+              <th scope="col" class="py-4 px-6 font-semibold text-zinc-700">Doing it yourself</th>
+              <th scope="col" class="py-4 px-6 font-semibold text-primary bg-primary/[0.04] border-l border-line">With BuilderRates</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-600">
+            <tr class="border-b border-line">
+              <th scope="row" class="py-5 px-6 font-medium text-ink text-left align-top">Lender access</th>
+              <td class="py-5 px-6">1–3 (your network)</td>
+              <td class="py-5 px-6 font-medium text-primary bg-primary/[0.04] border-l border-line">30+ institutional partners</td>
+            </tr>
+            <tr class="border-b border-line">
+              <th scope="row" class="py-5 px-6 font-medium text-ink text-left align-top">Time commitment</th>
+              <td class="py-5 px-6">15+ hours calling &amp; emailing</td>
+              <td class="py-5 px-6 font-medium text-primary bg-primary/[0.04] border-l border-line">2-minute single application</td>
+            </tr>
+            <tr class="border-b border-line">
+              <th scope="row" class="py-5 px-6 font-medium text-ink text-left align-top">Value score</th>
+              <td class="py-5 px-6">Market average</td>
+              <td class="py-5 px-6 font-medium text-primary bg-primary/[0.04] border-l border-line">Top tier (≈1.4% rate savings)</td>
+            </tr>
+            <tr>
+              <th scope="row" class="py-5 px-6 font-medium text-ink text-left align-top">Cost</th>
+              <td class="py-5 px-6">Standard origination</td>
+              <td class="py-5 px-6 font-medium text-primary bg-primary/[0.04] border-l border-line">$0 out of pocket</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="text-center mt-10 reveal">
       <button type="button" data-br-track="cta-compare" class="js-open-lead btn-primary inline-flex bg-primary text-on-primary px-8 py-3.5 rounded-md text-sm font-semibold items-center gap-2 min-h-[48px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
