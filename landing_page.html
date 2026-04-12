@@ -205,8 +205,8 @@ tailwind.config = {
     outline: 2px solid #2c694e;
     outline-offset: 2px;
   }
-  #lead-modal:not(.hidden), #legal-modal:not(.hidden) { display: flex; }
-  #lead-modal.hidden, #legal-modal.hidden { display: none !important; }
+  #lead-modal:not(.hidden) { display: flex; }
+  #lead-modal.hidden { display: none !important; }
   .sr-only {
     position: absolute;
     width: 1px;
@@ -257,14 +257,6 @@ tailwind.config = {
   @supports (height: 100dvh) {
     .modal-panel {
       max-height: min(90dvh, 720px);
-    }
-  }
-  .legal-modal-panel {
-    max-height: min(85vh, 720px);
-  }
-  @supports (height: 100dvh) {
-    .legal-modal-panel {
-      max-height: min(85dvh, 720px);
     }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -830,12 +822,20 @@ tailwind.config = {
       </div>
     </div>
     <div>
-      <h3 class="font-semibold text-ink mb-4 uppercase tracking-[0.15em] text-[11px]">Resources</h3>
+      <h3 class="font-semibold text-ink mb-4 uppercase tracking-[0.15em] text-[11px]">Legal &amp; policies</h3>
       <ul class="space-y-2.5">
-        <li><button type="button" class="text-zinc-600 text-sm hover:text-primary text-left py-2 min-h-[44px] w-full focus:outline-none focus-visible:underline js-open-legal" data-legal="privacy">Privacy Policy</button></li>
-        <li><button type="button" class="text-zinc-600 text-sm hover:text-primary text-left py-2 min-h-[44px] w-full focus:outline-none focus-visible:underline js-open-legal" data-legal="terms">Terms of Service</button></li>
-        <li><button type="button" class="text-zinc-600 text-sm hover:text-primary text-left py-2 min-h-[44px] w-full focus:outline-none focus-visible:underline js-open-legal" data-legal="disclosures">Investment Disclosures</button></li>
-        <li><button type="button" class="text-zinc-600 text-sm hover:text-primary text-left py-2 min-h-[44px] w-full focus:outline-none focus-visible:underline js-open-legal" data-legal="licensing">Licensing</button></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/privacy">Privacy Policy</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/terms">Terms of Service</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/cookies">Cookie Policy</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/disclosures">Disclosures</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/how-we-make-money">How we make money</a></li>
+      </ul>
+      <h3 class="font-semibold text-ink mb-4 mt-8 uppercase tracking-[0.15em] text-[11px]">Company</h3>
+      <ul class="space-y-2.5">
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/about">About</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/contact">Contact</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/security">Security</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/careers">Careers</a></li>
       </ul>
     </div>
     <div>
@@ -901,7 +901,7 @@ tailwind.config = {
           <label for="lead-hp">Company website</label>
           <input id="lead-hp" name="company_website" type="text" tabindex="-1" autocomplete="off"/>
         </div>
-        <p class="text-xs text-zinc-500">By continuing you agree to our <button type="button" class="text-primary underline js-open-legal" data-legal="terms">Terms</button> and <button type="button" class="text-primary underline js-open-legal" data-legal="privacy">Privacy Policy</button>.</p>
+        <p class="text-xs text-zinc-500">By continuing you agree to our <a href="/terms" class="text-primary underline hover:no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">Terms</a> and <a href="/privacy" class="text-primary underline hover:no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">Privacy Policy</a>.</p>
         <button type="submit" class="w-full btn-primary bg-primary text-on-primary py-3 min-h-[48px] rounded-md text-sm font-semibold">Continue</button>
       </form>
     </div>
@@ -960,17 +960,6 @@ tailwind.config = {
       <div id="lead-mailto-slot" class="mb-6"></div>
       <button type="button" class="btn-primary bg-primary text-on-primary px-6 py-3 min-h-[48px] rounded-md text-sm font-semibold min-w-[120px]" data-close-lead>Done</button>
     </div>
-  </div>
-</div>
-
-<div id="legal-modal" class="fixed inset-0 z-[210] hidden items-center justify-center px-4 pt-[max(1rem,env(safe-area-inset-top,0px))] pb-[max(1rem,env(safe-area-inset-bottom,0px))]" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
-  <div class="absolute inset-0 bg-black/50" data-legal-backdrop tabindex="-1" aria-hidden="true"></div>
-  <div class="modal-panel legal-modal-panel relative z-10 w-full max-w-lg bg-white rounded-md border border-line shadow-xl p-6 md:p-8 overflow-y-auto">
-    <button type="button" class="absolute top-3 right-3 sm:top-4 sm:right-4 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md text-zinc-500 hover:text-ink hover:bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-close-legal aria-label="Close">
-      <span class="material-symbols-outlined" aria-hidden="true">close</span>
-    </button>
-    <h2 id="legal-modal-title" class="font-display text-lg font-semibold text-ink mb-4 pr-8"></h2>
-    <div id="legal-modal-body" class="text-sm text-zinc-600 space-y-3 leading-relaxed"></div>
   </div>
 </div>
 
@@ -1171,33 +1160,12 @@ window.BuilderRatesTrack = function (name) {
   var iconClose = document.getElementById("nav-icon-close");
   var sectionIds = ["solutions", "how", "products", "compare", "testimonials", "faq", "contact"];
   var leadModal = document.getElementById("lead-modal");
-  var legalModalEl = document.getElementById("legal-modal");
   var leadStep1 = document.getElementById("lead-step-1");
   var leadStep2 = document.getElementById("lead-step-2");
   var leadStep3 = document.getElementById("lead-step-3");
   var leadData = {};
   var lastFocus = null;
-  var legalReturnFocus = null;
   var stickyQuick = document.getElementById("sticky-quick-actions");
-
-  var LEGAL = {
-    privacy: {
-      title: "Privacy Policy",
-      html: "<p>BuilderRates collects information you submit (such as name, email, phone, and deal details) to evaluate fit with our lender network and respond to your request.</p><p>We may share this information with partner lenders and service providers solely to originate or service your inquiry. We do not sell your personal information.</p><p>Have qualified counsel review your final privacy policy before production use.</p>"
-    },
-    terms: {
-      title: "Terms of Service",
-      html: "<p>BuilderRates provides introductions and educational information. We are not a lender and do not extend credit. Loan approval, rates, and terms are determined solely by third-party lenders subject to their underwriting.</p><p>Use of this site does not guarantee financing. Obtain counsel-reviewed terms for your production deployment.</p>"
-    },
-    disclosures: {
-      title: "Investment &amp; lending disclosures",
-      html: "<p>Real estate investments carry risk of loss. Past performance of similar deals is not indicative of future results. BuilderRates does not provide investment, tax, or legal advice.</p><p>Consult licensed professionals regarding your situation.</p>"
-    },
-    licensing: {
-      title: "Licensing",
-      html: "<p>BuilderRates operates as a business introduction and marketing service. Specific mortgage broker or lending licenses vary by state—confirm your entity’s registrations and add NMLS IDs here for production.</p>"
-    }
-  };
 
   function setOpen(open) {
     if (!menu || !toggle) return;
@@ -1281,9 +1249,8 @@ window.BuilderRatesTrack = function (name) {
     var heroEl = document.getElementById("top");
     var pastHero = heroEl && heroEl.getBoundingClientRect().bottom <= 1;
     var leadOpen = leadModal && !leadModal.classList.contains("hidden");
-    var legalOpen = legalModalEl && !legalModalEl.classList.contains("hidden");
     var menuOpen = menu && !menu.classList.contains("hidden");
-    var blockSticky = Boolean(leadOpen || legalOpen || menuOpen);
+    var blockSticky = Boolean(leadOpen || menuOpen);
     if (!pastHero) {
       stickyQuick.classList.remove("sticky-quick-actions--revealed");
       document.body.classList.remove("has-sticky-quick");
@@ -1306,9 +1273,7 @@ window.BuilderRatesTrack = function (name) {
 
   function refreshModalBodyLock() {
     var leadOpen = leadModal && !leadModal.classList.contains("hidden");
-    var legalOpen = legalModalEl && !legalModalEl.classList.contains("hidden");
-    var modalsOpen = Boolean(leadOpen || legalOpen);
-    document.body.classList.toggle("modal-open", modalsOpen);
+    document.body.classList.toggle("modal-open", leadOpen);
     syncStickyQuickVisibility();
   }
 
@@ -1316,9 +1281,8 @@ window.BuilderRatesTrack = function (name) {
     var main = document.getElementById("main-content");
     if (!main) return;
     var leadOpen = leadModal && !leadModal.classList.contains("hidden");
-    var legalOpen = legalModalEl && !legalModalEl.classList.contains("hidden");
     var menuOpen = menu && !menu.classList.contains("hidden");
-    main.setAttribute("aria-hidden", leadOpen || legalOpen || menuOpen ? "true" : "false");
+    main.setAttribute("aria-hidden", leadOpen || menuOpen ? "true" : "false");
   }
 
   function openLeadModal() {
@@ -1356,45 +1320,7 @@ window.BuilderRatesTrack = function (name) {
     if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   }
 
-  function openLegal(key) {
-    var L = LEGAL[key];
-    var lm = document.getElementById("legal-modal");
-    if (!L || !lm) return;
-    legalReturnFocus = document.activeElement;
-    document.getElementById("legal-modal-title").textContent = L.title;
-    document.getElementById("legal-modal-body").innerHTML = L.html;
-    lm.classList.remove("hidden");
-    lm.classList.add("flex");
-    refreshModalBodyLock();
-    syncMainAriaHidden();
-    setTimeout(function () {
-      var c = lm.querySelector("[data-close-legal]");
-      if (c) c.focus();
-    }, 10);
-  }
-
-  function closeLegal() {
-    var lm = document.getElementById("legal-modal");
-    if (!lm) return;
-    lm.classList.add("hidden");
-    lm.classList.remove("flex");
-    refreshModalBodyLock();
-    syncMainAriaHidden();
-    var ref = legalReturnFocus;
-    legalReturnFocus = null;
-    setTimeout(function () {
-      if (ref && typeof ref.focus === "function") {
-        try {
-          ref.focus();
-        } catch (e) {}
-      }
-    }, 0);
-  }
-
   function getActiveModalPanel() {
-    if (legalModalEl && !legalModalEl.classList.contains("hidden")) {
-      return legalModalEl.querySelector(".modal-panel");
-    }
     if (leadModal && !leadModal.classList.contains("hidden")) {
       return leadModal.querySelector(".modal-panel");
     }
@@ -1570,26 +1496,8 @@ window.BuilderRatesTrack = function (name) {
     submitLead();
   });
 
-  document.querySelectorAll(".js-open-legal").forEach(function (btn) {
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-      var key = btn.getAttribute("data-legal");
-      if (key) openLegal(key);
-    });
-  });
-
-  document.querySelectorAll("[data-close-legal], [data-legal-backdrop]").forEach(function (el) {
-    el.addEventListener("click", closeLegal);
-  });
-
   document.addEventListener("keydown", function (e) {
     if (e.key !== "Escape") return;
-    var lm = document.getElementById("legal-modal");
-    if (lm && !lm.classList.contains("hidden")) {
-      closeLegal();
-      e.preventDefault();
-      return;
-    }
     if (leadModal && !leadModal.classList.contains("hidden")) {
       closeLeadModal();
       e.preventDefault();
@@ -1789,5 +1697,6 @@ window.BuilderRatesTrack = function (name) {
   maybeOpenLeadFromCampaign();
 })();
 </script>
+<!-- br:cookie-notice -->
 </body>
 </html>
