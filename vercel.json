@@ -1,4 +1,6 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "outputDirectory": ".",
   "headers": [
     {
       "source": "/favicon.svg",
