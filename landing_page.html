@@ -51,7 +51,7 @@
 ]}
 </script>
 <script type="application/ld+json" id="ld-json-org">
-{"@context":"https://schema.org","@type":"Organization","@id":"https://financing-project.vercel.app/#organization","name":"BuilderRates","url":"https://financing-project.vercel.app/","description":"Debt placement and rate analysis for real estate investors.","logo":{"@type":"ImageObject","url":"https://financing-project.vercel.app/favicon.svg","width":512,"height":512},"address":{"@type":"PostalAddress","addressCountry":"US"},"sameAs":["https://www.linkedin.com/company/builderrates"],"knowsAbout":["Real estate investment financing","Construction and renovation loans","DSCR rental loans","Bridge financing","Commercial real estate debt"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"hello@builderrates.com","areaServed":"US","availableLanguage":"en"}}
+{"@context":"https://schema.org","@type":"Organization","@id":"https://financing-project.vercel.app/#organization","name":"BuilderRates","legalName":"Lazarus LLC","url":"https://financing-project.vercel.app/","description":"Debt placement and rate analysis for real estate investors.","logo":{"@type":"ImageObject","url":"https://financing-project.vercel.app/favicon.svg","width":512,"height":512},"address":{"@type":"PostalAddress","streetAddress":"30 N Gould","addressLocality":"Sheridan","addressRegion":"WY","postalCode":"82801","addressCountry":"US"},"sameAs":["https://www.linkedin.com/company/builderrates"],"knowsAbout":["Real estate investment financing","Construction and renovation loans","DSCR rental loans","Bridge financing","Commercial real estate debt"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"hello@builderrates.com","areaServed":"US","availableLanguage":"en"}}
 </script>
 <script type="application/ld+json" id="ld-json-website">
 {"@context":"https://schema.org","@type":"WebSite","@id":"https://financing-project.vercel.app/#website","name":"BuilderRates","url":"https://financing-project.vercel.app/","inLanguage":"en-US","description":"Institutional financing matchmaking for real estate investors.","publisher":{"@id":"https://financing-project.vercel.app/#organization"},"potentialAction":{"@type":"ContactAction","name":"Email BuilderRates","target":{"@type":"EntryPoint","urlTemplate":"mailto:hello@builderrates.com?subject=Rate%20analysis%20request","actionPlatform":["http://schema.org/DesktopWebPlatform","http://schema.org/MobileWebPlatform"]}}}
@@ -864,7 +864,7 @@ tailwind.config = {
     </div>
   </div>
   <div class="max-w-6xl mx-auto px-5 md:px-8 mt-12 pt-8 border-t border-line">
-    <p class="text-center md:text-left text-zinc-500 text-sm">© 2026 BuilderRates. All rights reserved.</p>
+    <p class="text-center md:text-left text-zinc-500 text-sm">© 2026 Lazarus LLC. All rights reserved.</p>
     <p class="text-center md:text-left text-zinc-400 text-xs mt-2 max-w-3xl">BuilderRates is a marketing and introduction service, not a lender. Rates, terms, and approvals are subject to partner underwriting. Not all applicants will qualify.</p>
   </div>
 </footer>
@@ -970,7 +970,7 @@ tailwind.config = {
 window.BUILDERRATES = window.BUILDERRATES || {};
 window.BUILDERRATES.siteUrl = "";
 window.BUILDERRATES.leadEmail = "hello@builderrates.com";
-window.BUILDERRATES.formActionUrl = "";
+window.BUILDERRATES.formActionUrl = "https://formbold.com/s/oJqQe";
 window.BuilderRatesTrack = function (name) {
   try {
     window.dispatchEvent(new CustomEvent("br:track", { detail: { name: name, t: Date.now() } }));
@@ -1735,6 +1735,6 @@ window.BuilderRatesTrack = function (name) {
   maybeOpenLeadFromCampaign();
 })();
 </script>
-<!-- br:cookie-notice -->
+<div id="br-cookie-banner" class="fixed bottom-0 left-0 right-0 z-[250] border-t border-line bg-white/95 backdrop-blur-sm shadow-[0_-4px_24px_rgba(0,0,0,0.06)] px-4 py-3 md:py-4 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pb-[max(0.75rem,env(safe-area-inset-bottom,0px))]" role="region" aria-label="Cookie notice" hidden><div class="max-w-3xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"><p class="text-sm text-zinc-600 leading-snug">We use cookies and similar technologies to run and improve this site and (if configured) measure traffic. See our <a href="/cookies" class="text-primary font-medium underline underline-offset-2 hover:no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">Cookie Policy</a>.</p><div class="flex items-center gap-2 shrink-0"><button type="button" id="br-cookie-dismiss" class="bg-primary text-on-primary px-4 py-2.5 rounded-md text-sm font-semibold min-h-[44px] hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Dismiss</button></div></div></div><script>(function(){var k="br_cookie_notice_dismissed";var b=document.getElementById("br-cookie-banner");var btn=document.getElementById("br-cookie-dismiss");if(!b)return;try{if(localStorage.getItem(k)==="1")return;}catch(e1){}b.removeAttribute("hidden");function hide(){b.setAttribute("hidden","");try{localStorage.setItem(k,"1");}catch(e2){}}btn&&btn.addEventListener("click",hide);})();</script>
 </body>
 </html>
