@@ -1,3 +1,4 @@
 .vercel
+node_modules/
 # Generated at build time (same payload as landing_page.html after inject)
 index.html

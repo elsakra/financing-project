@@ -8,7 +8,7 @@
  *   SITE_URL              — Preferred. Example: https://builderrates.com (no trailing slash)
  *   VERCEL_URL            — Set by Vercel; used as https://VERCEL_URL when SITE_URL unset
  *   LEAD_EMAIL            — Public contact email (default hello@builderrates.com)
- *   FORMBOLD_ACTION_URL   — FormBold public form POST URL (default https://formbold.com/s/oJqQe)
+ *   SUBMIT_ENDPOINT       — First-party form POST path or URL (default /api/submit). Legacy: FORMBOLD_ACTION_URL.
  *   GTM_ID                — Optional; Google Tag Manager container id (format GTM-XXXXXXX)
  *
  * If neither SITE_URL nor VERCEL_URL is set (local dev), defaults to
@@ -21,8 +21,8 @@ const path = require("path");
 const ROOT = path.join(__dirname, "..");
 const DEFAULT_ORIGIN = "https://financing-project.vercel.app";
 const DEFAULT_EMAIL = "hello@builderrates.com";
-/** Default FormBold endpoint (leads + newsletter use same form with intent field). */
-const DEFAULT_FORMBOLD_ACTION = "https://formbold.com/s/oJqQe";
+/** Default first-party API (see api/submit.js). */
+const DEFAULT_SUBMIT_ENDPOINT = "/api/submit";
 
 /** HTML templates processed in place (same replacements as landing). */
 const HTML_TEMPLATES = [
@@ -111,7 +111,8 @@ const gtmBody = gtmId
     '" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>'
   : "";
 
-const formActionUrl = ((process.env.FORMBOLD_ACTION_URL || "").trim() || DEFAULT_FORMBOLD_ACTION);
+const formActionUrl =
+  (process.env.SUBMIT_ENDPOINT || process.env.FORMBOLD_ACTION_URL || "").trim() || DEFAULT_SUBMIT_ENDPOINT;
 
 const procOpts = {
   origin: origin,
@@ -185,7 +186,7 @@ var log =
   "inject-site-url: origin=" +
   origin +
   (leadEmail !== DEFAULT_EMAIL ? " email=set" : "") +
-  " formbold=" +
-  (formActionUrl !== DEFAULT_FORMBOLD_ACTION ? "custom" : "default") +
+  " submit=" +
+  (formActionUrl !== DEFAULT_SUBMIT_ENDPOINT ? "custom" : "default") +
   (gtmId ? " gtm=set" : "");
 console.log(log);
