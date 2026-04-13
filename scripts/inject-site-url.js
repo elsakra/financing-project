@@ -8,7 +8,7 @@
  *   SITE_URL              — Preferred. Example: https://builderrates.com (no trailing slash)
  *   VERCEL_URL            — Set by Vercel; used as https://VERCEL_URL when SITE_URL unset
  *   LEAD_EMAIL            — Public contact email (default hello@builderrates.com)
- *   SUBMIT_ENDPOINT       — First-party form POST path or URL (default /api/submit). Legacy: FORMBOLD_ACTION_URL.
+ *   SUBMIT_ENDPOINT       — First-party form POST path or URL (default /api/submit). FORMBOLD_ACTION_URL is ignored.
  *   GTM_ID                — Optional; Google Tag Manager container id (format GTM-XXXXXXX)
  *
  * If neither SITE_URL nor VERCEL_URL is set (local dev), defaults to
@@ -111,8 +111,12 @@ const gtmBody = gtmId
     '" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>'
   : "";
 
-const formActionUrl =
-  (process.env.SUBMIT_ENDPOINT || process.env.FORMBOLD_ACTION_URL || "").trim() || DEFAULT_SUBMIT_ENDPOINT;
+if (process.env.FORMBOLD_ACTION_URL && String(process.env.FORMBOLD_ACTION_URL).trim()) {
+  console.warn(
+    "inject-site-url: FORMBOLD_ACTION_URL is set but ignored — remove it in Vercel. Using SUBMIT_ENDPOINT or default /api/submit."
+  );
+}
+const formActionUrl = (process.env.SUBMIT_ENDPOINT || "").trim() || DEFAULT_SUBMIT_ENDPOINT;
 
 const procOpts = {
   origin: origin,
