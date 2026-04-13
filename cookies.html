@@ -14,11 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#012d1d", line: "#e5e5e5", canvas: "#fafafa", muted: "#737373", "on-primary": "#ffffff" }, fontFamily: { display: ["Plus Jakarta Sans", "system-ui", "sans-serif"], sans: ["DM Sans", "system-ui", "sans-serif"] } } } };
-</script>
-<style>body{font-family:"DM Sans",system-ui,sans-serif}h1,h2,.font-display{font-family:"Plus Jakarta Sans",system-ui,sans-serif}.skip-link{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}.skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;padding:.5rem 1rem;z-index:300;background:#012d1d;color:#fff;border-radius:.375rem}</style>
+<!-- br:include site-head-marketing-chrome -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"Cookie Policy","url":"https://financing-project.vercel.app/cookies","isPartOf":{"@type":"WebSite","name":"BuilderRates","url":"https://financing-project.vercel.app/"}}
 </script>
@@ -26,9 +22,10 @@ tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#0
 <body class="bg-canvas text-ink antialiased min-h-dvh flex flex-col">
 <!-- br:inject-gtm-body -->
 <a href="#main-content" class="skip-link">Skip to content</a>
-<!-- br:include site-header-sub -->
+<!-- TopNavBar -->
+<!-- br:include site-header-landing-interior -->
 
-<main id="main-content" class="flex-1">
+<main id="main-content" class="flex-1 pt-[calc(5.5rem+env(safe-area-inset-top,0px))]">
   <article class="max-w-3xl mx-auto px-5 md:px-8 py-12 md:py-16">
     <p class="text-xs font-semibold uppercase tracking-wider text-muted mb-2">Legal</p>
     <h1 class="font-display text-3xl md:text-4xl font-semibold text-ink mb-2">Cookie Policy</h1>
@@ -77,7 +74,8 @@ tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#0
   </article>
 </main>
 
-<!-- br:include site-footer-sub -->
+<!-- br:include site-footer-marketing -->
+<!-- br:include site-interior-body-scripts -->
 <!-- br:cookie-notice -->
 </body>
 </html>

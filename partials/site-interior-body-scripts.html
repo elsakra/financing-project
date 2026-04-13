@@ -1,0 +1,225 @@
+<script>
+/* Optional values injected at deploy: SUBMIT_ENDPOINT, LEAD_EMAIL (see scripts/inject-site-url.js). */
+window.BUILDERRATES = window.BUILDERRATES || {};
+window.BUILDERRATES.siteUrl = "";
+window.BUILDERRATES.leadEmail = "hello@builderrates.com";
+window.BUILDERRATES.formActionUrl = "/api/submit";
+window.BuilderRatesTrack = function (name) {
+  try {
+    window.dispatchEvent(new CustomEvent("br:track", { detail: { name: name, t: Date.now() } }));
+  } catch (e) {}
+};
+</script>
+<script>
+(function () {
+  var BR = window.BUILDERRATES || {};
+
+  function utmQueryString() {
+    try {
+      var u = new URLSearchParams(typeof location !== "undefined" ? location.search || "" : "");
+      var keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "fbclid"];
+      var parts = [];
+      keys.forEach(function (k) {
+        var v = u.get(k);
+        if (v) parts.push(k + "=" + v);
+      });
+      return parts.length ? parts.join("&") : "";
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function submitJson(endpoint, payload, onSuccess, onError) {
+    var path = endpoint && String(endpoint).trim();
+    if (!path) {
+      onError();
+      return;
+    }
+    fetch(path, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json().catch(function () {
+          return {};
+        });
+      })
+      .then(function (data) {
+        if (data && data.error) throw new Error(data.error);
+        onSuccess(data);
+      })
+      .catch(function () {
+        onError();
+      });
+  }
+
+  function syncFooterEmail() {
+    var em = (BR.leadEmail && String(BR.leadEmail).trim()) || "hello@builderrates.com";
+    var foot = document.getElementById("footer-email-link");
+    if (foot) {
+      foot.setAttribute("href", "mailto:" + em);
+      foot.textContent = em;
+    }
+  }
+
+  syncFooterEmail();
+
+  document.addEventListener(
+    "click",
+    function (e) {
+      var el = e.target && e.target.closest && e.target.closest("[data-br-track]");
+      if (!el) return;
+      var n = el.getAttribute("data-br-track");
+      if (n && window.BuilderRatesTrack) window.BuilderRatesTrack("click:" + n);
+    },
+    true
+  );
+
+  var nav = document.getElementById("site-nav");
+  var toggle = document.getElementById("nav-toggle");
+  var menu = document.getElementById("mobile-menu");
+  var iconMenu = document.getElementById("nav-icon-menu");
+  var iconClose = document.getElementById("nav-icon-close");
+
+  function setMenuOpen(open) {
+    if (!menu || !toggle) return;
+    menu.classList.toggle("hidden", !open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Close main menu" : "Open main menu");
+    document.body.classList.toggle("menu-open", open);
+    if (iconMenu && iconClose) {
+      iconMenu.classList.toggle("hidden", open);
+      iconClose.classList.toggle("hidden", !open);
+    }
+  }
+
+  if (toggle && menu) {
+    toggle.addEventListener("click", function () {
+      setMenuOpen(menu.classList.contains("hidden"));
+    });
+    menu.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        setMenuOpen(false);
+      });
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (nav) {
+        if (window.scrollY > 8) nav.classList.add("shadow-sm");
+        else nav.classList.remove("shadow-sm");
+      }
+    },
+    { passive: true }
+  );
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    if (menu && !menu.classList.contains("hidden")) {
+      setMenuOpen(false);
+      e.preventDefault();
+    }
+  });
+
+  var nf = document.getElementById("newsletter-form");
+  var nSub = document.getElementById("newsletter-submit-btn");
+  if (nf) {
+    nf.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var nhp = document.getElementById("newsletter-hp");
+      var input = document.getElementById("email-updates");
+      var st = document.getElementById("newsletter-status");
+      if (nhp && nhp.value) {
+        st.textContent = "Thanks — you’re subscribed.";
+        st.classList.remove("hidden");
+        st.classList.remove("text-secondary");
+        st.classList.add("text-zinc-700");
+        nf.reset();
+        return;
+      }
+      if (!input || !input.value) return;
+      var em = BR.leadEmail || "hello@builderrates.com";
+      var utm = utmQueryString();
+      var pageUrl = typeof location !== "undefined" ? location.href : "";
+      var actionUrl = BR.formActionUrl && String(BR.formActionUrl).trim();
+      function resetNBtn() {
+        if (nSub) {
+          nSub.disabled = false;
+          nSub.textContent = "Join";
+        }
+      }
+      function mailtoFallback() {
+        if (window.BuilderRatesTrack) window.BuilderRatesTrack("newsletter-mailto-fallback");
+        var href =
+          "mailto:" +
+          em +
+          "?subject=" +
+          encodeURIComponent("Newsletter signup") +
+          "&body=" +
+          encodeURIComponent(
+            "Please add: " + input.value + "\n\npageUrl: " + pageUrl + (utm ? "\nattribution: " + utm : "")
+          );
+        st.innerHTML =
+          "<a href=\"" + href + "\" class=\"text-primary font-medium underline\">Open email to complete signup</a>";
+        st.classList.remove("hidden");
+        resetNBtn();
+      }
+      if (actionUrl) {
+        nf.setAttribute("aria-busy", "true");
+        if (nSub) {
+          nSub.disabled = true;
+          nSub.textContent = "Sending…";
+        }
+        var nBody = {
+          intent: "newsletter",
+          email: input.value,
+          name: "Newsletter signup",
+          phone: "",
+          product: "",
+          state: "",
+          loan_amount: "",
+          subject: "BuilderRates newsletter signup",
+          message:
+            "Newsletter signup\nemail: " +
+            input.value +
+            "\npageUrl: " +
+            pageUrl +
+            (utm ? "\nattribution: " + utm : ""),
+          pageUrl: pageUrl,
+          utm: utm || "",
+          _hp: nhp && nhp.value ? String(nhp.value) : "",
+        };
+
+        submitJson(
+          actionUrl,
+          nBody,
+          function () {
+            nf.removeAttribute("aria-busy");
+            resetNBtn();
+            if (window.BuilderRatesTrack) window.BuilderRatesTrack("newsletter-success");
+            st.textContent = "You’re on the list. Next brief ships soon.";
+            st.classList.remove("hidden");
+            st.classList.remove("text-secondary");
+            st.classList.add("text-zinc-700");
+            nf.reset();
+          },
+          function () {
+            nf.removeAttribute("aria-busy");
+            resetNBtn();
+            mailtoFallback();
+          }
+        );
+        return;
+      }
+      mailtoFallback();
+    });
+  }
+})();
+</script>
