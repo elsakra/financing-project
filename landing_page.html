@@ -321,7 +321,7 @@ tailwind.config = {
 <div id="sticky-quick-actions" class="sticky-safe fixed bottom-0 left-0 right-0 z-[90] md:hidden border-t border-line bg-white/95 backdrop-blur-sm pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-2 pb-1 flex flex-col gap-1 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]" role="region" aria-label="Quick actions" aria-hidden="true" inert="">
   <div class="flex gap-2 w-full">
     <button type="button" data-br-track="cta-sticky" class="js-open-lead flex-1 btn-primary bg-primary text-on-primary py-3 min-h-[48px] rounded-md text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Get rate analysis</button>
-    <a href="mailto:hello@builderrates.com" id="sticky-email-link" class="inline-flex items-center justify-center min-h-[48px] min-w-[4.5rem] px-4 py-3 rounded-md text-sm font-semibold border border-line bg-white text-ink touch-manipulation">Email</a>
+    <button type="button" id="sticky-email-link" data-br-track="cta-sticky-email" class="js-open-lead inline-flex items-center justify-center min-h-[48px] min-w-[4.5rem] px-4 py-3 rounded-md text-sm font-semibold border border-line bg-white text-ink touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Email</button>
   </div>
   <p class="text-[10px] text-center text-zinc-500 leading-tight px-1">Free analysis · Typical reply within one business day</p>
 </div>
@@ -875,15 +875,16 @@ tailwind.config = {
     <button type="button" class="absolute top-3 right-3 sm:top-4 sm:right-4 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md text-zinc-500 hover:text-ink hover:bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-close-lead aria-label="Close dialog">
       <span class="material-symbols-outlined" aria-hidden="true">close</span>
     </button>
-    <p id="lead-modal-desc" class="sr-only">Two quick steps: contact details, then a short deal snapshot. About two minutes, no obligation.</p>
+    <p id="lead-modal-desc" class="sr-only">Two steps: your contact details, then a short deal snapshot. Initial review uses a soft credit inquiry where applicable. No obligation.</p>
     <div id="lead-step-1">
       <div class="flex gap-1.5 mb-4" aria-hidden="true">
         <span class="h-1 flex-1 rounded-full bg-primary"></span>
         <span class="h-1 flex-1 rounded-full bg-zinc-200"></span>
       </div>
-      <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-2">Step 1 of 2</p>
-      <h2 id="lead-modal-title" class="font-display text-xl font-semibold text-ink mb-1">Start your rate analysis</h2>
-      <p class="text-sm text-zinc-600 mb-6">Takes about two minutes. We’ll match you to programs—no obligation.</p>
+      <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-2">Step 1 of 2 · Contact</p>
+      <h2 id="lead-modal-title" class="font-display text-xl font-semibold text-ink mb-1">Where should we send your rate matches?</h2>
+      <p class="text-sm text-zinc-600 mb-2">Get introduced to programs from our lender network—free to you. No hard obligation to proceed.</p>
+      <p class="text-xs text-zinc-500 mb-5">Initial qualification often uses a soft inquiry; a hard pull applies only if you move forward with a lender. See our <a href="/privacy" class="text-primary font-medium underline hover:no-underline">Privacy Policy</a>.</p>
       <form id="lead-form-step1" class="space-y-4">
         <div>
           <label for="lead-name" class="block text-xs font-medium text-zinc-700 mb-1">Full name</label>
@@ -894,7 +895,7 @@ tailwind.config = {
           <input id="lead-email" name="email" type="email" required autocomplete="email" inputmode="email" enterkeyhint="next" class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
         </div>
         <div>
-          <label for="lead-phone" class="block text-xs font-medium text-zinc-700 mb-1">Phone</label>
+          <label for="lead-phone" class="block text-xs font-medium text-zinc-700 mb-1">Phone <span class="text-zinc-500 font-normal">(optional—faster callback)</span></label>
           <input id="lead-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" enterkeyhint="go" class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"/>
         </div>
         <div class="sr-only" aria-hidden="true">
@@ -902,7 +903,7 @@ tailwind.config = {
           <input id="lead-hp" name="company_website" type="text" tabindex="-1" autocomplete="off"/>
         </div>
         <p class="text-xs text-zinc-500">By continuing you agree to our <a href="/terms" class="text-primary underline hover:no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">Terms</a> and <a href="/privacy" class="text-primary underline hover:no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">Privacy Policy</a>.</p>
-        <button type="submit" class="w-full btn-primary bg-primary text-on-primary py-3 min-h-[48px] rounded-md text-sm font-semibold">Continue</button>
+        <button type="submit" class="w-full btn-primary bg-primary text-on-primary py-3 min-h-[48px] rounded-md text-sm font-semibold">Continue to deal details</button>
       </form>
     </div>
     <div id="lead-step-2" class="hidden">
@@ -910,8 +911,9 @@ tailwind.config = {
         <span class="h-1 flex-1 rounded-full bg-primary"></span>
         <span class="h-1 flex-1 rounded-full bg-primary"></span>
       </div>
-      <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-2">Step 2 of 2</p>
-      <h3 class="font-display text-xl font-semibold text-ink mb-6">Deal snapshot</h3>
+      <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted mb-2">Step 2 of 2 · Deal</p>
+      <h3 class="font-display text-xl font-semibold text-ink mb-2">Last step—we match programs to this snapshot</h3>
+      <p class="text-sm text-zinc-600 mb-6">About 60 seconds. Fields below help our team route you to the right capital partners.</p>
       <form id="lead-form-step2" class="space-y-4">
         <div>
           <label for="lead-product" class="block text-xs font-medium text-zinc-700 mb-1">Primary product</label>
@@ -933,7 +935,7 @@ tailwind.config = {
           </select>
         </div>
         <div>
-          <label for="lead-amount" class="block text-xs font-medium text-zinc-700 mb-1">Estimated loan size</label>
+          <label for="lead-amount" class="block text-xs font-medium text-zinc-700 mb-1">Estimated loan size <span class="text-zinc-500 font-normal">(optional)</span></label>
           <select id="lead-amount" name="amount" class="w-full border border-line rounded-sm px-3 py-2.5 text-base md:text-sm bg-white focus:ring-2 focus:ring-primary outline-none">
             <option value="">Prefer not to say</option>
             <option>Under $250k</option>
@@ -945,7 +947,7 @@ tailwind.config = {
         </div>
         <div class="flex gap-2">
           <button type="button" class="flex-1 py-3 min-h-[48px] rounded-md border border-line text-sm font-semibold touch-manipulation" data-lead-back>Back</button>
-          <button type="submit" id="lead-submit-btn" class="flex-1 btn-primary bg-primary text-on-primary py-3 min-h-[48px] rounded-md text-sm font-semibold disabled:opacity-60 disabled:cursor-not-allowed">Submit</button>
+          <button type="submit" id="lead-submit-btn" class="flex-1 btn-primary bg-primary text-on-primary py-3 min-h-[48px] rounded-md text-sm font-semibold disabled:opacity-60 disabled:cursor-not-allowed">Get my rate analysis</button>
         </div>
       </form>
       <div id="lead-mailto-inline" class="mt-2"></div>
@@ -956,7 +958,7 @@ tailwind.config = {
         <span class="material-symbols-outlined text-3xl text-secondary" aria-hidden="true">check_circle</span>
       </div>
       <h3 class="font-display text-xl font-semibold text-ink mb-2">You’re in the queue</h3>
-      <p class="text-sm text-zinc-600 mb-4">We’ll review your snapshot and reach out within one business day with next steps.</p>
+      <p class="text-sm text-zinc-600 mb-4">We review every submission by hand. Expect a personal reply within <strong class="text-ink font-semibold">one business day</strong> with next steps or follow-up questions—often sooner for time-sensitive deals.</p>
       <div id="lead-mailto-slot" class="mb-6"></div>
       <button type="button" class="btn-primary bg-primary text-on-primary px-6 py-3 min-h-[48px] rounded-md text-sm font-semibold min-w-[120px]" data-close-lead>Done</button>
     </div>
@@ -964,12 +966,11 @@ tailwind.config = {
 </div>
 
 <script>
-/* Optional values injected at deploy: FORMSPREE_URL, NEWSLETTER_URL, LEAD_EMAIL, GTM_ID (see scripts/inject-site-url.js). */
+/* Optional values injected at deploy: FORMBOLD_ACTION_URL, LEAD_EMAIL, GTM_ID (see scripts/inject-site-url.js). */
 window.BUILDERRATES = window.BUILDERRATES || {};
 window.BUILDERRATES.siteUrl = "";
 window.BUILDERRATES.leadEmail = "hello@builderrates.com";
-window.BUILDERRATES.formspreeUrl = "";
-window.BUILDERRATES.newsletterUrl = "";
+window.BUILDERRATES.formActionUrl = "";
 window.BuilderRatesTrack = function (name) {
   try {
     window.dispatchEvent(new CustomEvent("br:track", { detail: { name: name, t: Date.now() } }));
@@ -1372,6 +1373,16 @@ window.BuilderRatesTrack = function (name) {
     }, 50);
   }
 
+  function selectOptionText(selectId) {
+    var el = document.getElementById(selectId);
+    if (!el || el.selectedIndex < 0) return "";
+    try {
+      return (el.options[el.selectedIndex].textContent || "").trim();
+    } catch (e) {
+      return "";
+    }
+  }
+
   function submitLead() {
     var hp = document.getElementById("lead-hp");
     if (hp && hp.value) {
@@ -1383,25 +1394,28 @@ window.BuilderRatesTrack = function (name) {
     var slot = document.getElementById("lead-mailto-slot");
     var slotInline = document.getElementById("lead-mailto-inline");
     var submitBtn = document.getElementById("lead-submit-btn");
+    var productEl = document.getElementById("lead-product");
+    var stateEl = document.getElementById("lead-state");
+    var amountEl = document.getElementById("lead-amount");
     var payload = {
       name: leadData.name,
       email: leadData.email,
       phone: leadData.phone || "",
-      product: document.getElementById("lead-product").value,
-      state: document.getElementById("lead-state").value,
-      amount: document.getElementById("lead-amount").value
+      product: productEl ? productEl.value : "",
+      state: stateEl ? selectOptionText("lead-state") : "",
+      loan_amount: amountEl ? selectOptionText("lead-amount") : ""
     };
     var body = Object.keys(payload).map(function (k) { return k + ": " + (payload[k] || ""); }).join("\n");
     var pageUrl = typeof location !== "undefined" ? location.href : "";
     var utm = utmQueryString();
     var fullMessage =
       body + "\n\npageUrl: " + pageUrl + (utm ? "\nattribution: " + utm : "") + "\nsource: landing-lead";
-    var url = BR.formspreeUrl && String(BR.formspreeUrl).trim();
+    var url = BR.formActionUrl && String(BR.formActionUrl).trim();
 
     function resetSubmitBtn() {
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = "Submit";
+        submitBtn.textContent = "Get my rate analysis";
       }
     }
 
@@ -1414,16 +1428,26 @@ window.BuilderRatesTrack = function (name) {
         submitBtn.disabled = true;
         submitBtn.textContent = "Sending…";
       }
+      var params = new URLSearchParams();
+      params.append("intent", "lead");
+      params.append("name", payload.name);
+      params.append("email", payload.email);
+      params.append("phone", payload.phone);
+      params.append("product", payload.product);
+      params.append("state", payload.state);
+      params.append("loan_amount", payload.loan_amount);
+      params.append("subject", "BuilderRates lead — " + payload.name);
+      params.append("message", fullMessage);
+      params.append("pageUrl", pageUrl);
+      if (utm) params.append("utm", utm);
+
       fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          name: payload.name,
-          email: payload.email,
-          _replyto: payload.email,
-          _subject: "BuilderRates lead — " + payload.name,
-          message: fullMessage
-        })
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Accept: "application/json, text/plain, */*"
+        },
+        body: params.toString()
       })
         .then(function (r) {
           if (!r.ok) throw new Error("Form error");
@@ -1528,7 +1552,8 @@ window.BuilderRatesTrack = function (name) {
       if (!input || !input.value) return;
       var em = BR.leadEmail || "hello@builderrates.com";
       var utm = utmQueryString();
-      var nu = BR.newsletterUrl && String(BR.newsletterUrl).trim();
+      var pageUrl = typeof location !== "undefined" ? location.href : "";
+      var actionUrl = BR.formActionUrl && String(BR.formActionUrl).trim();
       function resetNBtn() {
         if (nSub) {
           nSub.disabled = false;
@@ -1547,33 +1572,46 @@ window.BuilderRatesTrack = function (name) {
             "Please add: " +
               input.value +
               "\n\npageUrl: " +
-              (typeof location !== "undefined" ? location.href : "") +
+              pageUrl +
               (utm ? "\nattribution: " + utm : "")
           );
         st.innerHTML = "<a href=\"" + href + "\" class=\"text-primary font-medium underline\">Open email to complete signup</a>";
         st.classList.remove("hidden");
         resetNBtn();
       }
-      if (nu) {
+      if (actionUrl) {
         nf.setAttribute("aria-busy", "true");
         if (nSub) {
           nSub.disabled = true;
           nSub.textContent = "Sending…";
         }
-        fetch(nu, {
+        var nParams = new URLSearchParams();
+        nParams.append("intent", "newsletter");
+        nParams.append("email", input.value);
+        nParams.append("name", "Newsletter signup");
+        nParams.append("phone", "");
+        nParams.append("product", "");
+        nParams.append("state", "");
+        nParams.append("loan_amount", "");
+        nParams.append("subject", "BuilderRates newsletter signup");
+        nParams.append(
+          "message",
+          "Newsletter signup\nemail: " +
+            input.value +
+            "\npageUrl: " +
+            pageUrl +
+            (utm ? "\nattribution: " + utm : "")
+        );
+        nParams.append("pageUrl", pageUrl);
+        if (utm) nParams.append("utm", utm);
+
+        fetch(actionUrl, {
           method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({
-            email: input.value,
-            _replyto: input.value,
-            _subject: "BuilderRates newsletter signup",
-            message:
-              "Newsletter signup: " +
-              input.value +
-              "\npageUrl: " +
-              (typeof location !== "undefined" ? location.href : "") +
-              (utm ? "\nattribution: " + utm : "")
-          })
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Accept: "application/json, text/plain, */*"
+          },
+          body: nParams.toString()
         })
           .then(function (r) {
             if (!r.ok) throw new Error("Newsletter error");

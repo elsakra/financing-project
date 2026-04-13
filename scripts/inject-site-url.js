@@ -5,12 +5,11 @@
  * Resolves the public site origin and rewrites HTML templates + crawl files.
  *
  * Environment (Vercel / CI):
- *   SITE_URL          — Preferred. Example: https://builderrates.com (no trailing slash)
- *   VERCEL_URL        — Set by Vercel; used as https://VERCEL_URL when SITE_URL unset
- *   LEAD_EMAIL        — Public contact email (default hello@builderrates.com)
- *   FORMSPREE_URL     — Optional; Formspree form endpoint for lead capture
- *   NEWSLETTER_URL    — Optional; POST endpoint for newsletter (e.g. second Formspree form)
- *   GTM_ID            — Optional; Google Tag Manager container id (format GTM-XXXXXXX)
+ *   SITE_URL              — Preferred. Example: https://builderrates.com (no trailing slash)
+ *   VERCEL_URL            — Set by Vercel; used as https://VERCEL_URL when SITE_URL unset
+ *   LEAD_EMAIL            — Public contact email (default hello@builderrates.com)
+ *   FORMBOLD_ACTION_URL   — FormBold public form POST URL (default https://formbold.com/s/oJqQe)
+ *   GTM_ID                — Optional; Google Tag Manager container id (format GTM-XXXXXXX)
  *
  * If neither SITE_URL nor VERCEL_URL is set (local dev), defaults to
  * https://financing-project.vercel.app
@@ -22,6 +21,8 @@ const path = require("path");
 const ROOT = path.join(__dirname, "..");
 const DEFAULT_ORIGIN = "https://financing-project.vercel.app";
 const DEFAULT_EMAIL = "hello@builderrates.com";
+/** Default FormBold endpoint (leads + newsletter use same form with intent field). */
+const DEFAULT_FORMBOLD_ACTION = "https://formbold.com/s/oJqQe";
 
 /** HTML templates processed in place (same replacements as landing). */
 const HTML_TEMPLATES = [
@@ -69,8 +70,7 @@ function buildCookieNoticeHtml() {
 
 function processHtml(html, options) {
   const leadEmail = options.leadEmail;
-  const formspree = options.formspree;
-  const newsletter = options.newsletter;
+  const formActionUrl = options.formActionUrl;
   const gtmHead = options.gtmHead;
   const gtmBody = options.gtmBody;
 
@@ -78,12 +78,8 @@ function processHtml(html, options) {
   html = html.split(DEFAULT_EMAIL).join(leadEmail);
 
   html = html.replace(
-    /window\.BUILDERRATES\.formspreeUrl\s*=\s*[^;]+;/,
-    "window.BUILDERRATES.formspreeUrl = " + JSON.stringify(formspree) + ";"
-  );
-  html = html.replace(
-    /window\.BUILDERRATES\.newsletterUrl\s*=\s*[^;]+;/,
-    "window.BUILDERRATES.newsletterUrl = " + JSON.stringify(newsletter) + ";"
+    /window\.BUILDERRATES\.formActionUrl\s*=\s*[^;]+;/,
+    "window.BUILDERRATES.formActionUrl = " + JSON.stringify(formActionUrl) + ";"
   );
 
   html = html.replace("<!-- br:inject-gtm-head -->", gtmHead || "<!-- br:inject-gtm-head -->");
@@ -115,14 +111,12 @@ const gtmBody = gtmId
     '" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>'
   : "";
 
-const formspree = (process.env.FORMSPREE_URL || "").trim();
-const newsletter = (process.env.NEWSLETTER_URL || "").trim();
+const formActionUrl = ((process.env.FORMBOLD_ACTION_URL || "").trim() || DEFAULT_FORMBOLD_ACTION);
 
 const procOpts = {
   origin: origin,
   leadEmail: leadEmail,
-  formspree: formspree,
-  newsletter: newsletter,
+  formActionUrl: formActionUrl,
   gtmHead: gtmHead,
   gtmBody: gtmBody,
 };
@@ -191,7 +185,7 @@ var log =
   "inject-site-url: origin=" +
   origin +
   (leadEmail !== DEFAULT_EMAIL ? " email=set" : "") +
-  (formspree ? " formspree=set" : "") +
-  (newsletter ? " newsletter=set" : "") +
+  " formbold=" +
+  (formActionUrl !== DEFAULT_FORMBOLD_ACTION ? "custom" : "default") +
   (gtmId ? " gtm=set" : "");
 console.log(log);
