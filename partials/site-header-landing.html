@@ -1,0 +1,40 @@
+<header>
+  <nav class="fixed top-0 w-full z-[100] border-b border-line bg-white pt-[env(safe-area-inset-top,0px)]" id="site-nav" aria-label="Primary">
+    <div class="flex justify-between items-center max-w-6xl mx-auto pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] md:px-8 py-4 md:py-4">
+      <a href="#top" class="flex items-center gap-2.5 min-h-[44px] font-display text-xl md:text-[1.35rem] font-semibold tracking-tight text-primary" aria-label="BuilderRates home">
+        <span class="shrink-0 w-8 h-8 rounded-md bg-primary flex items-center justify-center" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke="#fff" stroke-width="2.5" stroke-linecap="round" d="M8 11h16M8 16h16M8 21h11"/></svg>
+        </span>
+        <span>BuilderRates</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm" id="desktop-nav-links">
+        <a class="nav-link" href="#solutions" data-section="solutions">Solutions</a>
+        <a class="nav-link" href="#how" data-section="how">How It Works</a>
+        <a class="nav-link" href="#products" data-section="products">Products</a>
+        <a class="nav-link" href="#compare" data-section="compare">Compare</a>
+        <a class="nav-link" href="#testimonials" data-section="testimonials">Testimonials</a>
+        <a class="nav-link" href="#faq" data-section="faq">FAQ</a>
+        <a class="nav-link" href="#contact" data-section="contact">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button type="button" data-br-track="cta-nav-desktop" class="btn-primary js-open-lead hidden sm:inline-flex bg-primary text-on-primary px-4 py-2 rounded-md text-sm font-semibold min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+          Get rate analysis
+        </button>
+        <button type="button" id="nav-toggle" class="md:hidden inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-md border border-line bg-white text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open main menu">
+          <span class="material-symbols-outlined" id="nav-icon-menu">menu</span>
+          <span class="material-symbols-outlined hidden" id="nav-icon-close">close</span>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden border-t border-line bg-white pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] py-5 space-y-0 max-h-[min(70vh,28rem)] overflow-y-auto overscroll-contain" role="navigation" aria-label="Menu">
+      <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#solutions" data-section="solutions">Solutions</a>
+      <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#how" data-section="how">How It Works</a>
+      <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#products" data-section="products">Products</a>
+      <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#compare" data-section="compare">Compare</a>
+      <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#testimonials" data-section="testimonials">Testimonials</a>
+      <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#faq" data-section="faq">FAQ</a>
+      <a class="mobile-nav-link block py-3 text-sm border-b border-line text-zinc-600" href="#contact" data-section="contact">Contact</a>
+      <button type="button" data-br-track="cta-nav-mobile" class="mt-4 w-full btn-primary js-open-lead bg-primary text-on-primary py-3 min-h-[48px] rounded-md font-semibold text-sm">Get rate analysis</button>
+    </div>
+  </nav>
+</header>

@@ -26,12 +26,7 @@ tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#0
 <body class="bg-canvas text-ink antialiased min-h-dvh flex flex-col">
 <!-- br:inject-gtm-body -->
 <a href="#main-content" class="skip-link">Skip to content</a>
-<header class="sticky top-0 z-[100] border-b border-line bg-white/95 backdrop-blur-sm pt-[env(safe-area-inset-top,0px)]">
-  <div class="max-w-6xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2.5 font-display text-lg font-semibold text-primary"><span class="w-8 h-8 rounded-md bg-primary flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 32 32" fill="none"><path stroke="#fff" stroke-width="2.5" stroke-linecap="round" d="M8 11h16M8 16h16M8 21h11"/></svg></span>BuilderRates</a>
-    <a href="/" class="text-sm text-zinc-600 hover:text-primary">Home</a>
-  </div>
-</header>
+<!-- br:include site-header-sub -->
 
 <main id="main-content" class="flex-1">
   <article class="max-w-3xl mx-auto px-5 md:px-8 py-12 md:py-16">
@@ -86,15 +81,7 @@ tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#0
   </article>
 </main>
 
-<footer class="border-t border-line bg-white mt-auto">
-  <div class="max-w-6xl mx-auto px-5 md:px-8 py-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-zinc-500">
-    <a href="/terms" class="hover:text-primary">Terms</a>
-    <a href="/privacy" class="hover:text-primary">Privacy</a>
-    <a href="/disclosures" class="hover:text-primary">Disclosures</a>
-    <a href="/contact" class="hover:text-primary">Contact</a>
-  </div>
-  <p class="text-center text-xs text-zinc-400 pb-8 px-5">© 2026 Lazarus LLC.</p>
-</footer>
-<div id="br-cookie-banner" class="fixed bottom-0 left-0 right-0 z-[250] border-t border-line bg-white/95 backdrop-blur-sm shadow-[0_-4px_24px_rgba(0,0,0,0.06)] px-4 py-3 md:py-4 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pb-[max(0.75rem,env(safe-area-inset-bottom,0px))]" role="region" aria-label="Cookie notice" hidden><div class="max-w-3xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"><p class="text-sm text-zinc-600 leading-snug">We use cookies and similar technologies to run and improve this site and (if configured) measure traffic. See our <a href="/cookies" class="text-primary font-medium underline underline-offset-2 hover:no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">Cookie Policy</a>.</p><div class="flex items-center gap-2 shrink-0"><button type="button" id="br-cookie-dismiss" class="bg-primary text-on-primary px-4 py-2.5 rounded-md text-sm font-semibold min-h-[44px] hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Dismiss</button></div></div></div><script>(function(){var k="br_cookie_notice_dismissed";var b=document.getElementById("br-cookie-banner");var btn=document.getElementById("br-cookie-dismiss");if(!b)return;try{if(localStorage.getItem(k)==="1")return;}catch(e1){}b.removeAttribute("hidden");function hide(){b.setAttribute("hidden","");try{localStorage.setItem(k,"1");}catch(e2){}}btn&&btn.addEventListener("click",hide);})();</script>
+<!-- br:include site-footer-sub -->
+<!-- br:cookie-notice -->
 </body>
 </html>

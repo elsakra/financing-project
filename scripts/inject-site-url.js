@@ -19,6 +19,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.join(__dirname, "..");
+const PARTIALS_DIR = path.join(ROOT, "partials");
 const DEFAULT_ORIGIN = "https://financing-project.vercel.app";
 const DEFAULT_EMAIL = "hello@builderrates.com";
 /** Default first-party API (see api/submit.js). */
@@ -36,7 +37,19 @@ const HTML_TEMPLATES = [
   "how-we-make-money.html",
   "security.html",
   "careers.html",
+  "404.html",
 ];
+
+function expandIncludes(html) {
+  return html.replace(/<!--\s*br:include\s+([\w-]+)\s*-->/g, function (_, name) {
+    const fp = path.join(PARTIALS_DIR, name + ".html");
+    if (!fs.existsSync(fp)) {
+      console.warn("inject-site-url: missing partial: " + name);
+      return "<!-- br:include " + name + " (missing partial) -->";
+    }
+    return fs.readFileSync(fp, "utf8").replace(/\s+$/, "");
+  });
+}
 
 function normalizeOrigin(u) {
   if (!u || typeof u !== "string") return "";
@@ -134,6 +147,7 @@ for (let i = 0; i < HTML_TEMPLATES.length; i++) {
     continue;
   }
   let html = fs.readFileSync(filePath, "utf8");
+  html = expandIncludes(html);
   html = processHtml(html, procOpts);
   fs.writeFileSync(filePath, html, "utf8");
   if (name === "landing_page.html") {

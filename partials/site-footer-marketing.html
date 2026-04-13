@@ -1,0 +1,62 @@
+<footer id="contact" class="bg-canvas border-t border-line py-14 md:py-16">
+  <h2 class="sr-only">Contact, resources, and newsletter</h2>
+  <div class="max-w-6xl mx-auto px-5 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:flex lg:justify-between items-start gap-10">
+    <div class="max-w-xs">
+      <a href="#top" class="inline-block font-display text-lg font-semibold text-primary mb-4 focus:outline-none focus-visible:underline">BuilderRates</a>
+      <p class="text-zinc-600 text-sm leading-relaxed mb-5">
+        Debt matchmaking for builders who care about yield—without the bank runaround.
+      </p>
+      <p class="text-sm text-zinc-600 mb-1"><a href="mailto:hello@builderrates.com" id="footer-email-link" class="text-primary font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">hello@builderrates.com</a></p>
+      <p class="text-sm text-zinc-600 mb-3">Same-day reply on business days. Prefer a call? Say so in your note—we’ll coordinate.</p>
+      <div class="flex gap-2" aria-label="Social">
+        <a href="https://www.linkedin.com/company/builderrates" rel="noopener noreferrer" target="_blank" class="w-9 h-9 rounded-sm border border-line bg-white flex items-center justify-center text-primary hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="BuilderRates on LinkedIn"><span class="material-symbols-outlined text-lg" aria-hidden="true">work</span></a>
+        <a href="#faq" class="w-9 h-9 rounded-sm border border-line bg-white flex items-center justify-center text-primary hover:border-zinc-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="FAQ"><span class="material-symbols-outlined text-lg" aria-hidden="true">help</span></a>
+      </div>
+    </div>
+    <div>
+      <h3 class="font-semibold text-ink mb-4 uppercase tracking-[0.15em] text-[11px]">Legal &amp; policies</h3>
+      <ul class="space-y-2.5">
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/privacy">Privacy Policy</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/terms">Terms of Service</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/cookies">Cookie Policy</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/disclosures">Disclosures</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/how-we-make-money">How we make money</a></li>
+      </ul>
+      <h3 class="font-semibold text-ink mb-4 mt-8 uppercase tracking-[0.15em] text-[11px]">Company</h3>
+      <ul class="space-y-2.5">
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/about">About</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/contact">Contact</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/security">Security</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="/careers">Careers</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-semibold text-ink mb-4 uppercase tracking-[0.15em] text-[11px]">Products</h3>
+      <ul class="space-y-2.5">
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="#products">Construction Debt</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="#products">Bridge Financing</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="#products">DSCR Loans</a></li>
+        <li><a class="text-zinc-600 text-sm hover:text-primary transition-colors inline-flex items-center min-h-[44px] py-1" href="#products">Refinance Portfolio</a></li>
+      </ul>
+    </div>
+    <div class="lg:max-w-sm">
+      <h3 class="font-semibold text-ink mb-4 uppercase tracking-[0.15em] text-[11px]">Market updates</h3>
+      <p class="text-sm text-zinc-600 mb-3">Weekly rate volatility briefs in your inbox.</p>
+      <form id="newsletter-form" class="flex flex-col sm:flex-row gap-2" action="#" method="post" novalidate>
+        <label class="sr-only" for="email-updates">Email</label>
+        <p id="newsletter-hint" class="sr-only">Weekly rate briefs. Unsubscribe anytime.</p>
+        <div class="sr-only" aria-hidden="true">
+          <label for="newsletter-hp">Website</label>
+          <input id="newsletter-hp" name="company_website" type="text" tabindex="-1" autocomplete="off"/>
+        </div>
+        <input id="email-updates" name="email" required class="bg-white border border-line rounded-sm px-3 py-2.5 flex-1 text-base md:text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="you@company.com" type="email" autocomplete="email" inputmode="email" enterkeyhint="go" aria-describedby="newsletter-hint"/>
+        <button type="submit" id="newsletter-submit-btn" data-br-track="newsletter-submit" class="bg-primary text-on-primary px-4 py-2.5 rounded-sm font-semibold text-xs uppercase tracking-wider btn-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary min-h-[44px] shrink-0 disabled:opacity-60 disabled:cursor-not-allowed">Join</button>
+      </form>
+      <p id="newsletter-status" class="mt-2 text-xs text-secondary hidden" role="status"></p>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto px-5 md:px-8 mt-12 pt-8 border-t border-line">
+    <p class="text-center md:text-left text-zinc-500 text-sm">© 2026 Lazarus LLC. All rights reserved.</p>
+    <p class="text-center md:text-left text-zinc-400 text-xs mt-2 max-w-3xl">BuilderRates is a marketing and introduction service, not a lender. Rates, terms, and approvals are subject to partner underwriting. Not all applicants will qualify.</p>
+  </div>
+</footer>
