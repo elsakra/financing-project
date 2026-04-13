@@ -6,6 +6,8 @@
  *
  * If Redis is not configured, submissions are JSON.stringify'd to stdout (Vercel Runtime Logs) and the response
  * still returns { ok: true, storage: "log" } so the UI works without extra setup.
+ *
+ * Uses Node.js ServerResponse only (writeHead/end) so the same handler runs on Vercel and plain Node (Railway).
  */
 
 const LIST_KEY = "br:submissions:v1";
@@ -56,41 +58,54 @@ function validEmail(s) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t);
 }
 
+function sendJson(res, statusCode, obj) {
+  const body = JSON.stringify(obj);
+  res.writeHead(statusCode, { "Content-Type": "application/json; charset=utf-8" });
+  res.end(body);
+}
+
 module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
 
   if (req.method === "OPTIONS") {
-    return res.status(204).end();
+    res.writeHead(204);
+    res.end();
+    return;
   }
 
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST, OPTIONS");
-    return res.status(405).json({ error: "Method not allowed" });
+    sendJson(res, 405, { error: "Method not allowed" });
+    return;
   }
 
   let body;
   try {
     body = await parseBody(req);
   } catch {
-    return res.status(400).json({ error: "Invalid JSON" });
+    sendJson(res, 400, { error: "Invalid JSON" });
+    return;
   }
 
   if (body._hp != null && String(body._hp).trim() !== "") {
-    return res.status(200).json({ ok: true });
+    sendJson(res, 200, { ok: true });
+    return;
   }
 
   const intent = body.intent === "newsletter" ? "newsletter" : "lead";
   const email = typeof body.email === "string" ? body.email.trim() : "";
   if (!validEmail(email)) {
-    return res.status(400).json({ error: "Valid email required" });
+    sendJson(res, 400, { error: "Valid email required" });
+    return;
   }
 
   if (intent === "lead") {
     const name = typeof body.name === "string" ? body.name.trim() : "";
     if (!name || name.length > 200) {
-      return res.status(400).json({ error: "Name required" });
+      sendJson(res, 400, { error: "Name required" });
+      return;
     }
   }
 
@@ -114,17 +129,20 @@ module.exports = async (req, res) => {
   if (redis) {
     try {
       await redis.rpush(LIST_KEY, JSON.stringify(record));
-      return res.status(200).json({ ok: true, storage: "redis" });
+      sendJson(res, 200, { ok: true, storage: "redis" });
+      return;
     } catch (e) {
       console.error("[submit] redis error", e && e.message);
-      return res.status(503).json({ error: "Storage unavailable" });
+      sendJson(res, 503, { error: "Storage unavailable" });
+      return;
     }
   }
 
   if (process.env.DISABLE_LOG_FALLBACK === "1") {
-    return res.status(503).json({ error: "Configure UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN" });
+    sendJson(res, 503, { error: "Configure UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN" });
+    return;
   }
 
   console.log("[submit]", JSON.stringify(record));
-  return res.status(200).json({ ok: true, storage: "log" });
+  sendJson(res, 200, { ok: true, storage: "log" });
 };

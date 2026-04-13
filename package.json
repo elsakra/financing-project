@@ -2,7 +2,8 @@
   "name": "builderrates-site",
   "private": true,
   "scripts": {
-    "build": "node scripts/inject-site-url.js"
+    "build": "node scripts/inject-site-url.js",
+    "start": "node server-railway.js"
   },
   "engines": {
     "node": ">=18"

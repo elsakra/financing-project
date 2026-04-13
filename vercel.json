@@ -1,6 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "outputDirectory": ".",
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "functions": {
+    "api/submit.js": { "maxDuration": 15 },
+    "api/leads.js": { "maxDuration": 15 }
+  },
   "rewrites": [
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },

@@ -20,34 +20,46 @@ function getClient() {
   }
 }
 
+function sendJson(res, statusCode, obj) {
+  const body = JSON.stringify(obj);
+  res.writeHead(statusCode, { "Content-Type": "application/json; charset=utf-8" });
+  res.end(body);
+}
+
 module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Authorization, Accept");
 
   if (req.method === "OPTIONS") {
-    return res.status(204).end();
+    res.writeHead(204);
+    res.end();
+    return;
   }
 
   if (req.method !== "GET") {
     res.setHeader("Allow", "GET, OPTIONS");
-    return res.status(405).json({ error: "Method not allowed" });
+    sendJson(res, 405, { error: "Method not allowed" });
+    return;
   }
 
   const secret = process.env.LEADS_ADMIN_SECRET;
   if (!secret || typeof secret !== "string") {
-    return res.status(503).json({ error: "Export not configured (set LEADS_ADMIN_SECRET)" });
+    sendJson(res, 503, { error: "Export not configured (set LEADS_ADMIN_SECRET)" });
+    return;
   }
 
   const auth = req.headers.authorization || "";
   const token = auth.startsWith("Bearer ") ? auth.slice(7).trim() : "";
   if (token !== secret) {
-    return res.status(401).json({ error: "Unauthorized" });
+    sendJson(res, 401, { error: "Unauthorized" });
+    return;
   }
 
   const redis = getClient();
   if (!redis) {
-    return res.status(503).json({ error: "Redis not configured" });
+    sendJson(res, 503, { error: "Redis not configured" });
+    return;
   }
 
   try {
@@ -59,11 +71,10 @@ module.exports = async (req, res) => {
         return { parseError: true, raw: line };
       }
     });
-    res.setHeader("Content-Type", "application/json; charset=utf-8");
-    res.setHeader("Cache-Control", "no-store");
-    return res.status(200).json({ count: items.length, items });
+    res.writeHead(200, { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" });
+    res.end(JSON.stringify({ count: items.length, items }));
   } catch (e) {
     console.error("[leads] redis error", e && e.message);
-    return res.status(503).json({ error: "Storage unavailable" });
+    sendJson(res, 503, { error: "Storage unavailable" });
   }
 };
