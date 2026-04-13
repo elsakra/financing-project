@@ -7,6 +7,11 @@
  * If Redis is not configured, submissions are JSON.stringify'd to stdout (Vercel Runtime Logs) and the response
  * still returns { ok: true, storage: "log" } so the UI works without extra setup.
  *
+ * Where to see submissions:
+ *   • Slack: set SLACK_WEBHOOK_URL (Incoming Webhook) — alert on each accepted submission.
+ *   • Durable list: configure Upstash Redis, then GET /api/leads with Authorization: Bearer LEADS_ADMIN_SECRET.
+ *   • Logs-only mode: Vercel → Deployment → Runtime Logs (search "[submit]").
+ *
  * Uses Node.js ServerResponse only (writeHead/end) so the same handler runs on Vercel and plain Node (Railway).
  */
 
@@ -62,6 +67,46 @@ function sendJson(res, statusCode, obj) {
   const body = JSON.stringify(obj);
   res.writeHead(statusCode, { "Content-Type": "application/json; charset=utf-8" });
   res.end(body);
+}
+
+async function notifySlack(record) {
+  const url = process.env.SLACK_WEBHOOK_URL;
+  if (!url || typeof url !== "string") return;
+  const u = url.trim();
+  if (!u.startsWith("https://hooks.slack.com/")) {
+    console.warn("[submit] SLACK_WEBHOOK_URL must be a Slack Incoming Webhook https URL");
+    return;
+  }
+  const lines = [
+    "*BuilderRates — new submission*",
+    "*Intent:* " + record.intent,
+    "*Email:* " + record.email,
+  ];
+  if (record.name) lines.push("*Name:* " + record.name);
+  if (record.phone) lines.push("*Phone:* " + record.phone);
+  if (record.product) lines.push("*Product:* " + record.product);
+  if (record.state) lines.push("*State:* " + record.state);
+  if (record.loan_amount) lines.push("*Loan amount:* " + record.loan_amount);
+  if (record.pageUrl) lines.push("*Page:* " + record.pageUrl);
+  lines.push("*When:* " + record.at);
+  const payload = { text: lines.join("\n") };
+  const ac = new AbortController();
+  const tid = setTimeout(function () {
+    ac.abort();
+  }, 8000);
+  try {
+    const r = await fetch(u, {
+      method: "POST",
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+      body: JSON.stringify(payload),
+      signal: ac.signal,
+    });
+    if (!r.ok) console.error("[submit] slack HTTP", r.status);
+  } catch (e) {
+    console.error("[submit] slack notify error", e && e.message);
+  } finally {
+    clearTimeout(tid);
+  }
 }
 
 module.exports = async (req, res) => {
@@ -129,6 +174,7 @@ module.exports = async (req, res) => {
   if (redis) {
     try {
       await redis.rpush(LIST_KEY, JSON.stringify(record));
+      await notifySlack(record);
       sendJson(res, 200, { ok: true, storage: "redis" });
       return;
     } catch (e) {
@@ -144,5 +190,6 @@ module.exports = async (req, res) => {
   }
 
   console.log("[submit]", JSON.stringify(record));
+  await notifySlack(record);
   sendJson(res, 200, { ok: true, storage: "log" });
 };
