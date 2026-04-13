@@ -1383,6 +1383,66 @@ window.BuilderRatesTrack = function (name) {
     }
   }
 
+  /**
+   * FormBold’s docs use a plain HTML form POST. That avoids cross-origin fetch + preflight
+   * issues; we mirror it with a dynamic form targeting a hidden iframe.
+   */
+  function postToFormBackend(url, params, onSuccess, onError) {
+    try {
+      var iframeName = "br_formbold_" + String(Date.now());
+      var iframe = document.createElement("iframe");
+      iframe.name = iframeName;
+      iframe.title = "Form submission";
+      iframe.setAttribute("aria-hidden", "true");
+      iframe.style.cssText = "position:absolute;width:1px;height:1px;border:0;padding:0;margin:0;overflow:hidden;clip:rect(0,0,0,0)";
+      var form = document.createElement("form");
+      form.method = "POST";
+      form.action = url;
+      form.target = iframeName;
+      form.acceptCharset = "UTF-8";
+      params.forEach(function (value, key) {
+        var inp = document.createElement("input");
+        inp.type = "hidden";
+        inp.name = key;
+        inp.value = value;
+        form.appendChild(inp);
+      });
+      var submitted = false;
+      var finished = false;
+      function cleanup() {
+        try {
+          if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+        } catch (e1) {}
+        try {
+          if (form.parentNode) form.parentNode.removeChild(form);
+        } catch (e2) {}
+      }
+      function complete(ok) {
+        if (finished) return;
+        finished = true;
+        try {
+          clearTimeout(timeoutId);
+        } catch (e3) {}
+        cleanup();
+        if (ok) onSuccess();
+        else onError();
+      }
+      var timeoutId = setTimeout(function () {
+        complete(true);
+      }, 12000);
+      iframe.onload = function () {
+        if (!submitted) return;
+        complete(true);
+      };
+      document.body.appendChild(iframe);
+      document.body.appendChild(form);
+      submitted = true;
+      form.submit();
+    } catch (e4) {
+      onError();
+    }
+  }
+
   function submitLead() {
     var hp = document.getElementById("lead-hp");
     if (hp && hp.value) {
@@ -1423,7 +1483,7 @@ window.BuilderRatesTrack = function (name) {
     if (slotInline) slotInline.innerHTML = "";
 
     if (url) {
-      err.classList.add("hidden");
+      if (err) err.classList.add("hidden");
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = "Sending…";
@@ -1441,26 +1501,24 @@ window.BuilderRatesTrack = function (name) {
       params.append("pageUrl", pageUrl);
       if (utm) params.append("utm", utm);
 
-      fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          Accept: "application/json, text/plain, */*"
-        },
-        body: params.toString()
-      })
-        .then(function (r) {
-          if (!r.ok) throw new Error("Form error");
+      postToFormBackend(
+        url,
+        params,
+        function () {
+          resetSubmitBtn();
           if (window.BuilderRatesTrack) window.BuilderRatesTrack("lead-submit-success");
           showLeadStep3();
-        })
-        .catch(function () {
+        },
+        function () {
+          resetSubmitBtn();
           if (window.BuilderRatesTrack) window.BuilderRatesTrack("lead-submit-error");
-          err.textContent = "Could not send. Email " + (BR.leadEmail || "us") + " or use the button below.";
-          err.classList.remove("hidden");
+          if (err) {
+            err.textContent = "Could not send. Email " + (BR.leadEmail || "us") + " or use the button below.";
+            err.classList.remove("hidden");
+          }
           if (slotInline) appendMailto(slotInline, payload, fullMessage);
-        })
-        .finally(resetSubmitBtn);
+        }
+      );
       return;
     }
 
@@ -1605,28 +1663,25 @@ window.BuilderRatesTrack = function (name) {
         nParams.append("pageUrl", pageUrl);
         if (utm) nParams.append("utm", utm);
 
-        fetch(actionUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            Accept: "application/json, text/plain, */*"
-          },
-          body: nParams.toString()
-        })
-          .then(function (r) {
-            if (!r.ok) throw new Error("Newsletter error");
+        postToFormBackend(
+          actionUrl,
+          nParams,
+          function () {
+            nf.removeAttribute("aria-busy");
+            resetNBtn();
             if (window.BuilderRatesTrack) window.BuilderRatesTrack("newsletter-success");
             st.textContent = "You’re on the list. Next brief ships soon.";
             st.classList.remove("hidden");
             st.classList.remove("text-secondary");
             st.classList.add("text-zinc-700");
             nf.reset();
-          })
-          .catch(mailtoFallback)
-          .finally(function () {
+          },
+          function () {
             nf.removeAttribute("aria-busy");
             resetNBtn();
-          });
+            mailtoFallback();
+          }
+        );
         return;
       }
       mailtoFallback();
